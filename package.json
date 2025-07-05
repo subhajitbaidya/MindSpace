@@ -1,0 +1,14 @@
+{
+  "name": "bookstore-ecommerce",
+  "private": true,
+  "workspaces": [
+    "packages/frontend",
+    "packages/shared",
+    "packages/api-gateway",
+    "packages/services/*"
+  ],
+  "scripts": {
+    "dev": "echo \"Run services individually\"",
+    "build": "echo \"Add individual build scripts in packages\""
+  }
+}
