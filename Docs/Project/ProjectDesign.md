@@ -22,7 +22,7 @@
 
 # User Roles and Permissions
 
-- Supported user roles [ Customer | Seller | Admins |
+- Supported user roles [ Customer | Seller | Admins | ]
 - Role based access control authorization. Saperate dashboard for sellers only and all view to admins.
 
 # Core Features
