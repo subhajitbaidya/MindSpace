@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from httpcore import Origin
 from pydantic import BaseModel
 from typing import List
 
