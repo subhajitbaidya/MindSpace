@@ -1,15 +1,8 @@
 import "./ProductCard.css";
-import BookImage from "../assets/images/ikigai.png";
-const ProductCard = () => {
+const ProductCard = (image) => {
   return (
     <div class="card">
-      <div class="card-img">
-        <img
-          src={BookImage}
-          alt="book"
-          style={{ height: "100%", width: "100%" }}
-        />
-      </div>
+      <div class="card-img"></div>
       <div class="card-info">
         <p class="text-title">Ikigai </p>
         <p class="text-body">Japanese book for boosting productivity</p>
