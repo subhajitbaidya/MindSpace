@@ -21,7 +21,7 @@ const LandingPage = () => {
 
           <nav className="nav">
             <a href="#collections">Collections</a>
-            <a href="#bestSellers">BestSellers</a>
+            <a href="#bestSellers">Featured</a>
             <a href="#sellonbookshelp">Sell on BookShelp</a>
             <a href="#support">Support</a>
           </nav>
@@ -61,10 +61,10 @@ const LandingPage = () => {
 
       {/* Featured Books */}
       <section className="featured-books">
-        <h2>Featured Books</h2>
+        <h2>Our Best-Sellers</h2>
         <div className="book-grid">
           {Array.from({ length: 8 }, (_, i) => (
-            <div key={i} className="book-card">
+            <div key={i} ProductCard>
               {/* <div className="book-image wireframe-box">
                 <img
                   src={Ikigai}
