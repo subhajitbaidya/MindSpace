@@ -21,27 +21,17 @@
 
 </div>
 
-## 📑 Table of Contents
-
-- [Overview](#overview)
-- [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Testing](#testing)
-
----
-
 ## 📖 Overview
 
-**Bookshelp** is a full-stack e-commerce platform designed for book lovers. With a modular architecture and clean codebase, it serves as a robust solution for buying, browsing, and managing books with ease.
+With an aim to help people with their mental well-being. I am creating this project. It is my idea I am going to build it from scratch.
+**Bookshelp** is a full-stack e-commerce platform designed for book lovers. With a modular architecture and clean codebase, it serves as a robust solution for buying, browsing, and managing books with ease.It also features a journal section called diary and an AI powered Support Chatbot for customer queries and recommendations.
 
-### 🔍 Why BookShelp?
+### 🔍 Architecture and Planning
 
-- **Modular Monorepo:** Scalable structure separating client and server apps.
-- **Fast Development:** Uses modern frameworks and tooling for speed.
-- **All-in-One Stack:** Backend, frontend, database, and services in one place.
-- **API Ready:** Easily extendable with REST or GraphQL endpoints.
+- **Modular Monorepo and SOA focused:** Scalable structure separating client and server apps.
+- **Fast Development:** Uses modern frameworks like express for app features and python and Fast API for the large language model features. Planning to use best practices of development for better handling of performance.
+- **MERN Stack + Fast API + Langchain:** Services, Client, Database, Business logic and services in one place.
+- **API:** Starting off with REST APIs, plan to include GraphQL and gRPC in future.
 - **Developer Friendly:** Readable code, docs, and extensibility in mind.
 
 ---
@@ -52,8 +42,9 @@
 
 To set up the project, ensure you have:
 
-- **Programming Language:** Python
-- **Package Manager:** `pip`
+- **Programming Language:** Python, Javascript
+- **Frameworks:** React, Express, Fast API, Langchain
+- **Package Manager:** `pip`, `npm`
 
 ---
 
@@ -62,22 +53,17 @@ To set up the project, ensure you have:
 Clone the repository and install dependencies.
 
 ```bash
-git clone https://github.com/your-username/book-hub
+git clone https://github.com/subhajitbaidya/book-store.git
 ```
 
 ```bash
-cd book-hub
-```
-
-```bash
-pip install -r requirements.txt
+cd book-store
+# Navigate to each directory and run commands accordingly.
+npm install
+pip install requirements.txt
 ```
 
 Set environment variables or configure via `.env`.
-
-```bash
-cp .env.example .env
-```
 
 ---
 
@@ -85,8 +71,8 @@ cp .env.example .env
 
 Run the project locally:
 
-```bash
-uvicorn main:app --reload
+```
+
 ```
 
 ---
@@ -103,10 +89,6 @@ pytest
 
 ## 📬 Feedback
 
-Feel free to raise issues or suggest features via [GitHub Issues](https://github.com/your-username/book-hub/issues).
+Feel free to raise issues or suggest features via [GitHub Issues](https://github.com/subhajitbaidya/book-store/issues).
 
 ---
-
-```
-
-```
