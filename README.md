@@ -2,7 +2,7 @@
 
 # 📚 MindMap
 
-**Discover, Read, Connect—Your Next Favorite Book Awaits**
+**Discover, Read, Journal, paint Connect—Build a community for spreading positive mindset**
 
 > A modern product e-commerce marketplace only focusing on mind ful products to promote mental well being.
 
