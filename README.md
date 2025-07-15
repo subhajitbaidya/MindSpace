@@ -20,7 +20,7 @@
 
 ---
 
-![alt text](image.png)
+![minimalistic web design](image-1.png)
 
 ---
 

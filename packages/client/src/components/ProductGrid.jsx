@@ -24,7 +24,7 @@ function ProductGrid() {
     },
     {
       id: 5,
-      image: "../src/assets/images/atomic.png",
+      image: "../src/assets/images/fault.png",
       alt: "Fashion accessories",
     },
   ];
