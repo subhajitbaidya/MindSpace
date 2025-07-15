@@ -1,10 +1,10 @@
 <div align="center">
 
-# 📚 BookShelp
+# 📚 MindMap
 
 **Discover, Read, Connect—Your Next Favorite Book Awaits**
 
-> A modern book e-commerce marketplace for encouraging books
+> A modern product e-commerce marketplace only focusing on mind ful products to promote mental well being.
 
 ![Express](https://img.shields.io/badge/-Express-black?logo=express&logoColor=white)
 ![JSON](https://img.shields.io/badge/-JSON-black?logo=json&logoColor=white)
