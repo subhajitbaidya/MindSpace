@@ -11,7 +11,7 @@ function Header() {
             <div className="bar"></div>
             <ImBook style={{ fontSize: "20px" }} />
           </div>
-          <span className="logo-text">Bookshelp</span>
+          <span className="logo-text">MindMap</span>
         </div>
 
         <nav className="nav">

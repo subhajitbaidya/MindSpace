@@ -20,7 +20,7 @@
 
 ---
 
-![minimalistic web design](image-1.png)
+![minimalistic web design](image-2.png)
 
 ---
 
