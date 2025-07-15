@@ -1,5 +1,6 @@
 import "./Header.css";
 import { ImBook } from "react-icons/im";
+import { LuSearch } from "react-icons/lu";
 
 function Header() {
   return (
@@ -15,6 +16,7 @@ function Header() {
         </div>
 
         <nav className="nav">
+          <LuSearch style={{ fontSize: "16px" }} />
           <a href="#" className="nav-link">
             Collections
           </a>
