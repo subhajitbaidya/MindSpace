@@ -2,7 +2,7 @@
 
 # 📚 MindMap
 
-**Discover, Read, Connect—Your Next Favorite Book Awaits**
+**Discover, Read, Journal, paint Connect—Build a community for spreading positive mindset**
 
 > A modern product e-commerce marketplace only focusing on mind ful products to promote mental well being.
 
@@ -28,16 +28,16 @@
 
 ## 📖 Overview
 
-With an aim to help people with their mental well-being. I am creating this project. It is my idea I am going to build it from scratch.
-**Bookshelp** is a full-stack e-commerce platform designed for book lovers. With a modular architecture and clean codebase, it serves as a robust solution for buying, browsing, and managing books with ease.It also features a journal section called diary and an AI powered Support Chatbot for customer queries and recommendations.
+**Mindmap** With an aim to help people with their mental well-being.Serves as a robust platform for buying, browsing, and managing different items starting from books to selling creative crafts, paintings, customized goodies with ease.It also features a journal section called diary and an AI powered Support Chatbot for customer queries and recommendations.
 
 ### 🔍 Architecture and Planning
 
 - **Modular Monorepo and SOA focused:** Scalable structure separating client and server apps.
-- **Fast Development:** Uses modern frameworks like express for app features and python and Fast API for the large language model features. Planning to use best practices of development for better handling of performance.
+- **Development:** Uses modern frameworks like express for handling API calls and business logic, react for UI, python and Fast API for the large language model capabilities.
+  Planning to use best practices of development for better handling of performance.
 - **MERN Stack + Fast API + Langchain:** Services, Client, Database, Business logic and services in one place.
-- **API:** Starting off with REST APIs, plan to include GraphQL and gRPC in future.
-- **Developer Friendly:** Readable code, docs, and extensibility in mind.
+- **API:** Inter-communication between services using REST APIs, GraphQL and gRPC.
+- **Best Practices:** Readable code, docs, and extensibility in mind.
 
 ---
 
@@ -45,7 +45,7 @@ With an aim to help people with their mental well-being. I am creating this proj
 
 ### Prerequisites
 
-To set up the project, ensure you have:
+To set up the project:
 
 - **Programming Language:** Python, Javascript
 - **Frameworks:** React, Express, Fast API, Langchain

@@ -1,7 +1,6 @@
 // import { useState } from "react";
 // import LoginPage from "./components/LoginPage";
 import LandingPage from "./pages/LandingPage.jsx";
-import "./App.css";
 // import ProductCard from "./components/ProductCard";
 function App() {
   // const [currentPage, setCurrentPage] = useState("landing");
