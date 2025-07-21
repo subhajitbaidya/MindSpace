@@ -1,14 +1,19 @@
 import Header from "../components/Header";
 import ProductGrid from "../components/ProductGrid";
 import Hero from "../components/Hero";
+import Review from "./Review";
+import Dashboard from "./Dashboard";
+import { Container } from "@mui/material";
 
 const LandingPage = () => {
   return (
-    <div>
+    <Container>
       <Header />
       <Hero />
       <ProductGrid />
-    </div>
+      <Dashboard />
+      <Review />
+    </Container>
   );
 };
 

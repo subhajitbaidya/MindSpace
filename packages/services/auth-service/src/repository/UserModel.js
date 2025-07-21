@@ -1,5 +1,5 @@
 // models/UserModel.js
-import { User } from "./UserSchema.js";
+import { User } from "../models/UserSchema.js";
 
 export class UserModel {
   async findUserByUsername(username) {

@@ -1,6 +1,6 @@
 // di/container.js
-import { UserModel } from "../models/UserModel.js";
-import { UserService } from "../business/userFactory.js";
+import { UserModel } from "../repository/UserModel.js";
+import { UserService } from "../business/userService.js";
 import { UserController } from "../controllers/user.js";
 
 //Singleton instances

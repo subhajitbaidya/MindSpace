@@ -1,6 +1,7 @@
 // import { useState } from "react";
 // import LoginPage from "./components/LoginPage";
 import LandingPage from "./pages/LandingPage.jsx";
+
 // import ProductCard from "./components/ProductCard";
 function App() {
   // const [currentPage, setCurrentPage] = useState("landing");
@@ -25,8 +26,8 @@ function App() {
     //   {currentPage === "landing" && <LandingPage />}
     //   {currentPage === "login" && <LoginPage />}
     // </div>
-
     <LandingPage />
+    // <Hero />
   );
 }
 
