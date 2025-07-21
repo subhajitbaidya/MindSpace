@@ -2,25 +2,17 @@ import { Container } from "@mui/material";
 
 const Hero = () => {
   return (
-    <Container className="flex flex-col items-center justify-center min-h-screen px-4 py-10 bg-white">
-      <section className="w-full max-w-4xl space-y-8">
-        {/* Stars & Trust Text */}
-        <div className="flex items-center space-x-2">
-          <div className="flex text-yellow-500 text-xl">
-            {"★★★★★".split("").map((star, index) => (
-              <span key={index}>{star}</span>
-            ))}
-          </div>
-          <span className="text-sm text-gray-600">
-            Trusted by 50,000+ customers
-          </span>
-        </div>
-
+    <Container
+      disableGutters
+      maxWidth={false}
+      className="flex items-center justify-center min-h-[70vh] bg-white"
+    >
+      <section className="w-full max-w-4xl flex flex-col items-center justify-center px-4 py-10 text-center space-y-8">
         {/* Headline */}
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-          Premium Tech
+          Mindfulness
           <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-            Made Simple
+            and productivity
           </span>
         </h1>
 
@@ -42,15 +34,15 @@ const Hero = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-6 mt-10 max-w-md text-gray-800">
-          <div>
+          <div className="text-center">
             <div className="text-2xl font-bold">50K+</div>
             <div className="text-sm text-gray-600">Happy Customers</div>
           </div>
-          <div>
+          <div className="text-center">
             <div className="text-2xl font-bold">99%</div>
             <div className="text-sm text-gray-600">Satisfaction Rate</div>
           </div>
-          <div>
+          <div className="text-center">
             <div className="text-2xl font-bold">24/7</div>
             <div className="text-sm text-gray-600">Support</div>
           </div>

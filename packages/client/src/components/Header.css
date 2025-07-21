@@ -1,6 +1,8 @@
 .header {
   width: 100%;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #f3f4f6;
+  background-color: #ffffff;
 }
 
 .header-container {
@@ -37,8 +39,7 @@
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .nav-link {
@@ -52,15 +53,37 @@
 }
 
 @media (max-width: 768px) {
+  .header {
+    padding: 1rem 1.5rem;
+  }
+  
   .header-container {
-    padding: 0 1rem;
+    padding: 0;
   }
 
   .nav {
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .nav-link {
     font-size: 0.9rem;
+  }
+  
+  .logo-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem;
+  }
+  
+  .nav {
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 0.85rem;
   }
 }

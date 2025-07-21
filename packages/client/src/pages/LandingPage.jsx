@@ -7,12 +7,24 @@ import { Container } from "@mui/material";
 
 const LandingPage = () => {
   return (
-    <Container>
+    <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
       <Header />
-      <Hero />
-      <ProductGrid />
-      <Dashboard />
-      <Review />
+      
+      <section style={{ marginBottom: '4rem' }}>
+        <Hero />
+      </section>
+      
+      <section style={{ marginBottom: '4rem' }}>
+        <ProductGrid />
+      </section>
+      
+      <section style={{ marginBottom: '4rem' }}>
+        <Dashboard />
+      </section>
+      
+      <section style={{ marginBottom: '2rem' }}>
+        <Review />
+      </section>
     </Container>
   );
 };
