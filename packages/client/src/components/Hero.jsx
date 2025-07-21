@@ -1,4 +1,5 @@
 import { Container } from "@mui/material";
+import { GradientTextButton } from "./UI/Button";
 
 const Hero = () => {
   return (
@@ -18,18 +19,15 @@ const Hero = () => {
 
         {/* Subtitle */}
         <p className="text-base md:text-lg text-gray-700 max-w-2xl">
-          Discover cutting-edge technology that enhances your lifestyle. Premium
-          quality, minimalist design, exceptional performance.
+          Discover products that enhances mind positivity and productivity, keep
+          up with your journaling habits with our in house diary, your data and
+          space is safe.
         </p>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium">
-            Shop Now →
-          </button>
-          <button className="border border-gray-700 text-gray-800 px-6 py-3 rounded-md font-medium">
-            Explore Collection
-          </button>
+          <GradientTextButton>Shop Now →</GradientTextButton>
+          <GradientTextButton>Journal</GradientTextButton>
         </div>
 
         {/* Stats */}

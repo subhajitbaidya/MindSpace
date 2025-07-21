@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card } from "@mui/material";
+import { Card, CardContent, CardMedia } from "@mui/material";
 
 import BookImg from "../assets/images/atomic.png";
 import NotGiving from "../assets/images/notgiving.png";
@@ -65,12 +65,12 @@ const ProductShowcase = () => {
   };
 
   return (
-    <section id="products" className="py-24 bg-gray-50">
+    <section id="products" className="py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-2">Featured Products</h2>
-          <br />
         </div>
+        <br />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product, index) => (
@@ -80,10 +80,12 @@ const ProductShowcase = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative">
-                <img
-                  src={product.image}
+                <CardMedia
+                  component="img"
+                  height="260"
+                  image={product.image}
                   alt={product.name}
-                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <span className="absolute top-3 left-3 bg-blue-100 text-blue-800 px-2 py-1 text-xs rounded font-medium">
                   {product.badge}
@@ -102,7 +104,7 @@ const ProductShowcase = () => {
                 </div>
               </div>
 
-              <div className="p-4">
+              <CardContent className="p-4">
                 <div className="flex items-center gap-1 text-yellow-500 text-sm mb-2">
                   {"★".repeat(Math.floor(product.rating)) +
                     "☆".repeat(5 - Math.floor(product.rating))}
@@ -134,7 +136,7 @@ const ProductShowcase = () => {
                     View Details
                   </button>
                 </div>
-              </div>
+              </CardContent>
             </Card>
           ))}
         </div>
