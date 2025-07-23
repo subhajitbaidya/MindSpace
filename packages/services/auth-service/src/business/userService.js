@@ -1,7 +1,10 @@
 import bcrypt from "bcryptjs";
+import JwtClass from "../utils/Jwt.js";
+
 export class UserService {
   constructor(userModel) {
     this.userModel = userModel;
+    this.encrypt = new JwtClass();
   }
 
   async registerUser(userData) {
@@ -14,7 +17,9 @@ export class UserService {
 
     const hashedPassword = await bcrypt.hash(userData.password, 10); // 10 = salt rounds
     const userToSave = { ...userData, password: hashedPassword };
-    return await this.userModel.createUser(userToSave);
+
+    const user = await this.userModel.createUser(userToSave);
+    return this.encrypt.createJWTtokens(user);
   }
 
   async getUsers() {
