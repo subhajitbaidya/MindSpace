@@ -20,6 +20,10 @@
 
 ---
 
+![minimalistic web design](image-2.png)
+
+---
+
 </div>
 
 ## 📖 Overview
