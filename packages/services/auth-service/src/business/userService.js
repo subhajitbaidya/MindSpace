@@ -8,8 +8,8 @@ export class UserService {
   }
 
   async registerUser(userData) {
-    const existingUser = await this.userModel.findUserByUsername(
-      userData.username
+    const existingUser = await this.userModel.findUserByUserEmail(
+      userData.email
     );
     if (existingUser) {
       throw new Error("User already exists");
@@ -20,6 +20,10 @@ export class UserService {
 
     const user = await this.userModel.createUser(userToSave);
     return this.encrypt.createJWTtokens(user);
+  }
+
+  async loginUser(userData) {
+    const findUser = await this.userModel.findUserByUsername(userData);
   }
 
   async getUsers() {

@@ -1,9 +1,9 @@
 // models/UserModel.js
-import { User } from "../models/UserSchema.js";
+import { User } from "../models/userSchema.js";
 
 export class UserModel {
-  async findUserByUsername(username) {
-    return await User.findOne({ username });
+  async findUserByUserEmail(email) {
+    return await User.findOne({ email });
   }
 
   async createUser(userData) {
