@@ -22,8 +22,12 @@ export class UserService {
     return this.encrypt.createJWTtokens(user);
   }
 
+  // TODO: Complete login feature
   async loginUser(userData) {
     const findUser = await this.userModel.findUserByUsername(userData);
+    if (!findUser) {
+      throw new Error("user not registered");
+    }
   }
 
   async getUsers() {
