@@ -1,0 +1,99 @@
+problem: Authenticate User and Login/Signup
+
+
+do 
+// main entry point app
+entry -> index.js
+import dotenv from "dotenv";
+dotenv.config()
+PORT = process.env.PORT || 3000
+
+
+function createserver() do
+    // configure app instance and cross origin resource sharing
+    // allow types of data in app: Json and Form data
+    create Express() app 
+    app.use(cors())
+    app.use(express.json())
+    app.use(urlencoded({extended: false}))
+
+    return app
+    end 
+app.listen(PORT)
+
+
+end
+
+do 
+// database layer
+connect with MongoDB.connect(MONGO_URL)
+
+// create MongoDB schema
+schema = {
+    username
+    password
+    email
+}
+
+// repository class for accessing database
+// generic syntax representing CRUD operations from db
+class UserModel do
+    
+    async create()
+    return user.create()
+    async read()
+    return user.read()
+    async update()
+        return user.update(id)
+    async delete()
+        return user.delete(id)
+        
+end
+
+end
+
+do 
+// Service class for handling user login and signup
+// access repository class in the constructor
+class UserService do
+    constructor(repository) do
+        this._repo = repository
+    end
+
+    do 
+        @(methods from repository: findbyid, finduser, createUser, updateUser, DeleteUser)
+        async function Signup(param) do
+            data = access methods from repository
+            if (!data) do
+                return error
+            else:
+                hashedpassword = bcrypt("password")
+                jwt = jwt(data)
+                createUser(data)
+                
+                return jwt
+            end
+        end
+    end
+end
+
+end
+
+do 
+// Controller to handle request response and REST APIs
+class UserController do
+    constructor(UserService) do
+        this._userService = UserService
+    end
+
+    async function handleSignup(req, res) do
+        username, password = req.body
+        
+
+    end
+   end 
+end
+
+
+
+

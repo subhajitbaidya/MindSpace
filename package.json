@@ -7,11 +7,14 @@
     "packages/services/*"
   ],
   "scripts": {
-    "dev": "echo \"Run services individually\"",
+    "dev": "concurrently \"npm --workspace packages/api run dev\" \"npm --workspace packages/services/auth-service run dev\"",
     "build": "echo \"Add individual build scripts in packages\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
 }
