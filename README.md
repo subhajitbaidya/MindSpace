@@ -18,12 +18,6 @@
 ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white)
 ![ESLint](https://img.shields.io/badge/-ESLint-4B32C3?logo=eslint&logoColor=white)
 
----
-
-![minimalistic web design](image-2.png)
-
----
-
 </div>
 
 ## 📖 Overview
