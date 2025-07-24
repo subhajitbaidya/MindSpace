@@ -1,51 +1,148 @@
-import "./ProductGrid.css";
+import { useState } from "react";
+import { Card, CardContent, CardMedia } from "@mui/material";
 
-function ProductGrid() {
-  const products = [
-    {
-      id: 1,
-      image: "../src/assets/images/atomic.png",
-      alt: "Perfume bottle",
-    },
-    {
-      id: 2,
-      image: "../src/assets/images/dad.png",
-      alt: "Cosmetic product",
-    },
-    {
-      id: 3,
-      image: "../src/assets/images/ikigai.png",
-      alt: "Person with jewelry",
-    },
-    {
-      id: 4,
-      image: "../src/assets/images/notgiving.png",
-      alt: "Interior design items",
-    },
-    {
-      id: 5,
-      image: "../src/assets/images/fault.png",
-      alt: "Fashion accessories",
-    },
-  ];
+import BookImg from "../assets/images/atomic.png";
+import NotGiving from "../assets/images/notgiving.png";
+import Dad from "../assets/images/dad.png";
+import Fault from "../assets/images/fault.png";
+
+const products = [
+  {
+    id: 1,
+    name: "Atomic Habits",
+    price: 299,
+    originalPrice: 399,
+    rating: 4.8,
+    reviews: 234,
+    image: BookImg,
+    badge: "Best Seller",
+    description: "Mind booster/productivity",
+  },
+  {
+    id: 2,
+    name: "Not Giving a F**K",
+    price: 199,
+    originalPrice: 249,
+    rating: 4.9,
+    reviews: 156,
+    image: NotGiving,
+    badge: "New",
+    description: "Mind booster/productivity",
+  },
+  {
+    id: 3,
+    name: "Rich Dad Poor Dad",
+    price: 129,
+    originalPrice: 159,
+    rating: 4.7,
+    reviews: 89,
+    image: Dad,
+    badge: "Limited",
+    description: "life",
+  },
+  {
+    id: 4,
+    name: "Fault in our stars",
+    price: 159,
+    originalPrice: 199,
+    rating: 4.6,
+    reviews: 112,
+    image: Fault,
+    badge: "Popular",
+    description: "Fiction",
+  },
+];
+
+const ProductShowcase = () => {
+  const [favorites, setFavorites] = useState(new Set());
+
+  const toggleFavorite = (productId) => {
+    const newFavorites = new Set(favorites);
+    newFavorites.has(productId)
+      ? newFavorites.delete(productId)
+      : newFavorites.add(productId);
+    setFavorites(newFavorites);
+  };
 
   return (
-    <section className="product-grid-section">
-      <div className="product-grid-container">
-        <div className="product-grid">
-          {products.map((product) => (
-            <div key={product.id} className="product-card">
-              <img
-                src={product.image || "/placeholder.svg"}
-                alt={product.alt}
-                className="product-image"
-              />
-            </div>
+    <section id="products" className="py-24">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-2">Featured Products</h2>
+        </div>
+        <br />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {products.map((product, index) => (
+            <Card
+              key={product.id}
+              className="rounded-lg shadow-lg overflow-hidden transition duration-300 hover:-translate-y-2"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="relative">
+                <CardMedia
+                  component="img"
+                  height="260"
+                  image={product.image}
+                  alt={product.name}
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <span className="absolute top-3 left-3 bg-blue-100 text-blue-800 px-2 py-1 text-xs rounded font-medium">
+                  {product.badge}
+                </span>
+                <button
+                  onClick={() => toggleFavorite(product.id)}
+                  className="absolute top-3 right-3 bg-white rounded-full p-2 text-red-500 hover:text-red-700"
+                >
+                  {favorites.has(product.id) ? "❤️" : "🤍"}
+                </button>
+
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white/90 to-transparent p-4 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                  <button className="bg-black text-white w-full py-2 text-sm rounded">
+                    🛒 Quick Add
+                  </button>
+                </div>
+              </div>
+
+              <CardContent className="p-4">
+                <div className="flex items-center gap-1 text-yellow-500 text-sm mb-2">
+                  {"★".repeat(Math.floor(product.rating)) +
+                    "☆".repeat(5 - Math.floor(product.rating))}
+                  <span className="text-xs text-gray-500 ml-1">
+                    ({product.reviews})
+                  </span>
+                </div>
+
+                <h3 className="font-semibold text-lg mb-1 hover:text-blue-600 transition-colors">
+                  {product.name}
+                </h3>
+
+                <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                  {product.description}
+                </p>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl font-bold text-green-600">
+                      Rs{product.price}
+                    </span>
+                    {product.originalPrice && (
+                      <span className="text-sm text-gray-400 line-through">
+                        ${product.originalPrice}
+                      </span>
+                    )}
+                  </div>
+                  <button className="text-sm text-blue-600 hover:underline">
+                    View Details
+                  </button>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
 
-export default ProductGrid;
+export default ProductShowcase;
