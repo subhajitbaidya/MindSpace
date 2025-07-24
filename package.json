@@ -1,0 +1,20 @@
+{
+  "name": "full_stack_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "workspaces": [
+    "packages/api",
+    "packages/services/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm --workspace packages/api run dev\" \"npm --workspace packages/services/auth-service run dev\"",
+    "build": "echo \"Add individual build scripts in packages\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
