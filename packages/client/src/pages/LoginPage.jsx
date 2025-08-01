@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
+import MindImage from "../assets/images/brain2.svg";
+import { height } from "@mui/system";
 
 const LoginPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
 
   return (
     <div className="login-container">
@@ -12,7 +13,7 @@ const LoginPage = () => {
         <div className="login-form">
           <div className="logo">
             <div className="logo-icon">☁️</div>
-            <span className="logo-text">CloudSpace</span>
+            <span className="logo-text">MindMap</span>
           </div>
 
           <div className="form-content">
@@ -48,7 +49,7 @@ const LoginPage = () => {
               </div>
             </div>
 
-            <div className="form-options">
+            {/* <div className="form-options">
               <label className="checkbox-label">
                 <input
                   type="checkbox"
@@ -59,7 +60,7 @@ const LoginPage = () => {
                 Remember me
                 <small>Save my login details for next time.</small>
               </label>
-            </div>
+            </div> */}
 
             <button className="sign-in-btn">
               {isSignUp ? "Sign Up" : "Sign In"}
@@ -79,7 +80,7 @@ const LoginPage = () => {
               </button>
             </div>
 
-            <div className="social-buttons">
+            {/* <div className="social-buttons">
               <button className="social-btn google-btn">
                 <span className="social-icon">G</span>
                 Sign in with Google
@@ -92,10 +93,10 @@ const LoginPage = () => {
                 <span className="social-icon">🍎</span>
                 Sign in with Apple
               </button>
-            </div>
+            </div> */}
 
             <div className="copyright">
-              <span>Copyright 2024 CloudSpace Corporation</span>
+              <span>Copyright 2025 Mindmap.Inc</span>
             </div>
           </div>
         </div>
@@ -104,21 +105,19 @@ const LoginPage = () => {
       <div className="login-right">
         <div className="hero-content">
           <h1>
-            Securely Upload And Store
+            Secure your Mental Health
             <br />
-            Your Important Documents
+            And be yourself
             <br />
-            With <span className="brand-highlight">CloudSpace</span>!
+            With <span className="brand-highlight">MindMap</span>!
           </h1>
 
           <div className="hero-illustration">
             <div className="cloud-character">
               <div className="cloud-body">
-                <div className="cloud-face">
-                  <div className="cloud-eye"></div>
-                  <div className="cloud-smile"></div>
+                <div className="laptop">
+                  <img src={MindImage} id="mind-image" />
                 </div>
-                <div className="laptop">💻</div>
               </div>
               <div className="cloud-arms">
                 <div className="arm-left"></div>
