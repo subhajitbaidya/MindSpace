@@ -1,11 +1,31 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./LoginPage.css";
 import MindImage from "../assets/images/brain2.svg";
-import { height } from "@mui/system";
 
 const LoginPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignup = async () => {
+    const response = await fetch(
+      "http://localhost:5000/api/v0/auth/user/signup",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("login success");
+    } else {
+      alert("User exists, please login!");
+    }
+  };
 
   return (
     <div className="login-container">
@@ -25,6 +45,8 @@ const LoginPage = () => {
                   id="email"
                   placeholder="user@example.com"
                   className="form-input"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <span className="input-icon">📧</span>
               </div>
@@ -38,6 +60,8 @@ const LoginPage = () => {
                   id="password"
                   placeholder="••••••••••"
                   className="form-input"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
                   type="button"
@@ -49,20 +73,7 @@ const LoginPage = () => {
               </div>
             </div>
 
-            {/* <div className="form-options">
-              <label className="checkbox-label">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                />
-                <span className="checkmark"></span>
-                Remember me
-                <small>Save my login details for next time.</small>
-              </label>
-            </div> */}
-
-            <button className="sign-in-btn">
+            <button className="sign-in-btn" onClick={handleSignup}>
               {isSignUp ? "Sign Up" : "Sign In"}
             </button>
 
@@ -79,21 +90,6 @@ const LoginPage = () => {
                 {isSignUp ? "Sign in" : "Sign up"}
               </button>
             </div>
-
-            {/* <div className="social-buttons">
-              <button className="social-btn google-btn">
-                <span className="social-icon">G</span>
-                Sign in with Google
-              </button>
-              <button className="social-btn facebook-btn">
-                <span className="social-icon">f</span>
-                Sign in with Facebook
-              </button>
-              <button className="social-btn apple-btn">
-                <span className="social-icon">🍎</span>
-                Sign in with Apple
-              </button>
-            </div> */}
 
             <div className="copyright">
               <span>Copyright 2025 Mindmap.Inc</span>
