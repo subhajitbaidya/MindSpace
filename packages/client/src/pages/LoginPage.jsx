@@ -18,8 +18,6 @@ const LoginPage = () => {
       }
     );
 
-    const data = await response.json();
-
     if (response.ok) {
       alert("login success");
     } else {
