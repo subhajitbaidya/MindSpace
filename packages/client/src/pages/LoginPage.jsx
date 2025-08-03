@@ -25,9 +25,35 @@ const LoginPage = () => {
     );
 
     if (response.ok) {
-      alert(`login success for ${username.split(" ")[0]}`);
+      alert(`Signup success for ${username.split(" ")[0]}`);
     } else {
       alert("User exists, please login!");
+    }
+  };
+
+  const handleLogin = async () => {
+    const response = await fetch(
+      "http://localhost:5000/api/v0/auth/user/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      }
+    );
+
+    if (response.ok) {
+      alert(`login success`);
+    } else {
+      alert("Invalid credentials, please try signing up");
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isSignUp) {
+      handleSignup();
+    } else {
+      handleLogin();
     }
   };
 
@@ -41,22 +67,24 @@ const LoginPage = () => {
           </div>
 
           <div className="form-content">
-            <div className="form-group">
-              <label htmlFor="email">Name</label>
-              <div className="input-wrapper">
-                <input
-                  type="text"
-                  id="email"
-                  placeholder="eg - john doe"
-                  className="form-input"
-                  value={username}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <span className="input-icon">
-                  <IoPersonCircle />
-                </span>
+            {isSignUp && (
+              <div className="form-group">
+                <label htmlFor="email">Name</label>
+                <div className="input-wrapper">
+                  <input
+                    type="text"
+                    id="email"
+                    placeholder="eg - john doe"
+                    className="form-input"
+                    value={username}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <span className="input-icon">
+                    <IoPersonCircle />
+                  </span>
+                </div>
               </div>
-            </div>
+            )}
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <div className="input-wrapper">
@@ -95,7 +123,7 @@ const LoginPage = () => {
               </div>
             </div>
 
-            <button className="sign-in-btn" onClick={handleSignup}>
+            <button className="sign-in-btn" onClick={handleSubmit}>
               {isSignUp ? "Sign Up" : "Sign In"}
             </button>
 
@@ -104,7 +132,11 @@ const LoginPage = () => {
             </div>
 
             <div className="auth-toggle">
-              <span>Don't have an account? </span>
+              <span>
+                {isSignUp
+                  ? "Already have an account? "
+                  : "Don't have an account? "}
+              </span>
               <button
                 className="link-btn"
                 onClick={() => setIsSignUp(!isSignUp)}
