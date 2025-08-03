@@ -1,12 +1,17 @@
-name: Simple CI
+name: Node Continuous Integration
 
 on:
   pull_request:
     branches: [main]
 
 jobs:
-  check:
+  test_pull_request:
     runs-on: ubuntu-latest
     steps:
-      - name: Ready for Production
-        run: echo "🚀 Ready to deploy to production"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
