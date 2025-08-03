@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📚 MindMap
+# 🌿 MindSpace
 
 **Discover, Read, Journal, paint Connect—Build a community for spreading positive mindset**
 

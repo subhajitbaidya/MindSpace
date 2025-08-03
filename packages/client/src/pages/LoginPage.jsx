@@ -56,8 +56,8 @@ const LoginPage = () => {
       <div className="login-left">
         <div className="login-form">
           <div className="logo">
-            <div className="logo-icon">☁️</div>
-            <span className="logo-text">MindMap</span>
+            <div className="logo-icon">🌿</div>
+            <span className="logo-text">MindSpace</span>
           </div>
 
           <div className="form-content">
@@ -140,7 +140,7 @@ const LoginPage = () => {
             </div>
 
             <div className="copyright">
-              <span>Copyright 2025 Mindmap.Inc</span>
+              <span>Copyright 2025 MindSpace.Inc</span>
             </div>
           </div>
         </div>
@@ -153,13 +153,13 @@ const LoginPage = () => {
             <br />
             And be yourself
             <br />
-            With <span className="brand-highlight">MindMap</span>!
+            With <span className="brand-highlight">MindSpace</span>!
           </h1>
 
           <div className="hero-illustration">
             <div className="cloud-character">
               <div className="cloud-body">
-                <div className="laptop" onClick={<SplashCursor />}>
+                <div className="laptop">
                   <img src={MindImage} id="mind-image" />
                 </div>
               </div>

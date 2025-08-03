@@ -252,11 +252,11 @@
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 3rem;
-  color: #2a3f2a;
+  color: #555555;
 }
 
 .brand-highlight {
-  color: #8b6914;
+  color: #00563f;
 }
 
 .hero-illustration {
@@ -306,11 +306,9 @@
   transition: transform 0.3s ease;
   cursor: pointer;
   position: relative;
-}
-
-.laptop:hover {
   animation: spin 3s linear infinite;
 }
+
 #mind-image {
   height: 50%;
   margin: 2px;
@@ -320,10 +318,10 @@
 
 @keyframes spin {
   from {
-    transform: rotate(0deg);
+    transform: rotateY(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotateY(360deg);
   }
 }
 
