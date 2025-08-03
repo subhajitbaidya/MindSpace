@@ -14,6 +14,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Signup API call
   const handleSignup = async () => {
     const response = await fetch("/api/v0/auth/user/signup", {
       method: "POST",
@@ -28,6 +29,7 @@ const LoginPage = () => {
     }
   };
 
+  // Login API call
   const handleLogin = async () => {
     const response = await fetch("/api/v0/auth/user/login", {
       method: "POST",
