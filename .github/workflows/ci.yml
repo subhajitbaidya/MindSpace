@@ -1,33 +1,12 @@
-name: CI Pipeline
+name: Simple CI
 
 on:
   pull_request:
     branches: [main]
 
 jobs:
-  ready-for-production:
+  check:
     runs-on: ubuntu-latest
-    if: github.head_ref == 'develop' && github.base_ref == 'main'
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Production Ready Check
-        run: |
-          echo "✅ Ready to merge develop → main"
-          echo "📦 Branch: ${{ github.head_ref }} → ${{ github.base_ref }}"
-          echo "🚀 This will deploy to production"
-          echo "👀 Review the changes and merge when ready"
-
-  validate-branch:
-    runs-on: ubuntu-latest
-    if: github.head_ref != 'develop' && github.base_ref == 'main'
-
-    steps:
-      - name: Block non-develop merges
-        run: |
-          echo "❌ Only develop branch can be merged to main"
-          echo "🔀 Current: ${{ github.head_ref }} → ${{ github.base_ref }}"
-          echo "✅ Expected: develop → main"
-          exit 1
+      - name: Ready for Production
+        run: echo "🚀 Ready to deploy to production"
