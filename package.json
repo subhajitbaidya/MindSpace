@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": [
+    "packages/client",
     "packages/api",
     "packages/services/*"
   ],
   "scripts": {
-    "dev": "concurrently \"npm --workspace packages/api run dev\" \"npm --workspace packages/services/auth-service run dev\"",
+    "dev": "concurrently \"npm --workspace packages/client run dev\" \"npm --workspace packages/api run dev\" \"npm --workspace packages/services/auth-service run dev\"",
     "build": "echo \"Add individual build scripts in packages\""
   },
   "keywords": [],

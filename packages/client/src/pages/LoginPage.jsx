@@ -1,10 +1,16 @@
 import { useState } from "react";
 import "./LoginPage.css";
 import MindImage from "../assets/images/brain2.svg";
+import { IoPersonCircle } from "react-icons/io5";
+import { MdEmail } from "react-icons/md";
+import { RiLockPasswordFill } from "react-icons/ri";
+import { FaUnlockAlt } from "react-icons/fa";
+import SplashCursor from "../components/SplashCursor";
 
 const LoginPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,12 +20,12 @@ const LoginPage = () => {
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, email, password }),
       }
     );
 
     if (response.ok) {
-      alert("login success");
+      alert(`login success for ${username.split(" ")[0]}`);
     } else {
       alert("User exists, please login!");
     }
@@ -36,6 +42,22 @@ const LoginPage = () => {
 
           <div className="form-content">
             <div className="form-group">
+              <label htmlFor="email">Name</label>
+              <div className="input-wrapper">
+                <input
+                  type="text"
+                  id="email"
+                  placeholder="eg - john doe"
+                  className="form-input"
+                  value={username}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <span className="input-icon">
+                  <IoPersonCircle />
+                </span>
+              </div>
+            </div>
+            <div className="form-group">
               <label htmlFor="email">Email</label>
               <div className="input-wrapper">
                 <input
@@ -46,7 +68,9 @@ const LoginPage = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <span className="input-icon">📧</span>
+                <span className="input-icon">
+                  <MdEmail />
+                </span>
               </div>
             </div>
 
@@ -66,7 +90,7 @@ const LoginPage = () => {
                   className="password-toggle"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? "🙈" : "👁️"}
+                  {showPassword ? <FaUnlockAlt /> : <RiLockPasswordFill />}
                 </button>
               </div>
             </div>
@@ -109,7 +133,7 @@ const LoginPage = () => {
           <div className="hero-illustration">
             <div className="cloud-character">
               <div className="cloud-body">
-                <div className="laptop">
+                <div className="laptop" onClick={<SplashCursor />}>
                   <img src={MindImage} id="mind-image" />
                 </div>
               </div>

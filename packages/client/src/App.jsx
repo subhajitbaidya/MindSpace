@@ -1,5 +1,7 @@
 // import LandingPage from "./pages/LandingPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+// import SplashCursor from "./components/SplashCursor.jsx";
+
 // import ChatUI from "./pages/SupportPage.jsx";
 
 function App() {
@@ -7,6 +9,7 @@ function App() {
     <div className="App">
       {/* <LandingPage /> */}
       <LoginPage />
+      {/* <SplashCursor /> */}
       {/* <ChatUI /> */}
     </div>
   );
