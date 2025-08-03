@@ -1,10 +1,61 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./LoginPage.css";
+import MindImage from "../assets/images/brain2.svg";
+import { IoPersonCircle } from "react-icons/io5";
+import { MdEmail } from "react-icons/md";
+import { RiLockPasswordFill } from "react-icons/ri";
+import { FaUnlockAlt } from "react-icons/fa";
+import SplashCursor from "../components/SplashCursor";
 
 const LoginPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
+  const [username, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignup = async () => {
+    const response = await fetch(
+      "http://localhost:5000/api/v0/auth/user/signup",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password }),
+      }
+    );
+
+    if (response.ok) {
+      alert(`Signup success for ${username.split(" ")[0]}`);
+    } else {
+      alert("User exists, please login!");
+    }
+  };
+
+  const handleLogin = async () => {
+    const response = await fetch(
+      "http://localhost:5000/api/v0/auth/user/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      }
+    );
+
+    if (response.ok) {
+      alert(`login success`);
+    } else {
+      alert("Invalid credentials, please try signing up");
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isSignUp) {
+      handleSignup();
+    } else {
+      handleLogin();
+    }
+  };
 
   return (
     <div className="login-container">
@@ -12,10 +63,28 @@ const LoginPage = () => {
         <div className="login-form">
           <div className="logo">
             <div className="logo-icon">☁️</div>
-            <span className="logo-text">CloudSpace</span>
+            <span className="logo-text">MindMap</span>
           </div>
 
           <div className="form-content">
+            {isSignUp && (
+              <div className="form-group">
+                <label htmlFor="email">Name</label>
+                <div className="input-wrapper">
+                  <input
+                    type="text"
+                    id="email"
+                    placeholder="eg - john doe"
+                    className="form-input"
+                    value={username}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <span className="input-icon">
+                    <IoPersonCircle />
+                  </span>
+                </div>
+              </div>
+            )}
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <div className="input-wrapper">
@@ -24,8 +93,12 @@ const LoginPage = () => {
                   id="email"
                   placeholder="user@example.com"
                   className="form-input"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
-                <span className="input-icon">📧</span>
+                <span className="input-icon">
+                  <MdEmail />
+                </span>
               </div>
             </div>
 
@@ -37,31 +110,20 @@ const LoginPage = () => {
                   id="password"
                   placeholder="••••••••••"
                   className="form-input"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
                   type="button"
                   className="password-toggle"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? "🙈" : "👁️"}
+                  {showPassword ? <FaUnlockAlt /> : <RiLockPasswordFill />}
                 </button>
               </div>
             </div>
 
-            <div className="form-options">
-              <label className="checkbox-label">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                />
-                <span className="checkmark"></span>
-                Remember me
-                <small>Save my login details for next time.</small>
-              </label>
-            </div>
-
-            <button className="sign-in-btn">
+            <button className="sign-in-btn" onClick={handleSubmit}>
               {isSignUp ? "Sign Up" : "Sign In"}
             </button>
 
@@ -70,7 +132,11 @@ const LoginPage = () => {
             </div>
 
             <div className="auth-toggle">
-              <span>Don't have an account? </span>
+              <span>
+                {isSignUp
+                  ? "Already have an account? "
+                  : "Don't have an account? "}
+              </span>
               <button
                 className="link-btn"
                 onClick={() => setIsSignUp(!isSignUp)}
@@ -79,23 +145,8 @@ const LoginPage = () => {
               </button>
             </div>
 
-            <div className="social-buttons">
-              <button className="social-btn google-btn">
-                <span className="social-icon">G</span>
-                Sign in with Google
-              </button>
-              <button className="social-btn facebook-btn">
-                <span className="social-icon">f</span>
-                Sign in with Facebook
-              </button>
-              <button className="social-btn apple-btn">
-                <span className="social-icon">🍎</span>
-                Sign in with Apple
-              </button>
-            </div>
-
             <div className="copyright">
-              <span>Copyright 2024 CloudSpace Corporation</span>
+              <span>Copyright 2025 Mindmap.Inc</span>
             </div>
           </div>
         </div>
@@ -104,21 +155,19 @@ const LoginPage = () => {
       <div className="login-right">
         <div className="hero-content">
           <h1>
-            Securely Upload And Store
+            Secure your Mental Health
             <br />
-            Your Important Documents
+            And be yourself
             <br />
-            With <span className="brand-highlight">CloudSpace</span>!
+            With <span className="brand-highlight">MindMap</span>!
           </h1>
 
           <div className="hero-illustration">
             <div className="cloud-character">
               <div className="cloud-body">
-                <div className="cloud-face">
-                  <div className="cloud-eye"></div>
-                  <div className="cloud-smile"></div>
+                <div className="laptop" onClick={<SplashCursor />}>
+                  <img src={MindImage} id="mind-image" />
                 </div>
-                <div className="laptop">💻</div>
               </div>
               <div className="cloud-arms">
                 <div className="arm-left"></div>

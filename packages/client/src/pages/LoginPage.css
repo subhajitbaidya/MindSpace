@@ -225,7 +225,14 @@
 
 .login-right {
   flex: 1;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(
+    45deg,
+    #fffdf8 0%,
+    #fef7ec 35%,
+    #ffe3b3 65%,
+    #f0d199 90%,
+    #dbb968 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -245,10 +252,11 @@
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 3rem;
+  color: #2a3f2a;
 }
 
 .brand-highlight {
-  color: #60a5fa;
+  color: #8b6914;
 }
 
 .hero-illustration {
@@ -265,7 +273,14 @@
 .cloud-body {
   width: 200px;
   height: 120px;
-  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  /* background: linear-gradient(135deg, #60a5fa, #a78bfa); */
+  background: linear-gradient(
+    135deg,
+    #f8faf8 0%,
+    #e8f5e8 25%,
+    #d4e8d4 70%,
+    #c1dcc1 100%
+  );
   border-radius: 60px;
   position: relative;
   display: flex;
@@ -279,37 +294,37 @@
   top: 20px;
 }
 
-.cloud-eye {
-  width: 20px;
-  height: 20px;
-  background: white;
-  border-radius: 50%;
-  position: relative;
-  margin: 0 auto 10px;
-}
-
-.cloud-eye::after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background: #1e293b;
-  border-radius: 50%;
-  position: absolute;
-  top: 6px;
-  left: 6px;
-}
-
-.cloud-smile {
-  width: 30px;
-  height: 15px;
-  border: 3px solid white;
-  border-top: none;
-  border-radius: 0 0 30px 30px;
-}
-
 .laptop {
   font-size: 2rem;
   margin-top: 10px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: #000;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.laptop:hover {
+  animation: spin 3s linear infinite;
+}
+#mind-image {
+  height: 50%;
+  margin: 2px;
+  padding: 2px;
+  background-color: none;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .cloud-arms {
