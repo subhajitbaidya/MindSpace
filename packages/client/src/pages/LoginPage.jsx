@@ -44,7 +44,7 @@ const LoginPage = () => {
     if (response.ok) {
       alert(`login success`);
     } else {
-      alert("Invalid credentials, please try signing up");
+      alert("Invalid credentials");
     }
   };
 
