@@ -15,14 +15,11 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
 
   const handleSignup = async () => {
-    const response = await fetch(
-      "http://localhost:5000/api/v0/auth/user/signup",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password }),
-      }
-    );
+    const response = await fetch("/api/v0/auth/user/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, email, password }),
+    });
 
     if (response.ok) {
       alert(`Signup success for ${username.split(" ")[0]}`);
@@ -32,14 +29,11 @@ const LoginPage = () => {
   };
 
   const handleLogin = async () => {
-    const response = await fetch(
-      "http://localhost:5000/api/v0/auth/user/login",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      }
-    );
+    const response = await fetch("/api/v0/auth/user/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
 
     if (response.ok) {
       alert(`login success`);
