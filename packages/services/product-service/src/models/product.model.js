@@ -6,20 +6,19 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    categoryName: {
+    description: {
       type: String,
       required: true,
     },
-    subCategoryName: {
-      type: String,
-      required: true,
-      unique: true,
+    image: {
+      url: String,
+      alt: String,
+    },
+    categoryName: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "category",
     },
     price: {
-      type: Number,
-      required: true,
-    },
-    stock: {
       type: Number,
       required: true,
     },

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const InventorySchema = new mongoose.Schema({
+const CategorySchema = new mongoose.Schema({
   productName: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "products",
@@ -13,6 +13,10 @@ const InventorySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  stock: {
+    type: Number,
+    required: true,
+  },
 });
 
-export const Inventory = mongoose.model("inventory", InventorySchema);
+export const Inventory = mongoose.model("category", CategorySchema);
