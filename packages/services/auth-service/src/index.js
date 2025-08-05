@@ -8,7 +8,7 @@ import { connectDB } from "./db/connection.js";
 
 // Recreate __dirname in ESM
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+export const __dirname = path.dirname(__filename);
 
 // Load .env from one level above /src
 dotenv.config({ path: path.resolve(__dirname, "../.env") });

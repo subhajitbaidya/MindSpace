@@ -14,6 +14,7 @@ export class ProxyService {
       pathRewrite: {
         [`^/api/v0/${this.route}`]: "",
       },
+      logLevel: "debug",
       onError: (err, req, res) => {
         console.error(`[${this.route}] Proxy Error:`, err.message);
         res.status(500).json({ error: `${this.route} service unavailable` });

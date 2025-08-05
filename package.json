@@ -8,7 +8,7 @@
     "packages/services/*"
   ],
   "scripts": {
-    "dev": "concurrently \"npm --workspace packages/client run dev\" \"npm --workspace packages/api run dev\" \"npm --workspace packages/services/auth-service run dev\"",
+    "dev": "concurrently \"npm --workspace packages/client run dev\" \"npm --workspace packages/api run dev\" \"npm --workspace packages/services/auth-service run dev\" \"npm --workspace packages/services/product-service run dev\"",
     "build": "echo \"Add individual build scripts in packages\""
   },
   "keywords": [],
