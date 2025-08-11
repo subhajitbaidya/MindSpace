@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 
 const app = express();
 
+// Connecting the directory
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 

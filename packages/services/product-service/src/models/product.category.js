@@ -19,4 +19,4 @@ const CategorySchema = new mongoose.Schema({
   },
 });
 
-export const Inventory = mongoose.model("category", CategorySchema);
+export const Category = mongoose.model("category", CategorySchema);
