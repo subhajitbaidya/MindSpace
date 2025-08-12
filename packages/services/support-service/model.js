@@ -1,11 +1,13 @@
 import ollama from "ollama";
 
-const message = { role: "user", content: "Why is the sky blue?" };
-const response = await ollama.chat({
-  model: "deepseek-r1:1.5b",
-  messages: [message],
-  stream: true,
-});
-for await (const part of response) {
-  process.stdout.write(part.message.content);
-}
+const generateResponse = async (query) => {
+  const message = { role: "user", content: query };
+  const response = await ollama.chat({
+    model: "deepseek-r1:1.5b",
+    messages: [message],
+  });
+
+  return response.message.content;
+};
+
+export default generateResponse;
