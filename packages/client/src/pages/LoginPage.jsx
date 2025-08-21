@@ -5,14 +5,23 @@ import { IoPersonCircle } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUnlockAlt } from "react-icons/fa";
-import SplashCursor from "../components/SplashCursor";
+import { useEffect } from "react";
 
+// Login page API handler
 const LoginPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setIsAuthenticated(true);
+    }
+  });
 
   // Signup API call
   const handleSignup = async () => {
@@ -38,14 +47,15 @@ const LoginPage = () => {
     });
 
     if (response.ok) {
-      alert(`login success`);
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      alert("login success");
     } else {
       alert("Invalid credentials");
     }
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     if (isSignUp) {
       handleSignup();
     } else {
