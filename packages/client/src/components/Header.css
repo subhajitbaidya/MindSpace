@@ -4,6 +4,9 @@
   border-bottom: 1px solid #f3f4f6;
   background-color: #ffffff;
 }
+a:focus {
+  outline: none;
+}
 
 .header-container {
   max-width: 1400px;
@@ -51,12 +54,15 @@
 .nav-link:hover {
   color: #000;
 }
+.nav-link:focus {
+  outline: none;
+}
 
 @media (max-width: 768px) {
   .header {
     padding: 1rem 1.5rem;
   }
-  
+
   .header-container {
     padding: 0;
   }
@@ -68,7 +74,7 @@
   .nav-link {
     font-size: 0.9rem;
   }
-  
+
   .logo-text {
     font-size: 1rem;
   }
@@ -78,11 +84,11 @@
   .header {
     padding: 1rem;
   }
-  
+
   .nav {
     gap: 1rem;
   }
-  
+
   .nav-link {
     font-size: 0.85rem;
   }

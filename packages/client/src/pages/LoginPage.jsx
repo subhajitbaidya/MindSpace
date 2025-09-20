@@ -6,9 +6,11 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUnlockAlt } from "react-icons/fa";
 import { useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-// Login page API handler
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [username, setName] = useState("");
@@ -32,9 +34,10 @@ const LoginPage = () => {
     });
 
     if (response.ok) {
-      alert(`Signup success for ${username.split(" ")[0]}`);
+      localStorage.setItem("token", data.token);
+      navigate("/home");
     } else {
-      alert("User exists, please login!");
+      toast("User exists, please login!");
     }
   };
 
@@ -49,9 +52,10 @@ const LoginPage = () => {
     if (response.ok) {
       const data = await response.json();
       localStorage.setItem("token", data.token);
-      alert("login success");
+
+      navigate("home");
     } else {
-      alert("Invalid credentials");
+      toast("Invalid credentials");
     }
   };
 
@@ -72,11 +76,11 @@ const LoginPage = () => {
             <span className="logo-text">MindSpace</span>
           </div>
 
-          <div className="form-content">
+          <div>
             {isSignUp && (
               <div className="form-group">
                 <label htmlFor="email">Name</label>
-                <div className="input-wrapper">
+                <div className="relative">
                   <input
                     type="text"
                     id="email"
@@ -183,6 +187,14 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        draggable
+        hideProgressBar={false}
+        theme="colored"
+        className={"text-black"}
+      />
     </div>
   );
 };

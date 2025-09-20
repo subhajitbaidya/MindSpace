@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Card, CardContent, CardMedia } from "@mui/material";
-
 import BookImg from "../assets/images/atomic.png";
 import NotGiving from "../assets/images/notgiving.png";
 import Dad from "../assets/images/dad.png";
