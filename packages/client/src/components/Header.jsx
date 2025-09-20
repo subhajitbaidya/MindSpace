@@ -2,6 +2,8 @@ import "./Header.css";
 import { ImBook } from "react-icons/im";
 import { LuSearch } from "react-icons/lu";
 import { Link, NavLink } from "react-router-dom";
+import { LuShoppingCart } from "react-icons/lu";
+import { CgProfile } from "react-icons/cg";
 
 function Header() {
   return (
@@ -19,8 +21,7 @@ function Header() {
         </Link>
 
         <nav className="nav">
-          <LuSearch style={{ fontSize: "16px" }} />
-          <NavLink to="collections" className="nav-link">
+          <NavLink to="products" className="nav-link">
             Collections
           </NavLink>
           <NavLink to="seller" className="nav-link">
@@ -28,6 +29,13 @@ function Header() {
           </NavLink>
           <NavLink to="support" className="nav-link">
             Support
+          </NavLink>
+          <LuSearch style={{ fontSize: "16px" }} />
+          <NavLink to="cart" className="nav-link">
+            <LuShoppingCart />
+          </NavLink>
+          <NavLink to="profile" className="nav-link">
+            <CgProfile />
           </NavLink>
         </nav>
       </div>

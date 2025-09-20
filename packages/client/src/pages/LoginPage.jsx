@@ -6,8 +6,9 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUnlockAlt } from "react-icons/fa";
 import { useEffect } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Notification from "../lib/Notification";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -187,14 +188,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={1000}
-        draggable
-        hideProgressBar={false}
-        theme="colored"
-        className={"text-black"}
-      />
+      <Notification />
     </div>
   );
 };

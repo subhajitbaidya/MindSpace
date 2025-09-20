@@ -18,6 +18,8 @@ a:focus {
 
 .logo {
   display: flex;
+  margin: 2px;
+  padding: 2.5px;
   align-items: center;
   gap: 0.5rem;
 }

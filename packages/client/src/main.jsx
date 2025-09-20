@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import SellerPage from "./components/SellerPage.jsx";
 import ProductsPage from "./pages/ProductsPage.jsx";
 import Layout from "./pages/Layout.jsx";
+import ProductShowcase from "./components/ProductGrid.jsx";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
         <Route index element={<LandingPage />} />
         <Route path="support" element={<SupportPage />} />
         <Route path="seller" element={<SellerPage />} />
+        <Route path="products" element={<ProductShowcase />} />
         <Route path="collections" element={<ProductsPage />} />
       </Route>
     </>
