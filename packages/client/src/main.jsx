@@ -8,6 +8,7 @@ import SellerPage from "./components/widgets/SellerPage.jsx";
 import ProductDetailsPage from "./pages/ProductDetailsPage.jsx";
 import Layout from "./pages/Layout.jsx";
 import ProductCollection from "./pages/ProductCollection.jsx";
+import Notification from "./lib/Notification.jsx";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -15,7 +16,6 @@ import {
 } from "react-router-dom";
 
 import SupportPage from "./pages/SupportPage.jsx";
-import Notification from "./lib/Notification.jsx";
 
 // Header routes
 const router = createBrowserRouter(
@@ -29,7 +29,6 @@ const router = createBrowserRouter(
         <Route path="productdetails" element={<ProductDetailsPage />} />
         <Route path="collections" element={<ProductCollection />} />
       </Route>
-      <Notification />
     </>
   )
 );
@@ -37,5 +36,6 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Notification />
   </React.StrictMode>
 );
