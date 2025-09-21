@@ -9,6 +9,8 @@ import {
   Box,
 } from "@mui/material";
 import { Mail, Gift, Bell, Sparkles } from "lucide-react";
+import { toast } from "react-toastify";
+import Notification from "../../lib/Notification";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +18,7 @@ const Newsletter = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email) {
-      alert("You've been subscribed to our newsletter. Welcome to TechVibe!");
+      toast("You've been subscribed to our newsletter. Welcome to TechVibe!");
       setEmail("");
     }
   };
@@ -133,6 +135,7 @@ const Newsletter = () => {
           </Typography>
         </CardContent>
       </Card>
+      <Notification />
     </Box>
   );
 };

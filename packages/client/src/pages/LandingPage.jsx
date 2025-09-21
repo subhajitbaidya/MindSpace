@@ -1,9 +1,9 @@
-import ProductGrid from "../components/ProductGrid";
-import Hero from "../components/Hero";
-import Review from "../components/Review";
+import ProductFeatureWall from "../components/widgets/ProductFeatureWall";
+import Hero from "../components/widgets/Hero";
+import Review from "../components/widgets/Review";
 import { Container } from "@mui/material";
-import Features from "../components/Features";
-import Newsletter from "../components/NewsLetter";
+import CompanyFeatureWall from "../components/CompanyFeatureWall";
+import Newsletter from "../components/widgets/NewsLetter";
 
 const LandingPage = () => {
   return (
@@ -13,11 +13,11 @@ const LandingPage = () => {
       </section>
 
       <section style={{ marginBottom: "4rem" }}>
-        <ProductGrid />
+        <ProductFeatureWall />
       </section>
 
       <section style={{ marginBottom: "4rem" }}>
-        <Features />
+        <CompanyFeatureWall />
       </section>
 
       <section style={{ marginBottom: "2rem" }}>

@@ -4,10 +4,9 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import SellerPage from "./components/SellerPage.jsx";
-import ProductsPage from "./pages/ProductsPage.jsx";
+import SellerPage from "./components/widgets/SellerPage.jsx";
+import ProductDetailsPage from "./pages/ProductDetailsPage.jsx";
 import Layout from "./pages/Layout.jsx";
-import ProductShowcase from "./components/ProductGrid.jsx";
 import ProductCollection from "./pages/ProductCollection.jsx";
 import {
   createBrowserRouter,
@@ -16,6 +15,7 @@ import {
 } from "react-router-dom";
 
 import SupportPage from "./pages/SupportPage.jsx";
+import Notification from "./lib/Notification.jsx";
 
 // Header routes
 const router = createBrowserRouter(
@@ -26,9 +26,10 @@ const router = createBrowserRouter(
         <Route index element={<LandingPage />} />
         <Route path="support" element={<SupportPage />} />
         <Route path="seller" element={<SellerPage />} />
-        <Route path="productsdetails" element={<ProductsPage />} />
+        <Route path="productdetails" element={<ProductDetailsPage />} />
         <Route path="collections" element={<ProductCollection />} />
       </Route>
+      <Notification />
     </>
   )
 );

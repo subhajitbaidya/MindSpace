@@ -53,7 +53,7 @@ const features = [
   },
 ];
 
-const Features = () => {
+const CompanyFeatureWall = () => {
   return (
     <section id="features" className="py-24 bg-background">
       <div className="container mx-auto px-4">
@@ -99,4 +99,4 @@ const Features = () => {
   );
 };
 
-export default Features;
+export default CompanyFeatureWall;

@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import ProductCard from "../components/widgets/ProductCard";
 import SummaryCard from "../components/widgets/SummaryCard";
 import BookImg from "../assets/images/atomic.png";
+import { useState } from "react";
 
 const Item = ({ children }) => (
   <Paper
@@ -33,7 +34,25 @@ const products = [
   },
 ];
 
-const ProductsPage = () => {
+const ProductDetailsPage = () => {
+  const [favorites, setFavorites] = useState(new Set());
+  const toggleFavorite = (productId) => {
+    const newFavorites = new Set(favorites);
+    newFavorites.has(productId)
+      ? newFavorites.delete(productId)
+      : newFavorites.add(productId);
+    setFavorites(newFavorites);
+  };
+
+  const handleQuickAdd = (product) => {
+    toast(`${product.name} added to cart`);
+  };
+
+  const handleViewDetails = (product) => {
+    console.log("Viewing details for:", product.name);
+    // TODO [SCRUM-13]: Add to cart logic
+    alert(`Viewing details for "${product.name}"`);
+  };
   return (
     <Box
       sx={{
@@ -59,15 +78,13 @@ const ProductsPage = () => {
                 key={product.id}
                 product={product}
                 index={index}
-                // onFavoriteToggle={toggleFavorite}
-                // isFavorite={favorites.has(product.id)}
-                // onQuickAdd={handleQuickAdd}
-                // onViewDetails={handleViewDetails}
+                onFavoriteToggle={toggleFavorite}
+                isFavorite={favorites.has(product.id)}
+                onQuickAdd={handleQuickAdd}
+                onViewDetails={handleViewDetails}
                 className="animate-fade-in-up"
               />
             ))}
-
-            {/* <ProductCard sx={{ flex: 2, minWidth: 0 }} /> */}
             <SummaryCard sx={{ flex: 1, minWidth: 0 }} />
           </Item>
         </Grid>
@@ -76,4 +93,4 @@ const ProductsPage = () => {
   );
 };
 
-export default ProductsPage;
+export default ProductDetailsPage;

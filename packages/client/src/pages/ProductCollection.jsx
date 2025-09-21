@@ -5,7 +5,6 @@ import Dad from "../assets/images/dad.png";
 import Fault from "../assets/images/fault.png";
 import ProductCard from "../components/widgets/ProductCard";
 import { toast } from "react-toastify";
-import Notification from "../lib/Notification";
 
 const products = [
   {
@@ -100,7 +99,6 @@ const ProductCollection = () => {
           ))}
         </div>
       </div>
-      <Notification />
     </section>
   );
 };

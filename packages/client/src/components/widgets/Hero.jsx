@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import { GradientTextButton } from "./Elements/Button";
+import { GradientTextButton } from "../Elements/Button";
 
 const Hero = () => {
   return (

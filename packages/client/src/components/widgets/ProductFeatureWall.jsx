@@ -1,11 +1,11 @@
 import { useState } from "react";
-import BookImg from "../assets/images/atomic.png";
-import NotGiving from "../assets/images/notgiving.png";
-import Dad from "../assets/images/dad.png";
-import Fault from "../assets/images/fault.png";
-import { ProductFeatureCard } from "./widgets/ProductFeatureCard";
+import BookImg from "../../assets/images/atomic.png";
+import NotGiving from "../../assets/images/notgiving.png";
+import Dad from "../../assets/images//dad.png";
+import Fault from "../../assets/images/fault.png";
+import { ProductFeatureCard } from "./ProductFeatureCard";
 import { toast } from "react-toastify";
-import Notification from "../lib/Notification";
+import Notification from "../../lib/Notification";
 
 const products = [
   {
@@ -98,7 +98,7 @@ const products = [
   },
 ];
 
-const ProductShowcase = () => {
+const ProductFeatureWall = () => {
   const [favorites, setFavorites] = useState(new Set());
 
   const toggleFavorite = (productId) => {
@@ -147,4 +147,4 @@ const ProductShowcase = () => {
   );
 };
 
-export default ProductShowcase;
+export default ProductFeatureWall;
