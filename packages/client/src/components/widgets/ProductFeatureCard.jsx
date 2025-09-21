@@ -82,7 +82,7 @@ export const ProductFeatureCard = ({
             )}
           </div>
           <button
-            onClick={() => navigate("collections")}
+            onClick={() => navigate("productsdetails")}
             className="text-sm text-blue-600 hover:underline transition-colors"
           >
             View Details

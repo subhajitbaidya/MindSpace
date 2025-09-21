@@ -21,7 +21,7 @@ function Header() {
         </Link>
 
         <nav className="nav">
-          <NavLink to="products" className="nav-link">
+          <NavLink to="collections" className="nav-link">
             Collections
           </NavLink>
           <NavLink to="seller" className="nav-link">

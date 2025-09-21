@@ -1,4 +1,3 @@
-import Atomic from "../../assets/images/atomic.png";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -7,12 +6,22 @@ import Button from "@mui/material/Button";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
 import { IconButton } from "@mui/material";
+import { GrFavorite } from "react-icons/gr";
 
-export default function ProductCard() {
+export default function ProductCard({
+  product,
+  index = 0,
+  onFavoriteToggle,
+  isFavorite = false,
+  onQuickAdd,
+  onViewDetails,
+  className = "",
+}) {
   return (
     <Card
+      className={className}
       sx={{
-        width: "100%", // fill the flex item
+        width: "100%",
         minHeight: 260,
         borderRadius: 2,
         overflow: "hidden",
@@ -21,25 +30,27 @@ export default function ProductCard() {
         "&:hover": { transform: "translateY(-8px)" },
       }}
     >
-      <CardActionArea>
+      <CardActionArea className="group">
         <div className="relative">
           <CardMedia
             component="img"
             height="140"
-            image={Atomic}
+            image={product.image}
+            alt={product.name}
             className="object-cover transition-transform duration-300 group-hover:scale-105"
-            alt="green iguana"
           />
 
-          <span className="absolute top-3 left-3 bg-blue-100 text-blue-800 px-2 py-1 text-xs rounded font-medium">
-            Limited
-          </span>
+          {product.badge && (
+            <span className="absolute top-3 left-3 bg-blue-100 text-blue-800 px-2 py-1 text-xs rounded font-medium">
+              {product.badge}
+            </span>
+          )}
 
           <IconButton
             sx={{
-              position: "absolute", // important
-              top: 8, // spacing from top
-              right: 8, // spacing from right
+              position: "absolute",
+              top: 8,
+              right: 8,
               bgcolor: "white",
               color: "red",
               "&:hover": {
@@ -48,52 +59,70 @@ export default function ProductCard() {
               },
               boxShadow: 1,
             }}
+            onClick={() => onFavoriteToggle?.(product.id)}
+            aria-label={
+              isFavorite ? "Remove from favorites" : "Add to favorites"
+            }
           >
-            ❤️
+            {isFavorite ? <GrFavorite /> : <GrFavorite />}
           </IconButton>
         </div>
 
         <CardContent className="p-4">
+          {/* Rating */}
           <div className="flex items-center gap-1 text-yellow-500 text-sm mb-2">
-            ★★★★
-            <span className="text-xs text-gray-500 ml-1">(400)</span>
+            {"★".repeat(Math.floor(product.rating)) +
+              "☆".repeat(5 - Math.floor(product.rating))}
+            <span className="text-xs text-gray-500 ml-1">
+              ({product.reviews})
+            </span>
           </div>
+
+          {/* Name */}
           <Typography
             className="font-semibold text-lg mb-1 transition-colors"
             variant="h5"
             component="div"
           >
-            Atomic Habits
-          </Typography>
-          <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
-            <b>Author</b>: James Clear
+            {product.name}
           </Typography>
 
+          {/* Author */}
+          <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
+            <b>Author</b>: {product.author || "Unknown"}
+          </Typography>
+
+          {/* Price */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-xl font-bold text-grey-400">₹ 200</span>
-
-              <span className="text-sm text-gray-400 line-through">₹ 250</span>
+              <span className="text-xl font-bold text-gray-400">
+                ₹ {product.price}
+              </span>
+              <span className="text-sm text-gray-400 line-through">
+                ₹ {product.originalPrice}
+              </span>
             </div>
           </div>
         </CardContent>
       </CardActionArea>
+
+      {/* Actions */}
       <CardActions className="flex justify-around">
         <Button
           size="medium"
           variant="contained"
-          color="secondary"
           sx={{
-            flex: 1, // takes half the width
+            flex: 1,
             mr: 1,
-            bgcolor: "#1E40AF", // deep blue
+            bgcolor: "#1E40AF",
             color: "#fff",
             fontWeight: 600,
             textTransform: "none",
             "&:hover": {
-              bgcolor: "#1E3A8A", // slightly darker on hover
+              bgcolor: "#1E3A8A",
             },
           }}
+          onClick={() => onQuickAdd?.(product)}
         >
           Buy Now
         </Button>
@@ -108,10 +137,11 @@ export default function ProductCard() {
             fontWeight: 600,
             textTransform: "none",
             "&:hover": {
-              bgcolor: "#EFF6FF", // light blue background on hover
+              bgcolor: "#EFF6FF",
               borderColor: "#1E40AF",
             },
           }}
+          onClick={() => onViewDetails?.(product)}
         >
           Add to Cart
         </Button>
