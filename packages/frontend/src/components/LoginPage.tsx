@@ -91,10 +91,7 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <Button
-              type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700"
-            >
+            <Button type="submit" className="w-full hover:bg-gray-700">
               {isSignUp ? "Sign Up" : "Sign In"}
             </Button>
 
@@ -141,9 +138,9 @@ export default function LoginPage() {
       </div>
 
       {/* Right Side */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-amber-100 via-yellow-100 to-amber-200 flex-col items-center justify-center p-12">
+      <div className="hidden lg:flex lg:w-1/2 bg-linear-to-br from-amber-100 via-yellow-100 to-amber-200 flex-col items-center justify-center p-12">
         <div className="max-w-lg text-center space-y-8">
-          <h1 className="text-6xl font-extrabold text-gray-700 leading-tight">
+          <h1 className="text-6xl font-bold text-gray-700 leading-tight">
             Secure your Mental Health <br /> And be yourself <br /> With{" "}
             <span className="text-green-700">MindSpace</span>!
           </h1>
