@@ -9,6 +9,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage.jsx";
 import Layout from "./pages/Layout.jsx";
 import ProductCollection from "./pages/ProductCollection.jsx";
 import Notification from "./lib/Notification.jsx";
+import Journal from "./pages/Journal.jsx";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path="/home" element={<Layout />}>
         <Route index element={<LandingPage />} />
         <Route path="support" element={<SupportPage />} />
+        <Route path="community" element={<Journal />} />
         <Route path="seller" element={<SellerPage />} />
         <Route path="productdetails" element={<ProductDetailsPage />} />
         <Route path="collections" element={<ProductCollection />} />

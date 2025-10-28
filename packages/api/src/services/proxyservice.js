@@ -1,6 +1,6 @@
 import { createProxyMiddleware } from "http-proxy-middleware";
 
-// ? builder class for proxies
+// builder class for proxies
 export class ProxyService {
   constructor(route, target) {
     this.route = route;

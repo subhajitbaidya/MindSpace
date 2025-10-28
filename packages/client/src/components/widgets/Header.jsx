@@ -1,5 +1,5 @@
 import "./Header.css";
-import { ImBook } from "react-icons/im";
+import Logo from "../../Brand/Logo";
 import { LuSearch } from "react-icons/lu";
 import { Link, NavLink } from "react-router-dom";
 import { LuShoppingCart } from "react-icons/lu";
@@ -10,14 +10,7 @@ function Header() {
     <header className="header">
       <div className="header-container">
         <Link to="/home">
-          <div className="logo">
-            <div className="logo-bars">
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <ImBook style={{ fontSize: "20px" }} />
-            </div>
-            <span className="logo-text">MindMap</span>
-          </div>
+          <Logo />
         </Link>
 
         <nav className="nav">
@@ -25,7 +18,10 @@ function Header() {
             Collections
           </NavLink>
           <NavLink to="seller" className="nav-link">
-            Sell on Bookshelp
+            Become a Seller
+          </NavLink>
+          <NavLink to="community" className="nav-link">
+            MindSpace Community
           </NavLink>
           <NavLink to="support" className="nav-link">
             Support
