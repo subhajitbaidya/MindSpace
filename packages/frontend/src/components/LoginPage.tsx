@@ -1,50 +1,66 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Leaf, Lock, Mail } from "lucide-react";
-import { useNavigate } from "react-router";
 
-export function LoginPage() {
-  // const [username, setName] = useState("");
+export default function LoginPage() {
+  const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const navigate = useNavigate();
-  // const [isSignUp, setIsSignUp] = useState(false);
-  // const [showPassword, setShowPassword] = useState(false);
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Login attempt with:", { email, password });
-    // Add your login logic here
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) setIsAuthenticated(true);
+  }, []);
+
+  const handleSignup = async () => {
+    console.log("Signup clicked:", { username, email, password });
+    alert("Signup successful! (Placeholder)");
+    localStorage.setItem("token", "dummy_token");
   };
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     setIsAuthenticated(true);
-  //   }
-  // });
+  const handleLogin = async () => {
+    console.log("Login clicked:", { email, password });
+    alert("Login successful! (Placeholder)");
+    localStorage.setItem("token", "dummy_token");
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isSignUp) handleSignup();
+    else handleLogin();
+  };
 
   return (
     <div className="flex min-h-screen">
-      {/* Left Side - Login Form */}
+      {/* Left Side */}
       <div className="flex w-full lg:w-1/2 items-center justify-center p-8 bg-white">
         <div className="w-full max-w-md space-y-8">
-          {/* Logo */}
           <div className="flex items-center gap-2">
             <Leaf className="w-6 h-6 text-green-600" />
-            <span className="text-gray-900 text-bold">MindSpace</span>
+            <span className="text-2xl font-bold text-gray-900">MindSpace</span>
           </div>
 
-          {/* Login Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Email Field */}
+          <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
+            {isSignUp && (
+              <div className="space-y-2">
+                <Label htmlFor="username">Username</Label>
+                <Input
+                  id="username"
+                  type="text"
+                  placeholder="Enter your name"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </div>
+            )}
+
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-gray-900">
-                Email
-              </Label>
+              <Label htmlFor="email">Email</Label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <Input
@@ -59,11 +75,8 @@ export function LoginPage() {
               </div>
             </div>
 
-            {/* Password Field */}
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-gray-900">
-                Password
-              </Label>
+              <Label htmlFor="password">Password</Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <Input
@@ -78,12 +91,13 @@ export function LoginPage() {
               </div>
             </div>
 
-            {/* Sign In Button */}
-            <Button type="submit" className="w-full hover:bg-blue-700">
-              Sign In
+            <Button
+              type="submit"
+              className="w-full bg-blue-600 hover:bg-blue-700"
+            >
+              {isSignUp ? "Sign Up" : "Sign In"}
             </Button>
 
-            {/* Divider */}
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t border-gray-200" />
@@ -93,43 +107,54 @@ export function LoginPage() {
               </div>
             </div>
 
-            {/* Sign Up Link */}
             <div className="text-center text-gray-600">
-              Don't have an account?{" "}
-              <a href="#" className="text-blue-600 hover:underline">
-                Sign up
-              </a>
+              {isSignUp ? (
+                <>
+                  Already have an account?{" "}
+                  <button
+                    type="button"
+                    onClick={() => setIsSignUp(false)}
+                    className="text-blue-600 hover:underline"
+                  >
+                    Sign in
+                  </button>
+                </>
+              ) : (
+                <>
+                  Don’t have an account?{" "}
+                  <button
+                    type="button"
+                    onClick={() => setIsSignUp(true)}
+                    className="text-blue-600 hover:underline"
+                  >
+                    Sign up
+                  </button>
+                </>
+              )}
             </div>
 
-            {/* Copyright */}
-            <div className="text-center text-gray-400 pt-4">
-              Copyright 2025 MindSpace Inc
+            <div className="text-center text-gray-400 pt-4 text-sm">
+              © 2025 MindSpace Inc
             </div>
           </form>
         </div>
       </div>
 
-      {/* Right Side - Branding */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-amber-100 to-amber-200 items-center justify-center p-12">
+      {/* Right Side */}
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-amber-100 via-yellow-100 to-amber-200 flex-col items-center justify-center p-12">
         <div className="max-w-lg text-center space-y-8">
-          <h1 className="text-5xl font-extrabold text-gray-700 leading-tight">
-            Secure your Mental Health
-            <br />
-            And be yourself
-            <br />
-            With <span className="text-green-700">MindSpace</span>!
+          <h1 className="text-6xl font-extrabold text-gray-700 leading-tight">
+            Secure your Mental Health <br /> And be yourself <br /> With{" "}
+            <span className="text-green-700">MindSpace</span>!
           </h1>
 
-          {/* Simple illustration */}
           <div className="flex items-center justify-center gap-4">
-            <div className="w-16 h-1 bg-gray-600 rounded-full transform -rotate-12" />
+            <div className="w-16 h-1 bg-gray-600 rounded-full -rotate-12" />
             <div className="w-32 h-24 bg-green-200 rounded-full opacity-60" />
-            <div className="w-16 h-1 bg-gray-600 rounded-full transform rotate-12" />
+            <div className="w-16 h-1 bg-gray-600 rounded-full rotate-12" />
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-export default LoginPage;
