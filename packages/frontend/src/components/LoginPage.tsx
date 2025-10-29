@@ -140,7 +140,7 @@ export default function LoginPage() {
       {/* Right Side */}
       <div className="hidden lg:flex lg:w-1/2 bg-linear-to-br from-amber-100 via-yellow-100 to-amber-200 flex-col items-center justify-center p-12">
         <div className="max-w-lg text-center space-y-8">
-          <h1 className="text-6xl font-bold text-gray-700 leading-tight">
+          <h1 className="text-4xl font-bold text-gray-700 leading-tight">
             Secure your Mental Health <br /> And be yourself <br /> With{" "}
             <span className="text-green-700">MindSpace</span>!
           </h1>
