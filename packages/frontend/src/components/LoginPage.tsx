@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Leaf, Lock, Mail } from "lucide-react";
+import { useNavigate } from "react-router";
 
 export default function LoginPage() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -10,6 +11,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -18,14 +20,16 @@ export default function LoginPage() {
 
   const handleSignup = async () => {
     console.log("Signup clicked:", { username, email, password });
-    alert("Signup successful! (Placeholder)");
+    // alert("Signup successful! (Placeholder)");
     localStorage.setItem("token", "dummy_token");
+    navigate("/home");
   };
 
   const handleLogin = async () => {
     console.log("Login clicked:", { email, password });
-    alert("Login successful! (Placeholder)");
+    // alert("Login successful! (Placeholder)");
     localStorage.setItem("token", "dummy_token");
+    navigate("/home");
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

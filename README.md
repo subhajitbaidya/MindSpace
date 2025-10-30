@@ -81,16 +81,18 @@ run `npm run dev` in root directory.
 
 ## 🧪 Testing
 
-Run tests using your preferred testing framework (e.g., PyTest):
+Testing suite information coming soon
 
-```bash
-pytest
 ```
 
 ---
 
 ## 📬 Feedback
 
-Feel free to raise issues or suggest features via [GitHub Issues](https://github.com/subhajitbaidya/book-store/issues).
+Thank you for checking out my repository. You are more than welcome to contribute to my idea and support me.
+
+Here is how you can do that -
+- Raise issues or suggest features via [GitHub Issues](https://github.com/subhajitbaidya/MindSpace/issues).
 
 ---
+```
