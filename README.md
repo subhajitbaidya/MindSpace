@@ -26,33 +26,43 @@
 
 ## 💻 Feature Overview
 
-- Users
-  Tech: Express, Typescript, MySQL, REST API, Jsonwebtokens
-  Sub Features: Role based access of personal created resources like journals, purchased products, therapist conversations, liked community posts
-  Approach: We will authenticate users with JWT tokens
+**Users**
 
-  Future improvements: We will introduct seller features like dashboards to list their products
+- Tech: Express, Typescript, MySQL, REST API, Jsonwebtokens
+- Sub Features: Role based access of personal created resources like journals, purchased products, therapist conversations, liked community posts
+- Approach: We will authenticate users with JWT tokens
 
-- Products
-  Tech: Express, MongoDB, Redis, ElasticSearch, GraphQL
-  Sub Features - Add to cart, payments, favorites, search products
+Future improvements: We will introduct seller features like dashboards to list their products
 
-- Journal
-  Tech: Express, Typescript, MongoDB
-  Sub Features - Write Journal, Save journal, concent to share to community
+**Products**
 
-- Notifications -
-  Tech: PubSub system
-  Sub Features - Send one affirmation notification to users
+- Tech: Express, MongoDB, Redis, ElasticSearch, GraphQL
+- Sub Features - Add to cart, payments, favorites, search products
+- Approach - We will store products in MongoDB, search using elastic search, stored frequent API calls data in redis and do a cache hit cache miss for getting data, for payments we will use stripe or paypal API
+
+**Journal**
+
+- Tech: Express, Typescript, MongoDB, REST API
+- Sub Features - Write Journal, Save journal, concent to share to community
+- Approach - We will store user created journals in MongoDB, Vectorize data for LLMS and store in Chroma DB, Retrieve data using Rest API for community wall featured posts
+
+**Therapist**
+
+- Tech: Langchain, Langgraph, FastAPi, Websockets
+- Approach - We will make a therapist agent chatbot who will have user journals for getting context of a particular users and craft responses accordingly. It will also have access to tools and different corpus of mental health data to do it's job. We will set up a RAG and give access to different APIs as a part of tool calling if needed. The LLM will classify and select the node from langgraph functions to perform the task.
+
+**Notifications**
+Tech: PubSub system
+Sub Features - Send one affirmation notification to users on their email.
 
 ### 🔍 Architecture and Planning
 
 - **Modular Monorepo and SOA focused:** Scalable structure separating client and server apps.
-- **Development:** Uses modern frameworks like express for handling API calls and business logic, react for UI, python, Langchain, Langgraph and Fast API for the large language model capabilities.
+- **Development:** Uses modern frameworks like express for handling API calls and business logic, react for UI, typescript for typesafe code, python, Langchain, Langgraph and Fast API for the large language model capabilities.
   Planning to use best practices of development for better handling of performance.
 - **MERN Stack + Fast API + Langchain:** Services, Client, Database, Business logic and services in one place.
 - **API:** Inter-communication between services using REST APIs and GraphQL.
-- **Best Practices:** Readable code, docs, and extensibility in mind.
+- **Best Practices:** Readable code, using low level design concepts, documentation, and extensibility in mind.
 
 ---
 
@@ -106,6 +116,12 @@ Testing suite information coming soon
 
 ```
 
+## 🧪 Deployment
+
+Deployment information coming soon
+
+```
+
 ---
 
 ## 📬 Feedback
@@ -113,7 +129,11 @@ Testing suite information coming soon
 Thank you for checking out my repository. You are more than welcome to contribute to my idea and support me.
 
 Here is how you can do that -
+
 - Raise issues or suggest features via [GitHub Issues](https://github.com/subhajitbaidya/MindSpace/issues).
 
 ---
+
+```
+
 ```
