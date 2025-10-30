@@ -27,21 +27,23 @@
 ## 💻 Feature Overview
 
 - Users
-  Tech: Express, Typescript, MySQL
+  Tech: Express, Typescript, MySQL, REST API, Jsonwebtokens
   Sub Features: Role based access of personal created resources like journals, purchased products, therapist conversations, liked community posts
   Approach: We will authenticate users with JWT tokens
 
   Future improvements: We will introduct seller features like dashboards to list their products
 
 - Products
-  Tech: Express, MongoDB, Redis, ElasticSearch
+  Tech: Express, MongoDB, Redis, ElasticSearch, GraphQL
   Sub Features - Add to cart, payments, favorites, search products
 
 - Journal
   Tech: Express, Typescript, MongoDB
   Sub Features - Write Journal, Save journal, concent to share to community
 
--
+- Notifications -
+  Tech: PubSub system
+  Sub Features - Send one affirmation notification to users
 
 ### 🔍 Architecture and Planning
 
