@@ -22,7 +22,26 @@
 
 ## 📖 Overview
 
-**Mindmap** With an aim to help people with their mental well-being. Serves as a robust platform for buying, browsing, and managing different items starting from books to selling creative crafts, paintings, customized goodies with ease.It also features a journal section called diary and an AI powered Therapist Chatbot for customer queries and recommendations.
+**Mindmap** With an aim to help people with their mental well-being. Serves as a robust platform for buying, browsing, and managing different products, journaling and talking to AI powered therapist bot.
+
+## 💻 Feature Overview
+
+- Users
+  Tech: Express, Typescript, MySQL
+  Sub Features: Role based access of personal created resources like journals, purchased products, therapist conversations, liked community posts
+  Approach: We will authenticate users with JWT tokens
+
+  Future improvements: We will introduct seller features like dashboards to list their products
+
+- Products
+  Tech: Express, MongoDB, Redis, ElasticSearch
+  Sub Features - Add to cart, payments, favorites, search products
+
+- Journal
+  Tech: Express, Typescript, MongoDB
+  Sub Features - Write Journal, Save journal, concent to share to community
+
+-
 
 ### 🔍 Architecture and Planning
 
