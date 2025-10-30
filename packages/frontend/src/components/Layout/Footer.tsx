@@ -1,4 +1,4 @@
-import { Heart, Phone } from "lucide-react";
+import { Heart, Phone, Target } from "lucide-react";
 
 const Footer = () => {
   return (

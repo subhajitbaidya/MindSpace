@@ -96,7 +96,7 @@ const LandingPage = () => {
 
             <div className="relative">
               <div className="absolute inset-0 rounded-3xl blur-3xl opacity-20"></div>
-              <img src={Thumbnail} alt="Atomic" />;
+              <img src={Thumbnail} alt="Atomic" />
             </div>
           </div>
         </div>
