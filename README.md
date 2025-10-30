@@ -2,7 +2,7 @@
 
 # 🌿 MindSpace
 
-**Discover, Read, Journal, paint Connect—Build a community for spreading positive mindset**
+**Discover, Read, Journal, Connect—Build a community for spreading positive mindset**
 
 > A modern product e-commerce marketplace only focusing on mind ful products to promote mental well being.
 
@@ -22,15 +22,34 @@
 
 ## 📖 Overview
 
-**Mindmap** With an aim to help people with their mental well-being.Serves as a robust platform for buying, browsing, and managing different items starting from books to selling creative crafts, paintings, customized goodies with ease.It also features a journal section called diary and an AI powered Support Chatbot for customer queries and recommendations.
+**Mindmap** With an aim to help people with their mental well-being. Serves as a robust platform for buying, browsing, and managing different products, journaling and talking to AI powered therapist bot.
+
+## 💻 Feature Overview
+
+- Users
+  Tech: Express, Typescript, MySQL
+  Sub Features: Role based access of personal created resources like journals, purchased products, therapist conversations, liked community posts
+  Approach: We will authenticate users with JWT tokens
+
+  Future improvements: We will introduct seller features like dashboards to list their products
+
+- Products
+  Tech: Express, MongoDB, Redis, ElasticSearch
+  Sub Features - Add to cart, payments, favorites, search products
+
+- Journal
+  Tech: Express, Typescript, MongoDB
+  Sub Features - Write Journal, Save journal, concent to share to community
+
+-
 
 ### 🔍 Architecture and Planning
 
 - **Modular Monorepo and SOA focused:** Scalable structure separating client and server apps.
-- **Development:** Uses modern frameworks like express for handling API calls and business logic, react for UI, python and Fast API for the large language model capabilities.
+- **Development:** Uses modern frameworks like express for handling API calls and business logic, react for UI, python, Langchain, Langgraph and Fast API for the large language model capabilities.
   Planning to use best practices of development for better handling of performance.
 - **MERN Stack + Fast API + Langchain:** Services, Client, Database, Business logic and services in one place.
-- **API:** Inter-communication between services using REST APIs, GraphQL and gRPC.
+- **API:** Inter-communication between services using REST APIs and GraphQL.
 - **Best Practices:** Readable code, docs, and extensibility in mind.
 
 ---
@@ -41,9 +60,9 @@
 
 To set up the project:
 
-- **Programming Language:** Python, Javascript
-- **Frameworks:** React, Express, Fast API, Langchain
-- **Package Manager:** `pip`, `npm`
+- **Programming Language:** Python, Javascript, Typescript
+- **Frameworks:** React, Express, Fast API, Langchain, Langgraph
+- **Package Manager:** `pip`, `npm`, `uv`
 
 ---
 
@@ -52,11 +71,11 @@ To set up the project:
 Clone the repository and install dependencies.
 
 ```bash
-git clone https://github.com/subhajitbaidya/book-store.git
+git clone https://github.com/subhajitbaidya/MindSpace.git
 ```
 
 ```bash
-cd book-store
+cd Mindspace
 # Navigate to each directory and run commands accordingly.
 npm install
 pip install requirements.txt
@@ -71,6 +90,9 @@ Set environment variables or configure via `.env`.
 Run the project locally:
 
 ```
+In root directory it is configured with npm workspaces
+
+run `npm run dev` in root directory.
 
 ```
 
@@ -78,16 +100,18 @@ Run the project locally:
 
 ## 🧪 Testing
 
-Run tests using your preferred testing framework (e.g., PyTest):
+Testing suite information coming soon
 
-```bash
-pytest
 ```
 
 ---
 
 ## 📬 Feedback
 
-Feel free to raise issues or suggest features via [GitHub Issues](https://github.com/subhajitbaidya/book-store/issues).
+Thank you for checking out my repository. You are more than welcome to contribute to my idea and support me.
+
+Here is how you can do that -
+- Raise issues or suggest features via [GitHub Issues](https://github.com/subhajitbaidya/MindSpace/issues).
 
 ---
+```
