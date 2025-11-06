@@ -14,6 +14,7 @@ import { Card } from "./ui/card";
 import { Textarea } from "./ui/textarea";
 import CalendarWidget from "./widgets/CalenderWidget";
 import { Checkbox } from "./ui/checkbox";
+import { Upload } from "lucide-react";
 
 type Mood = "great" | "okay" | "struggling";
 
@@ -235,7 +236,7 @@ export function JournalPage() {
                   className="border-purple-300 text-purple-700 hover:bg-purple-100"
                 >
                   <Sparkles className="h-4 w-4 mr-1" />
-                  New
+                  upload image
                 </Button>
               </div>
             </div>
@@ -251,7 +252,13 @@ export function JournalPage() {
             </div>
 
             {/* Save Button */}
-            <div className="flex justify-end">
+            <div className="flex justify-end items-center gap-6">
+              <input type="file" className="hidden" />
+              <div className="flex items-center gap-2">
+                <Checkbox className="border-black" />
+                <p className="text-sm">share your article with the community</p>
+              </div>
+
               <Button
                 onClick={saveEntry}
                 disabled={!currentEntry.trim()}
