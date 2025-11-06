@@ -12,7 +12,8 @@ import {
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Textarea } from "./ui/textarea";
-import { Badge } from "./ui/badge";
+import CalendarWidget from "./widgets/CalenderWidget";
+import { Checkbox } from "./ui/checkbox";
 
 type Mood = "great" | "okay" | "struggling";
 
@@ -58,6 +59,8 @@ export function JournalPage() {
   const [currentEntry, setCurrentEntry] = useState("");
   const [currentMood, setCurrentMood] = useState<Mood>("okay");
   const [currentPrompt, setCurrentPrompt] = useState(journalPrompts[0]);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
   const getRandomPrompt = () => {
     const randomPrompt =
@@ -125,17 +128,35 @@ export function JournalPage() {
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl text-gray-900">New Entry</h2>
-              <div className="flex items-center gap-2 text-gray-600">
+              <Button
+                variant="outline"
+                onClick={() => setShowCalendar((prev) => !prev)}
+                className="flex items-center gap-2 text-gray-600"
+              >
                 <Calendar className="h-5 w-5" />
                 <span>
-                  {new Date().toLocaleDateString("en-US", {
+                  {selectedDate.toLocaleDateString("en-US", {
                     weekday: "long",
                     year: "numeric",
                     month: "long",
                     day: "numeric",
                   })}
                 </span>
-              </div>
+              </Button>
+
+              {showCalendar && (
+                <div className="absolute right-0 mt-30 z-50 bg-white rounded-lg shadow-lg">
+                  <CalendarWidget
+                    selectedDate={selectedDate}
+                    onDateChange={(date) => {
+                      if (date) {
+                        setSelectedDate(date);
+                        setShowCalendar(false); // hide calendar on select
+                      }
+                    }}
+                  />
+                </div>
+              )}
             </div>
 
             {/* Mood Selector */}
@@ -304,7 +325,7 @@ export function JournalPage() {
         </div>
 
         {/* Support Message */}
-        <Card className="mt-12 p-6 bg-gradient-to-r from-purple-50 to-teal-50 border-purple-200">
+        <Card className="mt-12 p-6 bg-linear-to-r from-purple-50 to-teal-50 border-purple-200">
           <div className="flex items-start gap-4">
             <div className="bg-purple-100 p-3 rounded-full">
               <Sparkles className="h-6 w-6 text-purple-600" />
