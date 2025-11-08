@@ -4,6 +4,8 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Leaf, Lock, Mail } from "lucide-react";
 import { useNavigate } from "react-router";
+import Notification from "@/lib/Notification";
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -30,7 +32,7 @@ export default function LoginPage() {
     if (response.ok) {
       navigate("/home");
     } else {
-      alert("User exists, please login!");
+      toast("User exists, please login!");
     }
   };
 
@@ -47,7 +49,7 @@ export default function LoginPage() {
 
       navigate("home");
     } else {
-      alert("Invalid credentials");
+      toast("Invalid credentials");
     }
   };
 
@@ -175,6 +177,7 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
+      <Notification />
     </div>
   );
 }
