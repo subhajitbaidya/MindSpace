@@ -15,21 +15,40 @@ export default function LoginPage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) setIsAuthenticated(true);
+    if (token) {
+      setIsAuthenticated(true);
+    }
   }, []);
 
   const handleSignup = async () => {
-    console.log("Signup clicked:", { username, email, password });
-    // alert("Signup successful! (Placeholder)");
-    localStorage.setItem("token", "dummy_token");
-    navigate("/home");
+    const response = await fetch("/api/v0/auth/user/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, email, password }),
+    });
+
+    if (response.ok) {
+      navigate("/home");
+    } else {
+      alert("User exists, please login!");
+    }
   };
 
   const handleLogin = async () => {
-    console.log("Login clicked:", { email, password });
-    // alert("Login successful! (Placeholder)");
-    localStorage.setItem("token", "dummy_token");
-    navigate("/home");
+    const response = await fetch("/api/v0/auth/user/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+
+      navigate("home");
+    } else {
+      alert("Invalid credentials");
+    }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
