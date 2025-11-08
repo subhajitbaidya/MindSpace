@@ -52,8 +52,12 @@ Future improvements: We will introduct seller features like dashboards to list t
 - Approach - We will make a therapist agent chatbot who will have user journals for getting context of a particular users and craft responses accordingly. It will also have access to tools and different corpus of mental health data to do it's job. We will set up a RAG and give access to different APIs as a part of tool calling if needed. The LLM will classify and select the node from langgraph functions to perform the task.
 
 **Notifications**
-Tech: PubSub system
-Sub Features - Send one affirmation notification to users on their email.
+
+- Tech: PubSub/Queue system(Yet to work and decide)
+- Sub Features - Payment done or not, one daily notification
+- Approach - We will do a publish subscribe event for this to send a notification a day to users for positivity
+
+Note: Any future ideas and improvements will be listed here. As of now this is the overall project to be completed.
 
 ### 🔍 Architecture and Planning
 

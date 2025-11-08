@@ -2,34 +2,56 @@ import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { Leaf, Lock, Mail } from "lucide-react";
+import { Leaf, Lock, Mail, Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router";
+import Notification from "@/lib/Notification";
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) setIsAuthenticated(true);
+    if (token) {
+      setIsAuthenticated(true);
+    }
   }, []);
 
   const handleSignup = async () => {
-    console.log("Signup clicked:", { username, email, password });
-    // alert("Signup successful! (Placeholder)");
-    localStorage.setItem("token", "dummy_token");
-    navigate("/home");
+    const response = await fetch("/api/v0/auth/user/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, email, password }),
+    });
+
+    if (response.ok) {
+      navigate("/home");
+    } else {
+      toast("User exists, please login!");
+    }
   };
 
   const handleLogin = async () => {
-    console.log("Login clicked:", { email, password });
-    // alert("Login successful! (Placeholder)");
-    localStorage.setItem("token", "dummy_token");
-    navigate("/home");
+    const response = await fetch("/api/v0/auth/user/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+
+      navigate("home");
+    } else {
+      toast("Invalid credentials");
+    }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -81,17 +103,24 @@ export default function LoginPage() {
 
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <div className="relative flex items-center">
+                <Lock className="absolute h-4 w-4 left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                 <Input
                   id="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 pr-10"
                   required
                 />
+                <button
+                  type="button"
+                  className="absolute pt-2 pb-2 right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <Eye /> : <EyeOff />}
+                </button>
               </div>
             </div>
 
@@ -156,6 +185,7 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
+      <Notification />
     </div>
   );
 }

@@ -13,6 +13,7 @@ import ProductsPage from "./components/ProductsPage";
 import Layout from "./components/Layout";
 import TherapistPage from "./components/TherapistPage";
 import CommunityPage from "./components/CommunityPage";
+import JournalPage from "./components/JournalPage";
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -21,7 +22,7 @@ const routes = createBrowserRouter(
       <Route path="/home" element={<Layout />}>
         <Route index element={<LandingPage />} />
         <Route path="products" element={<ProductsPage />} />
-        <Route path="journal" element={<ProductsPage />} />
+        <Route path="journal" element={<JournalPage />} />
         <Route path="community" element={<CommunityPage />} />
         <Route path="therapistagent" element={<TherapistPage />} />
       </Route>
