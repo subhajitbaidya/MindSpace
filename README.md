@@ -4,7 +4,7 @@
 
 **Discover, Purchase, Journal, Meditate, Connect—Build a community for spreading positive mindset**
 
-> A modern product e-commerce marketplace only focusing on mind ful products to promote mental well being.
+> A modern application designed to support individuals dealing with mental health challenges, helping them cope, heal, and improve their well-being over time. It offers a safe space for reflection, community support, marketplace and healthy distractions that encourage a better, more balanced life.
 
 <!-- Big / "for-the-badge" style -->
 
