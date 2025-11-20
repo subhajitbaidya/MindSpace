@@ -13,8 +13,8 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <NavLink to="/home" className="flex items-center gap-2 no-underline">
-            <LibraryBig className="h-8 w-8 text-purple-600" />
-            <span className="text-2xl text-purple-900 font-semibold">
+            <LibraryBig className="h-8 w-8 text-black-600" />
+            <span className="text-2xl text-black-900 font-semibold">
               MindSpace
             </span>
           </NavLink>

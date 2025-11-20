@@ -14,7 +14,6 @@ import { Card } from "./ui/card";
 import { Textarea } from "./ui/textarea";
 import CalendarWidget from "./widgets/CalenderWidget";
 import { Checkbox } from "./ui/checkbox";
-import { Upload } from "lucide-react";
 
 type Mood = "great" | "okay" | "struggling";
 
@@ -114,7 +113,7 @@ export function JournalPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-linear-to-r from-purple-600 to-teal-600 py-16">
+      <div className="bg-[linear-gradient(90deg,rgba(46,139,87,1)_0%,rgba(255,192,203,1)_0%,rgba(235,162,191,1)_0%,rgba(128,0,128,1)_100%)] py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl text-white mb-4">Your Personal Journal</h1>
           <p className="text-xl text-white/90">

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { ChatHeader } from "./widgets/ChatHeader";
 import { ChatMessages } from "./widgets/ChatMessages";
-import { ChatInput } from "./widgets/ChatInput";
+import { ChatHeader } from "./widgets/ChatHeader";
+import { AIInput } from "./ui/ai-input";
+import { useEffect, useRef } from "react";
 
 export interface Message {
   id: string;
@@ -11,6 +12,8 @@ export interface Message {
 }
 
 export default function TherapistPage() {
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -18,28 +21,15 @@ export default function TherapistPage() {
       sender: "agent",
       timestamp: new Date(Date.now() - 1000 * 60 * 5),
     },
-    {
-      id: "2",
-      text: "Hi! I have a question about my recent order.",
-      sender: "user",
-      timestamp: new Date(Date.now() - 1000 * 60 * 4),
-    },
-    {
-      id: "3",
-      text: "Of course! I'd be happy to help you with that. Could you please provide me with your order number?",
-      sender: "agent",
-      timestamp: new Date(Date.now() - 1000 * 60 * 3),
-    },
-    {
-      id: "4",
-      text: "Sure, it's #ORD-12345",
-      sender: "user",
-      timestamp: new Date(Date.now() - 1000 * 60 * 2),
-    },
   ]);
 
-  const [isTyping, setIsTyping] = useState(false);
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+    }
+  }, [messages]);
 
+  const [isTyping, setIsTyping] = useState(false);
   const handleSendMessage = (text: string) => {
     const newMessage: Message = {
       id: Date.now().toString(),
@@ -48,9 +38,9 @@ export default function TherapistPage() {
       timestamp: new Date(),
     };
 
-    setMessages([...messages, newMessage]);
+    // Use functional update here
+    setMessages((prev) => [...prev, newMessage]);
 
-    // Simulate agent typing and response
     setIsTyping(true);
     setTimeout(() => {
       setIsTyping(false);
@@ -65,11 +55,19 @@ export default function TherapistPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50 p-4">
-      <div className="w-full max-w-4xl h-[700px] bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
-        <ChatHeader />
+    <div className="flex max-w-full rounded-lg shadow-lg h-[700px] flex-col overflow-hidden max-h-screen bg-gray-50 p-4">
+      {/* Scrollable messages container */}
+      <div ref={messagesEndRef} className="grow overflow-y-auto px-4">
+        <div className="flex-none sticky top-0 bg-gray-50 z-10">
+          <ChatHeader />
+        </div>
+
         <ChatMessages messages={messages} isTyping={isTyping} />
-        <ChatInput onSendMessage={handleSendMessage} />
+      </div>
+
+      {/* Fixed input container outside scrollable area */}
+      <div className="p-4">
+        <AIInput onSubmit={handleSendMessage} />
       </div>
     </div>
   );

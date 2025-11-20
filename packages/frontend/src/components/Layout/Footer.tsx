@@ -1,94 +1,21 @@
-import { Heart, Phone, Target } from "lucide-react";
+import { Heart, LibraryBig } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Heart className="h-6 w-6 text-purple-400" />
-              <span className="text-xl">MindSpace</span>
-            </div>
-            <p className="text-gray-400">
-              Supporting your mental health journey, one book at a time.
-            </p>
+        <div className="grid md:grid-cols-4 gap-8 mb-8 items-center">
+          <div className="col-span-1 flex items-center gap-2">
+            <LibraryBig className="h-6 w-6 text-purple-400" />
+            <span className="text-xl">MindSpace.Inc</span>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-gray-400">
-              <li>
-                <a href="#" className="hover:text-purple-400 transition-colors">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-purple-400 transition-colors">
-                  Our Mission
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-purple-400 transition-colors">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-purple-400 transition-colors">
-                  FAQ
-                </a>
-              </li>
-            </ul>
-          </div>
+          <div className="col-span-2 text-gray-400"></div>
 
-          {/* Support */}
-          <div>
-            <h3 className="mb-4">Support</h3>
-            <ul className="space-y-2 text-gray-400">
-              <li>
-                <a href="#" className="hover:text-purple-400 transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-purple-400 transition-colors">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-purple-400 transition-colors">
-                  Shipping Info
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-purple-400 transition-colors">
-                  Returns
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Crisis Resources */}
-          <div>
-            <h3 className="mb-4">Crisis Resources</h3>
-            <div className="space-y-3 text-gray-400">
-              <div className="flex items-start gap-2">
-                <Phone className="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-red-400">988 Suicide & Crisis Lifeline</p>
-                  <p className="text-sm">Call or text 988</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <Phone className="h-5 w-5 text-purple-400 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-purple-400">Crisis Text Line</p>
-                  <p className="text-sm">Text HOME to 741741</p>
-                </div>
-              </div>
-            </div>
+          <div className="col-span-1 flex justify-end">
+            <button className="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-white text-sm transition">
+              Donate
+            </button>
           </div>
         </div>
 

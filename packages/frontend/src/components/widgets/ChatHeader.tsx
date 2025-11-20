@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { BotIcon } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { MoreVertical } from "lucide-react";
 import { Button } from "../ui/button";
@@ -7,21 +7,13 @@ export function ChatHeader() {
   return (
     <div className="flex items-center justify-between p-4 border-b bg-white">
       <div className="flex items-center gap-3">
-        <Avatar>
-          <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" />
-          <AvatarFallback>SA</AvatarFallback>
-        </Avatar>
+        <BotIcon />
         <div>
-          <h2 className="font-semibold">Sarah Anderson</h2>
+          <h2 className="font-semibold">Therapist AI</h2>
           <div className="flex items-center gap-2">
-            <Badge
-              variant="secondary"
-              className="bg-green-100 text-green-700 hover:bg-green-100"
-            >
-              <span className="w-2 h-2 bg-green-500 rounded-full mr-1.5"></span>
-              Online
+            <Badge variant="secondary" className="bg-white-100 text-green-700">
+              Free tier
             </Badge>
-            <span className="text-gray-500 text-sm">Support Agent</span>
           </div>
         </div>
       </div>

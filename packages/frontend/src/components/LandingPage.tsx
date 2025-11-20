@@ -8,13 +8,25 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
-import Thumbnail from "./../assets/images/thumbnail.png";
+import { Hero } from "@/components/ui/animated-hero";
+import Atomic from "./../assets/images/atomic.png";
+import Dad from "./../assets/images/dad.png";
+import Notgiving from "./../assets/images/notgiving.png";
+import Ikigai from "./../assets/images/ikigai.png";
+import { Carousel } from "./ui/carousel";
 
 const LandingPage = () => {
   const quotes = [
     "Your mental health is a priority, not an afterthought.",
     "Healing is not linear, and that's okay.",
     "You are worthy of peace and happiness.",
+  ];
+
+  const Images = [
+    { src: Notgiving, alt: "Atomic", category: "Mindfulness" },
+    { src: Atomic, alt: "Atomic", category: "Productivity" },
+    { src: Dad, alt: "Atomic", category: "Anxiety" },
+    { src: Ikigai, alt: "Atomic", category: "Self-Love" },
   ];
 
   const features = [
@@ -59,51 +71,10 @@ const LandingPage = () => {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full">
-                Your Journey to Wellness Starts Here
-              </div>
-
-              <h1 className="text-5xl text-gray-900">
-                Find Peace Through
-                <span className="block text-purple-600 mt-2">
-                  Reading & Reflection
-                </span>
-              </h1>
-
-              <p className="text-xl text-gray-600">
-                Discover carefully curated books and tools to support your
-                mental health journey. You're not alone, and healing is
-                possible.
-              </p>
-
-              <div className="flex gap-4">
-                <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 rounded-lg">
-                  Explore Books
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-purple-300 text-purple-700 hover:bg-purple-50 px-8 py-6 rounded-lg"
-                >
-                  Start Journaling
-                </Button>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="absolute inset-0 rounded-3xl blur-3xl opacity-20"></div>
-              <img src={Thumbnail} alt="Atomic" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Daily Affirmation */}
-      <section className="bg-linear-to-r from-purple-600 to-teal-600 py-12">
+      <section className="bg-[linear-gradient(90deg,rgba(46,139,87,1)_0%,rgba(255,192,203,1)_0%,rgba(235,162,191,1)_0%,rgba(128,0,128,1)_100%)] py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Quote className="h-12 w-12 text-white/60 mx-auto mb-4" />
           <p className="text-2xl text-white">{quotes[0]}</p>
@@ -128,7 +99,7 @@ const LandingPage = () => {
                 className="p-8 hover:shadow-lg transition-shadow border-purple-100"
               >
                 <div className="bg-purple-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                  <Icon className="h-8 w-8 text-purple-600" />
+                  <Icon className="h-8 w-8 text-black-600" />
                 </div>
                 <h3 className="text-xl text-gray-900 mb-3">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
@@ -151,22 +122,18 @@ const LandingPage = () => {
           </div>
 
           <div className="grid md:grid-cols-4 gap-6">
-            {[
-              "Anxiety Relief",
-              "Mindfulness",
-              "Depression Support",
-              "Self-Love",
-            ].map((category, index) => (
-              <button
+            {Images.map((image, index) => (
+              <Carousel
                 key={index}
                 className="group relative overflow-hidden rounded-2xl h-64 bg-linear-to-br from-purple-100 to-teal-100 hover:shadow-xl transition-all"
               >
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="text-xl text-white mb-2">{category}</h3>
-                  <p className="text-white/80 text-sm">Explore collection</p>
+                <div className="absolute inset-0 bg-white/30"></div>
+                <div className="absolute flex items-center flex-col bottom-6 left-6 right-6">
+                  <img src={image.src} alt="Atomic" />
+                  <h3 className="text-xl text-black mb-2">{image.category}</h3>
+                  <p className="text-black/80 text-sm">Explore collection</p>
                 </div>
-              </button>
+              </Carousel>
             ))}
           </div>
         </div>
@@ -200,7 +167,7 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-linear-to-r from-purple-600 to-teal-600 py-20">
+      <section className="bg-[linear-gradient(90deg,rgba(46,139,87,1)_0%,rgba(255,192,203,1)_0%,rgba(235,162,191,1)_0%,rgba(128,0,128,1)_100%)] py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl text-white mb-6">
             Begin Your Healing Journey Today
@@ -209,7 +176,7 @@ const LandingPage = () => {
             Take the first step towards better mental health with resources that
             understand you.
           </p>
-          <Button className="bg-white text-purple-700 hover:bg-gray-100 px-8 py-6 rounded-lg">
+          <Button className="bg-white text-black-700 hover:bg-gray-100 px-8 py-6 rounded-lg">
             Get Started Now
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

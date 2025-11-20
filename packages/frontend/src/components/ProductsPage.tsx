@@ -11,18 +11,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import Atomic from "./../assets/images/atomic.png";
+import Dad from "./../assets/images/dad.png";
+import Notgiving from "./../assets/images/notgiving.png";
+import Ikigai from "./../assets/images/ikigai.png";
 
 const books = [
   {
     id: 1,
-    title: "The Anxiety Toolkit",
-    author: "Alice Boyes, PhD",
+    title: "Atomic Habits",
+    author: "James Clear",
     price: 16.99,
     category: "Anxiety",
     rating: 4.8,
     reviews: 342,
-    image:
-      "https://images.unsplash.com/photo-1718975592728-7b594fb035b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZW50YWwlMjBoZWFsdGglMjBib29rc3xlbnwxfHx8fDE3NjAyNzE0MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: Atomic,
     description: "Practical strategies to overcome anxiety and worry",
   },
   {
@@ -33,8 +36,7 @@ const books = [
     category: "Mindfulness",
     rating: 4.9,
     reviews: 521,
-    image:
-      "https://images.unsplash.com/photo-1634746144619-338921b4d612?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5kZnVsbmVzcyUyMGpvdXJuYWx8ZW58MXx8fHwxNzYwMjAzNTA2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: Dad,
     description: "A comprehensive guide to meditation and mindfulness",
   },
   {
@@ -45,8 +47,7 @@ const books = [
     category: "Depression",
     rating: 4.7,
     reviews: 892,
-    image:
-      "https://images.unsplash.com/photo-1748775444726-d5156bf58db9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWxtJTIwcmVhZGluZyUyMHNwYWNlfGVufDF8fHx8MTc2MDI3MTQwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: Notgiving,
     description: "The clinically proven drug-free treatment for depression",
   },
   {
@@ -57,57 +58,8 @@ const books = [
     category: "Self-Love",
     rating: 4.6,
     reviews: 267,
-    image:
-      "https://images.unsplash.com/photo-1759754154962-f56bc4965843?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZWFjZWZ1bCUyMG1lZGl0YXRpb24lMjBuYXR1cmV8ZW58MXx8fHwxNzYwMjU4NzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: Ikigai,
     description: "A life-changing guide to boost self-esteem and acceptance",
-  },
-  {
-    id: 5,
-    title: "The Body Keeps the Score",
-    author: "Bessel van der Kolk, MD",
-    price: 21.99,
-    category: "Trauma",
-    rating: 4.9,
-    reviews: 1203,
-    image:
-      "https://images.unsplash.com/photo-1718975592728-7b594fb035b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZW50YWwlMjBoZWFsdGglMjBib29rc3xlbnwxfHx8fDE3NjAyNzE0MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    description: "Brain, mind, and body in the healing of trauma",
-  },
-  {
-    id: 6,
-    title: "Atomic Habits",
-    author: "James Clear",
-    price: 17.99,
-    category: "Self-Improvement",
-    rating: 4.8,
-    reviews: 1567,
-    image:
-      "https://images.unsplash.com/photo-1634746144619-338921b4d612?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5kZnVsbmVzcyUyMGpvdXJuYWx8ZW58MXx8fHwxNzYwMjAzNTA2fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    description: "Build good habits and break bad ones",
-  },
-  {
-    id: 7,
-    title: "Daring Greatly",
-    author: "Brené Brown, PhD",
-    price: 16.5,
-    category: "Vulnerability",
-    rating: 4.7,
-    reviews: 734,
-    image:
-      "https://images.unsplash.com/photo-1748775444726-d5156bf58db9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWxtJTIwcmVhZGluZyUyMHNwYWNlfGVufDF8fHx8MTc2MDI3MTQwMHww&ixlib=rb-4.1.0&q=80&w=1080",
-    description: "How the courage to be vulnerable transforms our lives",
-  },
-  {
-    id: 8,
-    title: "The Gifts of Imperfection",
-    author: "Brené Brown, PhD",
-    price: 15.99,
-    category: "Self-Love",
-    rating: 4.8,
-    reviews: 456,
-    image:
-      "https://images.unsplash.com/photo-1759754154962-f56bc4965843?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZWFjZWZ1bCUyMG1lZGl0YXRpb24lMjBuYXR1cmV8ZW58MXx8fHwxNzYwMjU4NzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    description: "Let go of who you think you're supposed to be",
   },
 ];
 
@@ -153,7 +105,7 @@ export function ProductsPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-linear-to-r from-purple-600 to-teal-600 py-16">
+      <div className="bg-[linear-gradient(90deg,rgba(46,139,87,1)_0%,rgba(255,192,203,1)_0%,rgba(235,162,191,1)_0%,rgba(128,0,128,1)_100%)] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl text-white mb-4">Our Collections</h1>
           <p className="text-xl text-white/90">
@@ -225,7 +177,7 @@ export function ProductsPage() {
               className="group overflow-hidden border-purple-100 hover:shadow-xl transition-all"
             >
               <div className="relative">
-                <div className="aspect-[3/4] bg-gradient-to-br from-purple-100 to-teal-100 overflow-hidden">
+                <div className="aspect-4/4 bg-linear-to-br from-purple-100 to-teal-100 overflow-hidden">
                   <img
                     src={book.image}
                     alt={book.title}
@@ -244,9 +196,6 @@ export function ProductsPage() {
                     }`}
                   />
                 </button>
-                <Badge className="absolute top-3 left-3 bg-purple-600">
-                  {book.category}
-                </Badge>
               </div>
 
               <div className="p-4 space-y-3">

@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import { ScrollArea } from "../ui/scroll-area";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar } from "../ui/avatar";
 import type { Message } from "../TherapistPage";
+import { Bot } from "lucide-react";
 
 interface ChatMessagesProps {
   messages: Message[];
@@ -37,8 +38,7 @@ export function ChatMessages({ messages, isTyping }: ChatMessagesProps) {
           >
             {message.sender === "agent" && (
               <Avatar className="w-8 h-8">
-                <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" />
-                <AvatarFallback>SA</AvatarFallback>
+                <Bot />
               </Avatar>
             )}
             <div
@@ -49,7 +49,7 @@ export function ChatMessages({ messages, isTyping }: ChatMessagesProps) {
               <div
                 className={`rounded-2xl px-4 py-2.5 ${
                   message.sender === "user"
-                    ? "bg-blue-600 text-white"
+                    ? "bg-[#EBA2BF] text-gray-900"
                     : "bg-gray-100 text-gray-900"
                 }`}
               >
@@ -65,8 +65,7 @@ export function ChatMessages({ messages, isTyping }: ChatMessagesProps) {
         {isTyping && (
           <div className="flex gap-3">
             <Avatar className="w-8 h-8">
-              <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" />
-              <AvatarFallback>SA</AvatarFallback>
+              <Bot />
             </Avatar>
             <div className="bg-gray-100 rounded-2xl px-4 py-3">
               <div className="flex gap-1">
