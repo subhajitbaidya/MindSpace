@@ -1,7 +1,3 @@
-"use client";
-
-import * as React from "react";
-
 import { Calendar } from "@/components/ui/calendar";
 
 interface CalendarWidgetProps {

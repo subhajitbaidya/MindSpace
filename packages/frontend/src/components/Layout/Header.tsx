@@ -5,8 +5,10 @@ import {
   LibraryBig,
   Brain,
   BotIcon,
+  MenuIcon,
 } from "lucide-react";
 import { NavLink } from "react-router";
+import { Button } from "../ui/button";
 
 const Header = () => {
   return (
@@ -60,6 +62,14 @@ const Header = () => {
               <BotIcon className="h-5 w-5" />
               <span>Therapist</span>
             </NavLink>
+
+            <Button
+              // onClick={toggleSidebar}
+              variant="ghost"
+              className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary"
+            >
+              <MenuIcon className="h-5 w-5" />
+            </Button>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PageHeader } from "./widgets/PageHeader";
 import {
   Calendar,
   Save,
@@ -113,14 +114,10 @@ export function JournalPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-[linear-gradient(90deg,rgba(46,139,87,1)_0%,rgba(255,192,203,1)_0%,rgba(235,162,191,1)_0%,rgba(128,0,128,1)_100%)] py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl text-white mb-4">Your Personal Journal</h1>
-          <p className="text-xl text-white/90">
-            A safe space to process your thoughts and feelings
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        text="Your Personal Journal"
+        description=" A safe space to process your thoughts and feelings"
+      />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* New Entry Card */}

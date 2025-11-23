@@ -3,6 +3,8 @@ import { VideoCard } from "./widgets/VideoCard";
 import { Filter, Search } from "lucide-react";
 import { Input } from "./ui/input";
 import { Badge } from "./ui/badge";
+import { PageHeader } from "./widgets/PageHeader";
+import Searchbar from "./widgets/Searchbar";
 
 export interface MeditationVideo {
   id: string;
@@ -131,9 +133,14 @@ export default function MeditatePage() {
 
   return (
     <div className="min-h-screen">
+      <PageHeader
+        text="Mindfullness"
+        description="Meditate daily from our curated collections, track your progress"
+      />
       <div className="max-w-7xl mx-auto px-4 py-8">
+        <Searchbar />
         {/* Search Bar */}
-        <div className="mb-6 relative">
+        {/* <div className="mb-6 relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 size-5" />
           <Input
             type="text"
@@ -142,10 +149,10 @@ export default function MeditatePage() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10 bg-white/80 backdrop-blur border-indigo-200 focus:border-indigo-400"
           />
-        </div>
+        </div> */}
 
         {/* Category Filters */}
-        <div className="mb-8 flex items-center gap-3 flex-wrap">
+        {/* <div className="mb-8 flex items-center gap-3 flex-wrap">
           <Filter className="size-5 text-slate-600" />
           {categories.map((category) => (
             <Badge
@@ -161,7 +168,7 @@ export default function MeditatePage() {
               {category}
             </Badge>
           ))}
-        </div>
+        </div> */}
 
         {/* Video Grid */}
         {filteredVideos.length > 0 ? (
