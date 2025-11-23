@@ -13,7 +13,7 @@ export interface Message {
 
 export default function TherapistPage() {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
-
+  const socketRef = useRef<WebSocket | null>(null);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -22,6 +22,34 @@ export default function TherapistPage() {
       timestamp: new Date(Date.now() - 1000 * 60 * 5),
     },
   ]);
+
+  // Websocket connection
+  useEffect(() => {
+    const newSocket = new WebSocket("ws://localhost:8000/agent");
+    socketRef.current = newSocket;
+
+    newSocket.onopen = () => {
+      console.log("Connected");
+    };
+
+    newSocket.onmessage = (event) => {
+      setIsTyping(false);
+      const agentResponse: Message = {
+        id: Date.now().toString(),
+        text: event.data,
+        sender: "agent",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, agentResponse]);
+    };
+
+    newSocket.onerror = (err) => {
+      console.error(err);
+      setIsTyping(false);
+    };
+
+    return () => newSocket.close();
+  }, []);
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -40,23 +68,18 @@ export default function TherapistPage() {
 
     // Use functional update here
     setMessages((prev) => [...prev, newMessage]);
-
     setIsTyping(true);
-    setTimeout(() => {
+
+    if (socketRef.current?.readyState === WebSocket.OPEN) {
+      socketRef.current.send(text);
+    } else {
+      console.error("WebSocket not connected");
       setIsTyping(false);
-      const agentResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        text: "Thank you! Let me look that up for you.",
-        sender: "agent",
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, agentResponse]);
-    }, 2000);
+    }
   };
 
   return (
     <div className="flex max-w-full rounded-lg shadow-lg h-[700px] flex-col overflow-hidden max-h-screen bg-gray-50 p-4">
-      {/* Scrollable messages container */}
       <div ref={messagesEndRef} className="grow overflow-y-auto px-4">
         <div className="flex-none sticky top-0 bg-gray-50 z-10">
           <ChatHeader />
@@ -64,8 +87,6 @@ export default function TherapistPage() {
 
         <ChatMessages messages={messages} isTyping={isTyping} />
       </div>
-
-      {/* Fixed input container outside scrollable area */}
       <div className="p-4">
         <AIInput onSubmit={handleSendMessage} />
       </div>

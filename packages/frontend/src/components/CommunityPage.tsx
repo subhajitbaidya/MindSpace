@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { JournalCard } from "./widgets/JournalWidget";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
-import { Search, TrendingUp } from "lucide-react";
+import { PageHeader } from "./widgets/PageHeader";
+import Searchbar from "./widgets/Searchbar";
 
 interface Journal {
   id: string;
@@ -191,10 +189,15 @@ export default function CommunityPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
+      <PageHeader
+        text="Community"
+        description="Find people and their stories, you are not alone"
+      />
       <header className="sticky top-0 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 z-10">
         <div className="container max-w-7xl mx-auto px-4 py-6">
+          <Searchbar />
           {/* Search */}
-          <div className="relative">
+          {/* <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
             <Input
               type="text"
@@ -203,13 +206,13 @@ export default function CommunityPage() {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10"
             />
-          </div>
+          </div> */}
         </div>
       </header>
 
       <main className="container max-w-7xl mx-auto px-4 py-8">
         {/* Category Filters */}
-        <div className="flex gap-2 overflow-x-auto pb-4 mb-8 scrollbar-hide">
+        {/* <div className="flex gap-2 overflow-x-auto pb-4 mb-8 scrollbar-hide">
           {categories.map((category) => (
             <Badge
               key={category}
@@ -220,7 +223,7 @@ export default function CommunityPage() {
               {category}
             </Badge>
           ))}
-        </div>
+        </div> */}
 
         {/* Journal Grid */}
         {filteredJournals.length > 0 ? (

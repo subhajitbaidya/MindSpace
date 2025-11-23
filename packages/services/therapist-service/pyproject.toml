@@ -1,0 +1,11 @@
+[project]
+name = "therapist-service"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.121.3",
+    "langchain>=1.0.8",
+    "langchain-ollama>=1.0.0",
+]

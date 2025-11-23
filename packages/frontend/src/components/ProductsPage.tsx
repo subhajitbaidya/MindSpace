@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Search, Filter, Star, ShoppingCart, Heart } from "lucide-react";
+import { Search, Star, ShoppingCart, Heart } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Input } from "./ui/input";
-import { Badge } from "./ui/badge";
 import {
   Select,
   SelectContent,
@@ -15,6 +14,7 @@ import Atomic from "./../assets/images/atomic.png";
 import Dad from "./../assets/images/dad.png";
 import Notgiving from "./../assets/images/notgiving.png";
 import Ikigai from "./../assets/images/ikigai.png";
+import { PageHeader } from "./widgets/PageHeader";
 
 const books = [
   {
@@ -105,15 +105,11 @@ export function ProductsPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-[linear-gradient(90deg,rgba(46,139,87,1)_0%,rgba(255,192,203,1)_0%,rgba(235,162,191,1)_0%,rgba(128,0,128,1)_100%)] py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl text-white mb-4">Our Collections</h1>
-          <p className="text-xl text-white/90">
-            Professionally curated products to support your mental health
-            journey
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        text="Our Collections"
+        description=" Professionally curated books to support your mental health
+            journey"
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Search and Filters */}

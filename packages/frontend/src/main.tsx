@@ -14,6 +14,7 @@ import Layout from "./components/Layout";
 import TherapistPage from "./components/TherapistPage";
 import CommunityPage from "./components/CommunityPage";
 import JournalPage from "./components/JournalPage";
+import MeditatePage from "./components/MeditatePage";
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,7 @@ const routes = createBrowserRouter(
         <Route path="products" element={<ProductsPage />} />
         <Route path="journal" element={<JournalPage />} />
         <Route path="community" element={<CommunityPage />} />
+        <Route path="meditate" element={<MeditatePage />} />
         <Route path="therapistagent" element={<TherapistPage />} />
       </Route>
     </>
