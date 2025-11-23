@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { ChatMessages } from "./widgets/ChatMessages";
 import { ChatHeader } from "./widgets/ChatHeader";
 import { AIInput } from "./ui/ai-input";
+import { useEffect, useRef } from "react";
 
 export interface Message {
   id: string;
@@ -12,8 +13,7 @@ export interface Message {
 
 export default function TherapistPage() {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
-  const ws = useRef<WebSocket | null>(null);
-
+  const socketRef = useRef<WebSocket | null>(null);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -23,40 +23,41 @@ export default function TherapistPage() {
     },
   ]);
 
-  const [isTyping, setIsTyping] = useState(false);
+  // Websocket connection
+  useEffect(() => {
+    const newSocket = new WebSocket("ws://localhost:8000/agent");
+    socketRef.current = newSocket;
 
-  // Auto-scroll to bottom
+    newSocket.onopen = () => {
+      console.log("Connected");
+    };
+
+    newSocket.onmessage = (event) => {
+      setIsTyping(false);
+      const agentResponse: Message = {
+        id: Date.now().toString(),
+        text: event.data,
+        sender: "agent",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, agentResponse]);
+    };
+
+    newSocket.onerror = (err) => {
+      console.error(err);
+      setIsTyping(false);
+    };
+
+    return () => newSocket.close();
+  }, []);
+
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
     }
   }, [messages]);
 
-  // WebSocket setup
-  useEffect(() => {
-    ws.current = new WebSocket("ws://localhost:8000/agent");
-
-    ws.current.onopen = () => {
-      console.log("Connected to WebSocket server");
-    };
-
-    ws.current.onmessage = (event) => {
-      const serverMsg: Message = JSON.parse(event.data);
-      setMessages((prev) => [...prev, serverMsg]);
-      setIsTyping(false);
-    };
-
-    ws.current.onerror = (err) => {
-      console.error("WebSocket error:", err);
-    };
-
-    ws.current.onclose = () => {
-      console.log("WebSocket closed");
-    };
-
-    return () => ws.current?.close();
-  }, []);
-
+  const [isTyping, setIsTyping] = useState(false);
   const handleSendMessage = (text: string) => {
     const newMessage: Message = {
       id: Date.now().toString(),
@@ -65,14 +66,16 @@ export default function TherapistPage() {
       timestamp: new Date(),
     };
 
-    // Add user message locally
+    // Use functional update here
     setMessages((prev) => [...prev, newMessage]);
-
-    // Send to server
-    ws.current?.send(JSON.stringify(newMessage));
-
-    // Indicate typing until server responds
     setIsTyping(true);
+
+    if (socketRef.current?.readyState === WebSocket.OPEN) {
+      socketRef.current.send(text);
+    } else {
+      console.error("WebSocket not connected");
+      setIsTyping(false);
+    }
   };
 
   return (
@@ -84,7 +87,6 @@ export default function TherapistPage() {
 
         <ChatMessages messages={messages} isTyping={isTyping} />
       </div>
-
       <div className="p-4">
         <AIInput onSubmit={handleSendMessage} />
       </div>

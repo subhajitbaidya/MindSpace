@@ -7,12 +7,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { useAutoResizeTextarea } from "@/hooks/use-auto-resize-textarea";
 
 interface AIInputProps {
-  id?: string
-  placeholder?: string
-  minHeight?: number
-  maxHeight?: number
-  onSubmit?: (value: string) => void
-  className?: string
+  id?: string;
+  placeholder?: string;
+  minHeight?: number;
+  maxHeight?: number;
+  onSubmit?: (value: string) => void;
+  className?: string;
 }
 
 export function AIInput({
@@ -21,7 +21,7 @@ export function AIInput({
   minHeight = 52,
   maxHeight = 200,
   onSubmit,
-  className
+  className,
 }: AIInputProps) {
   const { textareaRef, adjustHeight } = useAutoResizeTextarea({
     minHeight,
@@ -50,7 +50,7 @@ export function AIInput({
             "overflow-y-auto resize-none",
             "focus-visible:ring-0 focus-visible:ring-offset-0",
             "transition-[height] duration-100 ease-out",
-            "leading-[1.2] py-[16px]",
+            "leading-[1.2] py-4",
             `min-h-[${minHeight}px]`,
             `max-h-[${maxHeight}px]`,
             "[&::-webkit-resizer]:hidden" // Скрываем ресайзер
@@ -77,20 +77,20 @@ export function AIInput({
         >
           <Mic className="w-4 h-4 text-black/70 dark:text-white/70" />
         </div>
-       <button
-  onClick={handleReset}
-  type="button"
-  className={cn(
-    "absolute top-1/2 -translate-y-1/2 right-3",
-    "rounded-xl bg-black/5 dark:bg-white/5 py-1 px-1",
-    "transition-all duration-200",
-    inputValue 
-      ? "opacity-100 scale-100" 
-      : "opacity-0 scale-95 pointer-events-none"
-  )}
->
-  <CornerRightUp className="w-4 h-4 text-black/70 dark:text-white/70" />
-</button>
+        <button
+          onClick={handleReset}
+          type="button"
+          className={cn(
+            "absolute top-1/2 -translate-y-1/2 right-3",
+            "rounded-xl bg-black/5 dark:bg-white/5 py-1 px-1",
+            "transition-all duration-200",
+            inputValue
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-95 pointer-events-none"
+          )}
+        >
+          <CornerRightUp className="w-4 h-4 text-black/70 dark:text-white/70" />
+        </button>
       </div>
     </div>
   );

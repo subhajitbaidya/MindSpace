@@ -1,9 +1,10 @@
 import {
   BookOpen,
   PenLine,
-  ShoppingCart,
   Anvil,
   LibraryBig,
+  Brain,
+  BotIcon,
 } from "lucide-react";
 import { NavLink } from "react-router";
 
@@ -45,10 +46,18 @@ const Header = () => {
             </NavLink>
 
             <NavLink
+              to="meditate"
+              className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary"
+            >
+              <Brain className="h-5 w-5" />
+              <span>Mindfullness</span>
+            </NavLink>
+
+            <NavLink
               to="therapistagent"
               className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary"
             >
-              <ShoppingCart className="h-5 w-5" />
+              <BotIcon className="h-5 w-5" />
               <span>Therapist</span>
             </NavLink>
           </div>
