@@ -9,7 +9,7 @@ app = FastAPI()
 @app.websocket("/agent")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
-    agent = TherapistAgent('gemma3:4b', 'ollama')
+    agent = TherapistAgent('deepseek-v3.1:671b-cloud', 'ollama')
 
     try:
         while True:

@@ -1,8 +1,5 @@
 import { useState } from "react";
 import { VideoCard } from "./widgets/VideoCard";
-import { Filter, Search } from "lucide-react";
-import { Input } from "./ui/input";
-import { Badge } from "./ui/badge";
 import { PageHeader } from "./widgets/PageHeader";
 import Searchbar from "./widgets/Searchbar";
 

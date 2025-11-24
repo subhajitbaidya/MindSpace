@@ -1,0 +1,2 @@
+export declare const typeDefs = "#graphql\n  type Book {\n  id: Int!\n  title: String!\n  author: String!\n  price: Float!\n  category: String!\n  rating: Float!\n  reviews: Int!\n  image: String!\n  description: String!\n}\n\n\ntype Query {\n  books: [Book!]!\n}\n";
+//# sourceMappingURL=schema.d.ts.map
