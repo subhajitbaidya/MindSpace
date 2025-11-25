@@ -1,3 +1,7 @@
+let items = [];
+let idCount = 1;
+let books = [];
+let nextId = 1;
 export const resolvers = {
     Query: {
         books: async () => {
@@ -14,6 +18,23 @@ export const resolvers = {
                     description: "How can you write so bad code? Man? ",
                 },
             ];
+        },
+    },
+    Mutation: {
+        createBook: (_, { input }) => {
+            const newBook = {
+                id: nextId++,
+                title: input.title,
+                description: input.description,
+                author: input.author,
+                price: input.price,
+                category: input.category,
+                image: input.image,
+                rating: input.rating,
+                reviews: input.reviews,
+            };
+            books.push(newBook);
+            return newBook;
         },
     },
 };

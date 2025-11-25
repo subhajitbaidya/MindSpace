@@ -21,17 +21,12 @@ export const GqlServer = async () => {
 
     await server.start();
 
-    app.use(
-      "/graphql/books",
-      expressMiddleware(server, {
-        context: async ({ req }) => ({ token: req.headers.authorization }),
-      })
-    );
+    app.use("/graphql/books", expressMiddleware(server));
 
     app.listen(ENV.PORT, () =>
-      console.log(`🚀 GraphQL Server running at port ${ENV.PORT}`)
+      console.log(`GraphQL Server running at port ${ENV.PORT}`)
     );
   } catch (error) {
-    console.error("❌ Server failed to start:", error);
+    console.error("Server failed to start:", error);
   }
 };
