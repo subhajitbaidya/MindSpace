@@ -10,7 +10,7 @@ export interface IBook extends Document {
     image: string;
     description: string;
 }
-export declare const Book: mongoose.Model<IBook, {}, {}, {}, mongoose.Document<unknown, {}, IBook, {}, {}> & IBook & Required<{
+export declare const BookModel: mongoose.Model<IBook, {}, {}, {}, mongoose.Document<unknown, {}, IBook, {}, {}> & IBook & Required<{
     _id: unknown;
 }> & {
     __v: number;

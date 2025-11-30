@@ -11,12 +11,6 @@ export const typeDefs = `#graphql
   description: String!
 }
 
-type MiniBook {
-  id: Int!
-  title: String!
-  description: String!
-}
-
 input AddBook {
   title: String!
   author: String!

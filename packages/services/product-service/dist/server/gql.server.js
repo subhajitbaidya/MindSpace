@@ -3,8 +3,8 @@ import { expressMiddleware } from "@as-integrations/express5";
 import express from "express";
 import cors from "cors";
 import { ENV } from "../config/env.js";
-import { typeDefs } from "../graphql/schema.js";
-import { resolvers } from "../graphql/resolvers.js";
+import { typeDefs } from "../graphql/gql.schema.js";
+import { resolvers } from "../graphql/gql.resolvers.js";
 import { connectDB } from "../db/connect.mongodb.js";
 export const GqlServer = async () => {
     try {

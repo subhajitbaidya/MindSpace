@@ -1,0 +1,1 @@
+{"version":3,"file":"book.repo.d.ts","sourceRoot":"","sources":["../../src/repo/book.repo.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,KAAK,EAAE,MAAM,yBAAyB,CAAC;AAErD,qBAAa,cAAc;IACzB,OAAO,CAAC,OAAO,CAAmC;IAE5C,OAAO,CAAC,IAAI,EAAE,KAAK;;;;;IAInB,QAAQ;;;;;CAGf"}

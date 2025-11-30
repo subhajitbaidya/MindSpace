@@ -11,12 +11,6 @@ export const typeDefs = `#graphql
   description: String!
 }
 
-type MiniBook {
-  id: Int!
-  title: String!
-  description: String!
-}
-
 input AddBook {
   title: String!
   author: String!
@@ -37,3 +31,4 @@ type Mutation {
  createBook(input: AddBook!): Book!
 }
 `;
+//# sourceMappingURL=gql.schema.js.map

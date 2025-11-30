@@ -1,0 +1,1 @@
+{"version":3,"file":"book.query.d.ts","sourceRoot":"","sources":["../../src/queries/book.query.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,KAAK,EAAE,MAAM,yBAAyB,CAAC;AACrD,OAAO,EAAE,gBAAgB,EAAE,MAAM,2BAA2B,CAAC;AAE7D,qBAAa,gBAAiB,SAAQ,gBAAgB,CAAC,KAAK,CAAC;IAC3D,aAAa,CAAC,KAAK,EAAE,MAAM;IAI3B,gBAAgB,CAAC,QAAQ,EAAE,MAAM;CAGlC"}
