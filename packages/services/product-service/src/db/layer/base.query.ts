@@ -27,4 +27,8 @@ export class BaseQueryBuilder<T extends object> {
   async findOne() {
     return this.model.findOne(this.query);
   }
+
+  async insertMany(data: T[]) {
+    return this.model.insertMany(data);
+  }
 }

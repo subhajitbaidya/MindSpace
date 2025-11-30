@@ -1,33 +1,26 @@
-import { ApolloServer } from "@apollo/server";
-import { expressMiddleware } from "@as-integrations/express5";
-import express from "express";
-import cors from "cors";
-import { ENV } from "./config/env.js";
-import { typeDefs } from "./graphql/gql.schema.js";
-import { resolvers } from "./graphql/gql.resolvers.js";
-import { connectDB } from "./db/connect.mongodb.js";
+import { GqlServer } from "./server/gql.server.js";
+import { connectDB, closeDB } from "./db/connect.mongodb.js";
 
-export const GqlServer = async () => {
+const startService = async () => {
   try {
-    const app = express();
-    app.use(express.json());
-    app.use(cors());
-    await connectDB();
-
-    const server = new ApolloServer({
-      typeDefs,
-      resolvers,
-    });
-
-    await server.start();
-
-    app.use("/graphql/books", expressMiddleware(server));
-
-    app.listen(ENV.PORT, () =>
-      console.log(`GraphQL Server running at port ${ENV.PORT}`)
-    );
+    await connectDB().then(() => console.log("MongoDB connected"));
+    await GqlServer();
   } catch (error) {
-    console.error("Server failed to start:", error);
+    console.error("service is down", error);
+    process.exit(1);
   }
 };
-GqlServer();
+
+startService();
+
+process.on("SIGINT", async () => {
+  console.log("Exiting service - Closing MongoDB…");
+  await closeDB();
+  process.exit(0);
+});
+
+process.on("SIGTERM", async () => {
+  console.log("Exiting service → Closing MongoDB…");
+  await closeDB();
+  process.exit(0);
+});

@@ -8,5 +8,8 @@ export class BookRepository {
     async getBooks() {
         return this.builder.find();
     }
+    async addBooksBulk(data) {
+        return this.builder.insertMany(data);
+    }
 }
 //# sourceMappingURL=book.repo.js.map

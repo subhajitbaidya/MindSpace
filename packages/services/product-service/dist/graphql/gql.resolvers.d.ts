@@ -15,6 +15,20 @@ export declare const resolvers: {
         }> & {
             __v: number;
         }>;
+        createBooksBulk: (_: any, { input }: {
+            input: {
+                books: any[];
+            };
+        }) => Promise<{
+            title: string;
+            author: string;
+            price: number;
+            category: string;
+            rating: number;
+            reviews: number;
+            image: string;
+            description: string;
+        }[]>;
     };
 };
 //# sourceMappingURL=gql.resolvers.d.ts.map

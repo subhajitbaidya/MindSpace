@@ -1,2 +1,2 @@
-export declare const GqlServer: () => Promise<void>;
+export {};
 //# sourceMappingURL=index.d.ts.map

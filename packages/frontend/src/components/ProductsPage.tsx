@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { client } from "@/gql/gql.client";
 import { Search, Star, ShoppingCart, Heart } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";

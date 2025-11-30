@@ -11,5 +11,10 @@ export declare class BookService {
     }> & {
         __v: number;
     })[]>;
+    createBooksBulk(inputs: IBook[]): Promise<(import("mongoose").Document<unknown, {}, IBook, {}, {}> & IBook & Required<{
+        _id: unknown;
+    }> & {
+        __v: number;
+    })[]>;
 }
 //# sourceMappingURL=book.service.d.ts.map

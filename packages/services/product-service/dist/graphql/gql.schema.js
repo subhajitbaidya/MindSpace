@@ -1,6 +1,6 @@
 export const typeDefs = `#graphql
   type Book {
-  id: Int!
+  
   title: String!
   author: String!
   price: Float!
@@ -22,6 +22,11 @@ input AddBook {
   description: String!
 }
 
+input AddBooksBulkInput {
+  books: [AddBook!]!
+}
+
+
 
 type Query {
   books: [Book!]!
@@ -29,6 +34,7 @@ type Query {
 
 type Mutation {
  createBook(input: AddBook!): Book!
+ createBooksBulk(input: AddBooksBulkInput!): [Book!]!
 }
 `;
 //# sourceMappingURL=gql.schema.js.map

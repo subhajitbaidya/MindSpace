@@ -7,5 +7,8 @@ export class BookService {
     async getAllBooks() {
         return this.bookRepo.getBooks();
     }
+    async createBooksBulk(inputs) {
+        return this.bookRepo.addBooksBulk(inputs);
+    }
 }
 //# sourceMappingURL=book.service.js.map

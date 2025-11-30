@@ -11,5 +11,10 @@ export declare class BookRepository {
     }> & {
         __v: number;
     })[]>;
+    addBooksBulk(data: IBook[]): Promise<(import("mongoose").Document<unknown, {}, IBook, {}, {}> & IBook & Required<{
+        _id: unknown;
+    }> & {
+        __v: number;
+    })[]>;
 }
 //# sourceMappingURL=book.repo.d.ts.map

@@ -74,10 +74,10 @@ const LandingPage = () => {
       <Hero />
 
       {/* Daily Affirmation */}
-      <section className="bg-[linear-gradient(90deg,rgba(46,139,87,1)_0%,rgba(255,192,203,1)_0%,rgba(235,162,191,1)_0%,rgba(128,0,128,1)_100%)] py-12">
+      <section className="bg-linear-to-r from-[#e3ffe7] to-[#d9e7ff] py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Quote className="h-12 w-12 text-white/60 mx-auto mb-4" />
-          <p className="text-2xl text-white">{quotes[0]}</p>
+          <Quote className="h-12 w-12 text-gray-600 mx-auto mb-4" />
+          <p className="text-2xl text-gray-600">{quotes[0]}</p>
         </div>
       </section>
 
@@ -167,12 +167,12 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-[linear-gradient(90deg,rgba(46,139,87,1)_0%,rgba(255,192,203,1)_0%,rgba(235,162,191,1)_0%,rgba(128,0,128,1)_100%)] py-20">
+      <section className="bg-linear-to-r from-[#e3ffe7] to-[#d9e7ff] py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl text-white mb-6">
+          <h2 className="text-4xl text-gray-600 mb-6">
             Begin Your Healing Journey Today
           </h2>
-          <p className="text-xl text-white/90 mb-8">
+          <p className="text-xl text-gray-500 mb-8">
             Take the first step towards better mental health with resources that
             understand you.
           </p>

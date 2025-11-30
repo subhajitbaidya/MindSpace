@@ -12,4 +12,8 @@ export class BookRepository {
   async getBooks() {
     return this.builder.find();
   }
+
+  async addBooksBulk(data: IBook[]) {
+    return this.builder.insertMany(data);
+  }
 }

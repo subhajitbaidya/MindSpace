@@ -7,6 +7,8 @@ import {
   Route,
   RouterProvider,
 } from "react-router";
+import { ApolloProvider } from "@apollo/client/react";
+import { client } from "./gql/gql.client";
 import LoginPage from "./components/LoginPage";
 import LandingPage from "./components/LandingPage";
 import ProductsPage from "./components/ProductsPage";
@@ -34,6 +36,8 @@ const routes = createBrowserRouter(
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={routes} />
+    <ApolloProvider client={client}>
+      <RouterProvider router={routes} />
+    </ApolloProvider>
   </StrictMode>
 );

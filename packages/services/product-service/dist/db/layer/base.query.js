@@ -23,5 +23,8 @@ export class BaseQueryBuilder {
     async findOne() {
         return this.model.findOne(this.query);
     }
+    async insertMany(data) {
+        return this.model.insertMany(data);
+    }
 }
 //# sourceMappingURL=base.query.js.map

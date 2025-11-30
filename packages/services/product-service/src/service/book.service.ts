@@ -11,4 +11,8 @@ export class BookService {
   async getAllBooks() {
     return this.bookRepo.getBooks();
   }
+
+  async createBooksBulk(inputs: IBook[]) {
+    return this.bookRepo.addBooksBulk(inputs);
+  }
 }
