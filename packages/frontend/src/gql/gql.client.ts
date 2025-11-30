@@ -5,22 +5,17 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-client
-  .query({
-    query: gql`
-      query GetBooks {
-        books {
-          title
-          description
-          author
-          category
-          image
-          price
-          rating
-          reviews
-        }
-      }
-    `,
-  })
-  .then((result) => console.log(result))
-  .catch((err) => console.error(err));
+export const GET_BOOKS = gql`
+  query GetBooks {
+    books {
+      title
+      description
+      author
+      category
+      image
+      price
+      rating
+      reviews
+    }
+  }
+`;
