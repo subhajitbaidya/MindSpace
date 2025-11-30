@@ -14,7 +14,7 @@ import {
 } from "./ui/select";
 import { PageHeader } from "./widgets/PageHeader";
 
-export interface Book {
+interface Book {
   id: number;
   title: string;
   description: string;
@@ -26,7 +26,7 @@ export interface Book {
   reviews: number;
 }
 
-export interface BooksResponse {
+interface BooksResponse {
   books: Book[];
 }
 
@@ -184,7 +184,7 @@ function ProductsPage() {
 
                 <div className="flex items-center justify-between pt-2">
                   <span className="text-2xl text-purple-700">
-                    ${book.price}
+                    Rs {book.price}
                   </span>
                   <Button className="bg-purple-600 hover:bg-purple-700 rounded-lg">
                     <ShoppingCart className="h-4 w-4 mr-2" />

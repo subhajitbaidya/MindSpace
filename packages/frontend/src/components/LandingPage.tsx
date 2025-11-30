@@ -9,24 +9,28 @@ import {
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Hero } from "@/components/ui/animated-hero";
-import Atomic from "./../assets/images/atomic.png";
-import Dad from "./../assets/images/dad.png";
-import Notgiving from "./../assets/images/notgiving.png";
-import Ikigai from "./../assets/images/ikigai.png";
 import { Carousel } from "./ui/carousel";
+import { GET_FEATURED } from "@/gql/gql.client";
+import { useQuery } from "@apollo/client/react";
+
+interface Book {
+  image: string;
+  category: string;
+}
+
+interface BooksResponse {
+  books: Book[];
+}
 
 const LandingPage = () => {
+  const { data, loading, error } = useQuery<BooksResponse>(GET_FEATURED);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading books</p>;
   const quotes = [
     "Your mental health is a priority, not an afterthought.",
     "Healing is not linear, and that's okay.",
     "You are worthy of peace and happiness.",
-  ];
-
-  const Images = [
-    { src: Notgiving, alt: "Atomic", category: "Mindfulness" },
-    { src: Atomic, alt: "Atomic", category: "Productivity" },
-    { src: Dad, alt: "Atomic", category: "Anxiety" },
-    { src: Ikigai, alt: "Atomic", category: "Self-Love" },
   ];
 
   const features = [
@@ -122,14 +126,14 @@ const LandingPage = () => {
           </div>
 
           <div className="grid md:grid-cols-4 gap-6">
-            {Images.map((image, index) => (
+            {data?.books?.map((image, index) => (
               <Carousel
                 key={index}
                 className="group relative overflow-hidden rounded-2xl h-64 bg-linear-to-br from-purple-100 to-teal-100 hover:shadow-xl transition-all"
               >
                 <div className="absolute inset-0 bg-white/30"></div>
                 <div className="absolute flex items-center flex-col bottom-6 left-6 right-6">
-                  <img src={image.src} alt="Atomic" />
+                  <img src={image.image} alt="Atomic" />
                   <h3 className="text-xl text-black mb-2">{image.category}</h3>
                   <p className="text-black/80 text-sm">Explore collection</p>
                 </div>

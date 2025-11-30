@@ -19,3 +19,12 @@ export const GET_BOOKS = gql`
     }
   }
 `;
+
+export const GET_FEATURED = gql`
+  query getFeatured {
+    books {
+      image
+      category
+    }
+  }
+`;
