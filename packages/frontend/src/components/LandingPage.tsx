@@ -72,6 +72,11 @@ const LandingPage = () => {
     },
   ];
 
+  const uniqueBooks = data?.books?.filter(
+    (book, index, self) =>
+      index === self.findIndex((b) => b.category === book.category)
+  );
+
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -126,15 +131,15 @@ const LandingPage = () => {
           </div>
 
           <div className="grid md:grid-cols-4 gap-6">
-            {data?.books?.map((image, index) => (
+            {uniqueBooks?.map((book, index) => (
               <Carousel
                 key={index}
                 className="group relative overflow-hidden rounded-2xl h-64 bg-linear-to-br from-purple-100 to-teal-100 hover:shadow-xl transition-all"
               >
                 <div className="absolute inset-0 bg-white/30"></div>
                 <div className="absolute flex items-center flex-col bottom-6 left-6 right-6">
-                  <img src={image.image} alt="Atomic" />
-                  <h3 className="text-xl text-black mb-2">{image.category}</h3>
+                  <img src={book.image} alt={book.category} />
+                  <h3 className="text-xl text-black mb-2">{book.category}</h3>
                   <p className="text-black/80 text-sm">Explore collection</p>
                 </div>
               </Carousel>

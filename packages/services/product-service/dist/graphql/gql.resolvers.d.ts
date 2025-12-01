@@ -1,11 +1,7 @@
 import type { IBook } from "../models/book.model.js";
 export declare const resolvers: {
     Query: {
-        books: () => Promise<(import("mongoose").Document<unknown, {}, IBook, {}, {}> & IBook & Required<{
-            _id: unknown;
-        }> & {
-            __v: number;
-        })[]>;
+        books: () => Promise<any>;
     };
     Mutation: {
         createBook: (_: any, { input }: {
