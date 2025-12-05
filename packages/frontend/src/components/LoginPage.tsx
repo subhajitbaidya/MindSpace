@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -13,24 +13,23 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsAuthenticated(true);
-    }
-  }, []);
-
   const handleSignup = async () => {
-    const response = await fetch("/api/v0/auth/user/signup", {
+    const response = await fetch("/api/v0/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({
+        fname: username,
+        email: email,
+        password: password,
+      }),
     });
 
+    const data = await response.json();
+
     if (response.ok) {
+      localStorage.setItem("token", data.token);
       navigate("/home");
     } else {
       toast("User exists, please login!");
@@ -38,19 +37,17 @@ export default function LoginPage() {
   };
 
   const handleLogin = async () => {
-    const response = await fetch("/api/v0/auth/user/login", {
+    const response = await fetch("/api/v0/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email: email, password: password }),
     });
 
+    const data = await response.json();
+    console.log(data);
     if (response.ok) {
-      const data = await response.json();
       localStorage.setItem("token", data.token);
-
-      navigate("home");
-    } else {
-      toast("Invalid credentials");
+      navigate("/home");
     }
   };
 

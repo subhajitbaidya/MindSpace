@@ -1,6 +1,5 @@
-import { BookModel } from "../models/book.model.js";
-import { BookQueryBuilder } from "../queries/book.query.js";
-import type { IBook } from "../models/book.model.js";
+import { BookModel, type IBook } from "../models/book.model.js";
+import { BookQueryBuilder } from "./book.query.js";
 
 export class BookRepository {
   private builder = new BookQueryBuilder(BookModel);

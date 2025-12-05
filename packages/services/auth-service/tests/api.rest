@@ -1,0 +1,52 @@
+POST http://localhost:5001/create/user
+Content-Type: application/json
+
+{
+  
+  "fname": "Subhajit",
+  "mname": "Kumar",
+  "lname": "Baidya",
+  "contact_no": "9876545210",
+  "email": "subha2@example.com",
+  "password": "123456"
+
+}
+
+###
+
+PATCH  http://localhost:5001/update/user/3
+Content-Type: application/json
+
+{
+  "contact_no" : "9654143453",
+  "email" : "nirup@gmail.com"
+}
+
+
+###
+
+POST http://localhost:5001/signup
+Content-Type: application/json
+
+{
+  "fname": "subhajit",
+  "mname": "kumar",
+  "lname": "Baidya",
+  "contact_no": "98763543210",
+  "email": "subh3a@example.com",
+  "password": "123456"
+
+}
+
+###
+
+POST http://localhost:5001/login
+Content-Type: application/json
+
+{
+  "email": "subh3a@example.com",
+  "password": "123456"
+
+}
+
+

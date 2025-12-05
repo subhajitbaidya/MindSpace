@@ -20,5 +20,17 @@
     "terminal.ansiRed": "#C7AE95",
     "terminal.ansiWhite": "#C7CCD1",
     "terminal.ansiYellow": "#AEC795"
-  }
+  },
+  "sqltools.connections": [
+    {
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5434,
+      "driver": "PostgreSQL",
+      "name": "postgres",
+      "database": "mindspace",
+      "username": "postgres"
+    }
+  ]
 }

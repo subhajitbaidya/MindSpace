@@ -1,5 +1,5 @@
 import { BookModel } from "../models/book.model.js";
-import { BookQueryBuilder } from "../queries/book.query.js";
+import { BookQueryBuilder } from "./book.query.js";
 export class BookRepository {
     builder = new BookQueryBuilder(BookModel);
     async addBook(data) {

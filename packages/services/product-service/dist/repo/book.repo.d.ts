@@ -1,4 +1,4 @@
-import type { IBook } from "../models/book.model.js";
+import { type IBook } from "../models/book.model.js";
 export declare class BookRepository {
     private builder;
     addBook(data: IBook): Promise<import("mongoose").Document<unknown, {}, IBook, {}, {}> & IBook & Required<{
