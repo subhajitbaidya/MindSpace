@@ -9,14 +9,28 @@ export class BookService {
         return result;
     }
     async getAllBooks() {
-        const cached = await redis.get(this.cacheKeyAllBooks);
-        if (cached) {
-            console.log("Cache HIT");
-            return JSON.parse(cached);
+        try {
+            if (redis.status === "ready") {
+                const cached = await redis.get(this.cacheKeyAllBooks);
+                if (cached) {
+                    console.log("Cache HIT");
+                    return JSON.parse(cached);
+                }
+                console.log("Cache MISS");
+            }
         }
-        console.log("Cache MISS");
+        catch (error) {
+            console.error(error);
+        }
         const books = await this.bookRepo.getBooks();
-        await redis.set(this.cacheKeyAllBooks, JSON.stringify(books), "EX", 60);
+        try {
+            if (redis.status === "ready") {
+                await redis.set(this.cacheKeyAllBooks, JSON.stringify(books), "EX", 60);
+            }
+        }
+        catch (error) {
+            console.error(error);
+        }
         return books;
     }
     async createBooksBulk(inputs) {

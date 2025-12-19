@@ -34,9 +34,11 @@ export default function TherapistPage() {
 
     newSocket.onmessage = (event) => {
       setIsTyping(false);
+      const parsed = JSON.parse(event.data);
+      const messageText = parsed.output;
       const agentResponse: Message = {
         id: Date.now().toString(),
-        text: event.data,
+        text: messageText,
         sender: "agent",
         timestamp: new Date(),
       };
@@ -71,7 +73,7 @@ export default function TherapistPage() {
     setIsTyping(true);
 
     if (socketRef.current?.readyState === WebSocket.OPEN) {
-      socketRef.current.send(text);
+      socketRef.current.send(JSON.stringify({ prompt: text }));
     } else {
       console.error("WebSocket not connected");
       setIsTyping(false);
