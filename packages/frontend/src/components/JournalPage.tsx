@@ -24,50 +24,18 @@ interface JournalEntry {
   mood: Mood;
   content: string;
   prompt: string;
+  consent: boolean;
 }
 
-const journalPrompts = [
-  "What am I grateful for today?",
-  "What is one small victory I achieved today?",
-  "How am I feeling right now, and why?",
-  "What would I tell a friend who is going through what I'm experiencing?",
-  "What boundaries do I need to set for my wellbeing?",
-  "What brought me peace or joy today?",
-  "What challenge did I face today, and how did I cope?",
-  "What do I need to forgive myself for?",
-];
-
 export function JournalPage() {
-  const [entries, setEntries] = useState<JournalEntry[]>([
-    {
-      id: 1,
-      date: "2025-10-11",
-      mood: "great",
-      content:
-        "Today I practiced mindfulness for 10 minutes and it really helped me feel centered. I'm proud of myself for making time for this.",
-      prompt: "What am I grateful for today?",
-    },
-    {
-      id: 2,
-      date: "2025-10-10",
-      mood: "okay",
-      content:
-        "Had some ups and downs today. Working on being gentle with myself during difficult moments.",
-      prompt: "How am I feeling right now, and why?",
-    },
-  ]);
-
+  const [entries, setEntries] = useState<JournalEntry[]>([]);
   const [currentEntry, setCurrentEntry] = useState("");
   const [currentMood, setCurrentMood] = useState<Mood>("okay");
-  const [currentPrompt, setCurrentPrompt] = useState(journalPrompts[0]);
+  const [currentPrompt, setCurrentPrompt] = useState("");
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-
-  const getRandomPrompt = () => {
-    const randomPrompt =
-      journalPrompts[Math.floor(Math.random() * journalPrompts.length)];
-    setCurrentPrompt(randomPrompt);
-  };
+  const [selectConsent, setSelectedConsent] = useState(false);
+  const [saved, isSaved] = useState(false);
 
   const saveEntry = () => {
     if (!currentEntry.trim()) return;
@@ -78,11 +46,13 @@ export function JournalPage() {
       mood: currentMood,
       content: currentEntry,
       prompt: currentPrompt,
+      consent: selectConsent,
     };
 
     setEntries([newEntry, ...entries]);
     setCurrentEntry("");
     setCurrentMood("okay");
+    isSaved(true);
   };
 
   const deleteEntry = (id: number) => {
@@ -220,19 +190,19 @@ export function JournalPage() {
             <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-sm text-purple-700 mb-1">
-                    Today's Prompt:
-                  </p>
-                  <p className="text-purple-900 italic">{currentPrompt}</p>
+                  <input
+                    className="border-none outline-none focus:outline-none focus:ring-0"
+                    placeholder="Enter journal title"
+                    onChange={(e) => setCurrentPrompt(e.target.value)}
+                  />
                 </div>
                 <Button
-                  onClick={getRandomPrompt}
                   variant="outline"
                   size="sm"
                   className="border-purple-300 text-purple-700 hover:bg-purple-100"
                 >
                   <Sparkles className="h-4 w-4 mr-1" />
-                  upload images
+                  upload media
                 </Button>
               </div>
             </div>
@@ -242,7 +212,7 @@ export function JournalPage() {
               <Textarea
                 value={currentEntry}
                 onChange={(e) => setCurrentEntry(e.target.value)}
-                placeholder="Write your thoughts here... Remember, this is a judgment-free space. Be honest with yourself."
+                placeholder="Write your thoughts here.."
                 className="min-h-[200px] resize-y border-purple-200 focus:border-purple-400 rounded-lg"
               />
             </div>
@@ -251,8 +221,12 @@ export function JournalPage() {
             <div className="flex justify-end items-center gap-6">
               <input type="file" className="hidden" />
               <div className="flex items-center gap-2">
-                <Checkbox className="border-black" />
-                <p className="text-sm">share your article with the community</p>
+                <Checkbox
+                  className="border-black"
+                  onCheckedChange={() => setSelectedConsent(true)}
+                  disabled={saved}
+                />
+                <p className="text-sm">share with community</p>
               </div>
 
               <Button
@@ -275,9 +249,6 @@ export function JournalPage() {
             <Card className="p-12 text-center border-purple-100">
               <PlusCircle className="h-16 w-16 text-purple-300 mx-auto mb-4" />
               <p className="text-xl text-gray-600">No entries yet</p>
-              <p className="text-gray-500 mt-2">
-                Start journaling to track your mental health journey
-              </p>
             </Card>
           ) : (
             <div className="space-y-6">

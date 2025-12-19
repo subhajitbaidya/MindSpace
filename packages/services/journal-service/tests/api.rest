@@ -1,1 +1,14 @@
 GET http://localhost:5003
+
+###
+
+
+POST http://localhost:5003/savepost
+Content-Type: application/json
+
+{
+  "date": "2025-12-19",
+  "mood": "okay",
+  "content": "Today felt a bit overwhelming, but I managed to complete my tasks.",
+  "prompt": "How was your day?"
+}
