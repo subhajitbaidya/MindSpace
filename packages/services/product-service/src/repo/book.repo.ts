@@ -22,8 +22,4 @@ export class BookRepository {
     const result = await ConnectionPool.query(query.text, query.values);
     return result.rows;
   }
-
-  // async addBooksBulk(data: IBook[]) {
-  //   return this.builder.insertMany(data);
-  // }
 }
