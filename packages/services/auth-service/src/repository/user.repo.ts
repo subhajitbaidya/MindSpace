@@ -4,6 +4,7 @@ import { QueryBuilder } from "../db/base.builder.js";
 
 export class UserModel implements User {
   async createUser(data: {
+    publicID: string;
     fname: string;
     mname: string;
     lname: string;
@@ -11,8 +12,9 @@ export class UserModel implements User {
     contact_no: string;
     password: string;
   }): Promise<any> {
-    const { fname, email, password } = data;
+    const { publicID, fname, email, password } = data;
     const qb = new QueryBuilder().insert("users", {
+      publicID,
       fname,
       email,
       password,
@@ -30,7 +32,6 @@ export class UserModel implements User {
 
     const query = qb.build();
     const result = await client.query(query);
-    console.log(result.rows[0]);
     return result.rows[0];
   }
   getUserByContact(contact: string): Promise<any | null> {

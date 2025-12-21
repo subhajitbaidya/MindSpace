@@ -33,8 +33,5 @@ export class BookService {
         }
         return books;
     }
-    async createBooksBulk(inputs) {
-        return this.bookRepo.addBooksBulk(inputs);
-    }
 }
 //# sourceMappingURL=book.service.js.map

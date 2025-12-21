@@ -4,8 +4,8 @@ dotenv.config();
 export const encryptUsers = (payload) => {
     const secret = process.env.JWT_SECRET;
     const options = {
-        expiresIn: "1h",
+        expiresIn: "15m",
     };
-    return jwt.sign(payload, secret, options);
+    return jwt.sign({ sub: payload }, secret, options);
 };
 //# sourceMappingURL=jwt.util.js.map

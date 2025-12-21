@@ -1,5 +1,6 @@
 export interface User {
   createUser(data: {
+    publicID: string;
     fname: string;
     mname: string;
     lname: string;

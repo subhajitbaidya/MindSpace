@@ -5,26 +5,8 @@ export declare const resolvers: {
     };
     Mutation: {
         createBook: (_: any, { input }: {
-            input: Omit<IBook, "id">;
-        }) => Promise<import("mongoose").Document<unknown, {}, IBook, {}, {}> & IBook & Required<{
-            _id: unknown;
-        }> & {
-            __v: number;
-        }>;
-        createBooksBulk: (_: any, { input }: {
-            input: {
-                books: any[];
-            };
-        }) => Promise<{
-            title: string;
-            author: string;
-            price: number;
-            category: string;
-            rating: number;
-            reviews: number;
-            image: string;
-            description: string;
-        }[]>;
+            input: IBook;
+        }) => Promise<any>;
     };
 };
 //# sourceMappingURL=gql.resolvers.d.ts.map

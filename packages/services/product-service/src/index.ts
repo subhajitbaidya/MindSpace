@@ -1,9 +1,10 @@
 import { GqlServer } from "./server/gql.server.js";
-import { connectDB, closeDB } from "./db/connect.mongodb.js";
+
+import { ConnectionPool } from "./db/pg.connect.js";
 
 const startService = async () => {
   try {
-    await connectDB().then(() => console.log("MongoDB connected"));
+    await ConnectionPool.connect();
     await GqlServer();
   } catch (error) {
     console.error("service is down", error);
@@ -13,14 +14,6 @@ const startService = async () => {
 
 startService();
 
-process.on("SIGINT", async () => {
-  console.log("Exiting service - Closing MongoDB…");
-  await closeDB();
-  process.exit(0);
-});
-
-process.on("SIGTERM", async () => {
-  console.log("Exiting service → Closing MongoDB…");
-  await closeDB();
-  process.exit(0);
+ConnectionPool.on("connect", () => {
+  console.log("PG connected");
 });

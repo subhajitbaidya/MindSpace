@@ -1,18 +1,29 @@
-import { BookModel, type IBook } from "../models/book.model.js";
-import { BookQueryBuilder } from "./book.query.js";
+import { type IBook } from "../models/book.model.js";
+import { ConnectionPool } from "../db/pg.connect.js";
+import { SQLQueryBuilder } from "../utils/sql.builder.js";
 
 export class BookRepository {
-  private builder = new BookQueryBuilder(BookModel);
+  private qb: SQLQueryBuilder;
+
+  constructor() {
+    this.qb = new SQLQueryBuilder();
+  }
 
   async addBook(data: IBook) {
-    return this.builder.create(data);
+    const query = this.qb.insertInto("products").valuesFrom(data).build();
+
+    const result = await ConnectionPool.query(query.text, query.values);
+    return result.rows[0];
   }
 
   async getBooks() {
-    return this.builder.find();
+    const query = this.qb.select().from("products").orderBy("id").build();
+
+    const result = await ConnectionPool.query(query.text, query.values);
+    return result.rows;
   }
 
-  async addBooksBulk(data: IBook[]) {
-    return this.builder.insertMany(data);
-  }
+  // async addBooksBulk(data: IBook[]) {
+  //   return this.builder.insertMany(data);
+  // }
 }

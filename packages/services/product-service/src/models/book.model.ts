@@ -1,7 +1,4 @@
-import mongoose, { Schema, Document } from "mongoose";
-
-export interface IBook extends Document {
-  id: number;
+export interface IBook {
   title: string;
   author: string;
   price: number;
@@ -11,17 +8,3 @@ export interface IBook extends Document {
   image: string;
   description: string;
 }
-
-const BookSchema = new Schema<IBook>({
-  id: Number,
-  title: String,
-  author: String,
-  price: Number,
-  category: String,
-  rating: Number,
-  reviews: Number,
-  image: String,
-  description: String,
-});
-
-export const BookModel = mongoose.model<IBook>("Book", BookSchema);
