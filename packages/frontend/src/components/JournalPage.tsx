@@ -42,7 +42,7 @@ export function JournalPage() {
 
     const newEntry: JournalEntry = {
       id: Date.now(),
-      date: new Date().toISOString().split("T")[0],
+      date: selectedDate.toISOString().split("T")[0],
       mood: currentMood,
       content: currentEntry,
       prompt: currentPrompt,
@@ -116,10 +116,10 @@ export function JournalPage() {
                   <CalendarWidget
                     selectedDate={selectedDate}
                     onDateChange={(date) => {
-                      if (date) {
-                        setSelectedDate(date);
-                        setShowCalendar(false); // hide calendar on select
-                      }
+                      if (!date) return;
+
+                      setSelectedDate(date);
+                      setShowCalendar(false);
                     }}
                   />
                 </div>

@@ -11,9 +11,7 @@ We have an ecommerce platform and a community driven application which helps peo
 - Therapist - AI bot chat interface
 - Community - All people posts top posts etc.
 - Notifications - Pub sub queue for sending notifications.
-- Mindfulness - Meditate, yoga etc. (Pre Dev Concept)
-
-## Development Ideas and Approaches
+- Mindfulness - Meditate, yoga etc.
 
 ## Development Ideas and Approaches
 
@@ -30,3 +28,17 @@ We have an ecommerce platform and a community driven application which helps peo
 | **Community**     | Posts, likes, comments, trends, moderation, anonymous posting                  | MongoDB/PostgreSQL, WebSockets, AI profanity/sentiment filter      |
 | **Notifications** | Real-time notifications, reminders, community/activity alerts                  | Kafka/NATS/RabbitMQ, push notifications, cron jobs                 |
 | **Mindfulness**   | Meditation audio, yoga poses, daily challenges, progress tracking              | CDN for audio/video, streaks system, optional PWA offline mode     |
+
+# Problem Statement
+
+- Since we have multiple databases. We would definately need to identify products purchased by user, journal written by user.
+  We need users everywhere. How to identify each use cases from a users perspective. Else everyone will be able to see each others purchase posts everything.
+
+**Solution**
+We will generate a public user ID which will uniquely identifies the user accross multiple databases.
+The first problem we will solve is by adding a ordered by or createdby.
+We will use ULID package to create the unique ID which we will create indexes in MongoDB tables for fetching user created resources.
+
+# Additional Task
+
+- The products field needs a lot of querieng. Shifting it to SQL.

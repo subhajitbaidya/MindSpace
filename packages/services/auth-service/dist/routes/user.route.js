@@ -1,4 +1,3 @@
-// routes/userRoutes.js
 import express from "express";
 import { container } from "../config/di.container.js";
 const router = express.Router();
