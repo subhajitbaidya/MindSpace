@@ -24,6 +24,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 
 ![npm](https://img.shields.io/badge/-npm-CB3837?logo=npm&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=flat&logo=prisma&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
 ![.ENV](https://img.shields.io/badge/-.ENV-yellow?logo=dotenv&logoColor=black)
 ![Nodemon](https://img.shields.io/badge/-Nodemon-3C873A?logo=nodemon&logoColor=white)

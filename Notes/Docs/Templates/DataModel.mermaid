@@ -1,0 +1,155 @@
+erDiagram
+    User {
+        ObjectId _id PK
+        string email UK
+        string password
+        object profile
+        array addresses
+        enum role
+        object preferences
+        Date createdAt
+        Date updatedAt
+        Date lastLogin
+        boolean isActive
+    }
+    
+    Book {
+        ObjectId _id PK
+        string isbn UK
+        string title
+        string slug UK
+        string description
+        array authors
+        string publisher
+        Date publishedDate
+        array categories FK
+        array tags
+        object specifications
+        object pricing
+        object inventory
+        object media
+        object seo
+        object ratings
+        enum status
+        Date createdAt
+        Date updatedAt
+    }
+    
+    Category {
+        ObjectId _id PK
+        string name
+        string slug UK
+        string description
+        ObjectId parent FK
+        array children
+        string image
+        boolean isActive
+        number sortOrder
+    }
+    
+    Order {
+        ObjectId _id PK
+        string orderNumber UK
+        ObjectId user FK
+        array items
+        object pricing
+        object shippingAddress
+        object billingAddress
+        object payment
+        object shipping
+        enum status
+        string notes
+        Date createdAt
+        Date updatedAt
+    }
+    
+    OrderItem {
+        ObjectId book FK
+        number quantity
+        number price
+        number total
+    }
+    
+    Cart {
+        ObjectId _id PK
+        ObjectId user FK
+        array items
+        number totalItems
+        number totalPrice
+        Date expiresAt
+        Date createdAt
+        Date updatedAt
+    }
+    
+    CartItem {
+        ObjectId book FK
+        number quantity
+        number price
+        Date addedAt
+    }
+    
+    Review {
+        ObjectId _id PK
+        ObjectId user FK
+        ObjectId book FK
+        ObjectId order FK
+        number rating
+        string title
+        string comment
+        boolean isVerifiedPurchase
+        number helpfulVotes
+        Date createdAt
+        Date updatedAt
+    }
+    
+    Address {
+        string type
+        string firstName
+        string lastName
+        string street
+        string city
+        string state
+        string country
+        string zipCode
+        string phone
+        boolean isDefault
+    }
+    
+    Payment {
+        ObjectId _id PK
+        ObjectId order FK
+        string method
+        string transactionId
+        enum status
+        number amount
+        Date paidAt
+        Date createdAt
+    }
+    
+    Inventory {
+        ObjectId _id PK
+        ObjectId book FK
+        number stock
+        number reserved
+        number sold
+        Date lastUpdated
+    }
+    
+    %% Relationships
+    User ||--o{ Order : "places"
+    User ||--o| Cart : "has"
+    User ||--o{ Review : "writes"
+    User ||--o{ Address : "has"
+    
+    Book ||--o{ OrderItem : "ordered_in"
+    Book ||--o{ CartItem : "added_to"
+    Book ||--o{ Review : "reviewed"
+    Book }o--o{ Category : "belongs_to"
+    Book ||--|| Inventory : "has"
+    
+    Category ||--o{ Category : "parent_of"
+    
+    Order ||--o{ OrderItem : "contains"
+    Order ||--o{ Payment : "has"
+    
+    Cart ||--o{ CartItem : "contains"
