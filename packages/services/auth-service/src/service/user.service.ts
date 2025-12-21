@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import { UserModel } from "../repository/user.repo.js";
 import { encryptUsers } from "../utils/jwt.util.js";
-
+import { ulid } from "ulid";
 export class UserService {
   constructor(private userRepo: UserModel) {}
 
@@ -12,9 +12,14 @@ export class UserService {
     }
 
     const hashedPassword = await bcrypt.hash(data.password, 10);
-    const userToSave = { ...data, password: hashedPassword };
+    const publicID = ulid();
+    const userToSave = {
+      ...data,
+      password: hashedPassword,
+      publicID: publicID,
+    };
     await this.userRepo.createUser(userToSave);
-    return encryptUsers(userToSave);
+    return encryptUsers(userToSave.publicID);
   }
 
   async loginUser(data: any) {

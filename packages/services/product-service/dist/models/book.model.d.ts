@@ -1,6 +1,4 @@
-import mongoose, { Document } from "mongoose";
-export interface IBook extends Document {
-    id: number;
+export interface IBook {
     title: string;
     author: string;
     price: number;
@@ -10,9 +8,4 @@ export interface IBook extends Document {
     image: string;
     description: string;
 }
-export declare const BookModel: mongoose.Model<IBook, {}, {}, {}, mongoose.Document<unknown, {}, IBook, {}, {}> & IBook & Required<{
-    _id: unknown;
-}> & {
-    __v: number;
-}, any>;
 //# sourceMappingURL=book.model.d.ts.map

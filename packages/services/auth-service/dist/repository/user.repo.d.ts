@@ -1,6 +1,7 @@
 import type { User } from "./user.interface.js";
 export declare class UserModel implements User {
     createUser(data: {
+        publicID: string;
         fname: string;
         mname: string;
         lname: string;

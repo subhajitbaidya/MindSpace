@@ -2,8 +2,9 @@ import client from "../db/pg.connect.js";
 import { QueryBuilder } from "../db/base.builder.js";
 export class UserModel {
     async createUser(data) {
-        const { fname, email, password } = data;
+        const { publicID, fname, email, password } = data;
         const qb = new QueryBuilder().insert("users", {
+            publicID,
             fname,
             email,
             password,
@@ -18,7 +19,6 @@ export class UserModel {
             .where("email", email);
         const query = qb.build();
         const result = await client.query(query);
-        console.log(result.rows[0]);
         return result.rows[0];
     }
     getUserByContact(contact) {

@@ -24,7 +24,6 @@ Content-Type: application/json
 
 
 ###
-
 POST http://localhost:5001/signup
 Content-Type: application/json
 
@@ -32,8 +31,8 @@ Content-Type: application/json
   "fname": "subhajit",
   "mname": "kumar",
   "lname": "Baidya",
-  "contact_no": "98763543210",
-  "email": "subh3a@example.com",
+  "contact_no": "98763",
+  "email": "shf44hr5e6c@example.com",
   "password": "123456"
 
 }
@@ -44,8 +43,8 @@ POST http://localhost:5001/login
 Content-Type: application/json
 
 {
-  "email": "subh3a@example.com",
-  "password": "123456"
+  "email": "subh3aeej@example.com",
+  "password": "1234565"
 
 }
 
