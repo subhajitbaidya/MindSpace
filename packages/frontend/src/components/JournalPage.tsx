@@ -37,7 +37,7 @@ export function JournalPage() {
   const [selectConsent, setSelectedConsent] = useState(false);
   const [saved, isSaved] = useState(false);
 
-  const saveEntry = () => {
+  const saveEntry = async () => {
     if (!currentEntry.trim()) return;
 
     const newEntry: JournalEntry = {
@@ -48,6 +48,29 @@ export function JournalPage() {
       prompt: currentPrompt,
       consent: selectConsent,
     };
+
+    try {
+      const response = await fetch("/api/v0/journal/savepost", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newEntry),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save entry");
+      }
+
+      const data = await response.json();
+
+      setEntries([data.data, ...entries]);
+      setCurrentEntry("");
+      setCurrentMood("okay");
+      isSaved(true);
+    } catch (error) {
+      console.error(error);
+    }
 
     setEntries([newEntry, ...entries]);
     setCurrentEntry("");

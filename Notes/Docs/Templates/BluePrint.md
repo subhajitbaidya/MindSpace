@@ -456,8 +456,6 @@ Platform Options:
 ```env
 # Backend (.env.development)
 NODE_ENV=development
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/bookstore_dev
 JWT_SECRET=your_jwt_secret_dev
 JWT_EXPIRES_IN=7d
 STRIPE_SECRET_KEY=sk_test_...

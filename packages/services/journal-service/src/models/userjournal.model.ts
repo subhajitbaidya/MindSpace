@@ -34,4 +34,4 @@ const PostSchema = new Schema<IPost>(
   }
 );
 
-export const Post = mongoose.model<IPost>("Post", PostSchema);
+export const Post = mongoose.model<IPost>("journal", PostSchema);
