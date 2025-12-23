@@ -20,5 +20,5 @@ const PostSchema = new Schema({
 }, {
     timestamps: true,
 });
-export const Post = mongoose.model("Post", PostSchema);
+export const Post = mongoose.model("journal", PostSchema);
 //# sourceMappingURL=userjournal.model.js.map

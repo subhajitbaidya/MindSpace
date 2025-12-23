@@ -39,8 +39,4 @@ export class BookService {
 
     return books;
   }
-
-  // async createBooksBulk(inputs: IBook[]) {
-  //   return this.bookRepo.addBooksBulk(inputs);
-  // }
 }
