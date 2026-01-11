@@ -4,7 +4,7 @@ dotenv.config();
 export const encryptUsers = (payload) => {
     const secret = process.env.JWT_SECRET;
     const options = {
-        expiresIn: "15m",
+        expiresIn: "1h",
     };
     return jwt.sign(payload, secret, options);
 };

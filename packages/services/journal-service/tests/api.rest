@@ -11,3 +11,8 @@ Content-Type: application/json
   "content": "Today felt a bit overwhelming, but I managed to complete my tasks.",
   "prompt": "How was your day?"
 }
+
+###
+
+GET http://localhost:5003/getpost
+Cookie: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMUtFTjJYRFdSMFpNMlk0TUtaUDJQQzAwTiIsIm5hbWUiOiJTdWJoYWppdCBCYWlkeWEiLCJpYXQiOjE3NjgwOTIzNTUsImV4cCI6MTc2ODA5MzI1NX0.eQTOxfok-KagY2qLcEEF0_TIChubf5qFFaVjI5r_E1w

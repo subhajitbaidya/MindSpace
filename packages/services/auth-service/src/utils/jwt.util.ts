@@ -11,7 +11,7 @@ export const encryptUsers = (payload: JwtPayload) => {
   const secret = process.env.JWT_SECRET as string;
 
   const options: SignOptions = {
-    expiresIn: "15m",
+    expiresIn: "1h",
   };
 
   return jwt.sign(payload, secret, options);

@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { PageHeader } from "./widgets/PageHeader";
+import { useState, useRef } from "react";
 import {
   Calendar,
   Save,
@@ -44,6 +43,8 @@ export function JournalPage() {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [selectConsent, setSelectedConsent] = useState(false);
   const [saved, setSaved] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const resetForm = () => {
     setCurrentEntry("");
@@ -110,20 +111,48 @@ export function JournalPage() {
     }
   };
 
-  return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <PageHeader
-        text="Your Personal Journal"
-        description=" A safe space to process your thoughts and feelings"
-      />
+  const handleButtonClick = () => {
+    fileInputRef.current?.click();
+  };
 
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.length) return;
+
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      setLoading(true);
+
+      const res = await fetch("http://localhost:5000/api/v0/upload", {
+        method: "POST",
+        body: formData,
+        credentials: "include", // ✅ send cookies (JWT)
+      });
+
+      if (!res.ok) throw new Error("Upload failed");
+
+      const data = await res.json();
+      console.log("Uploaded image URL:", data.url);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <section className="min-h-screen py-20 pt-10 bg-linear-to-b from-gray-50 to-white dark:from-zinc-900 dark:to-black">
+      {/* Header */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* New Entry Card */}
         <Card className="p-8 mb-12 border-purple-200 shadow-lg">
           <div className="space-y-6">
             <div className="relative flex items-center justify-between">
-              <h2 className="text-2xl text-gray-900 font-medium">New Entry</h2>
+              <h2 className="text-2xl text-gray-900 font-medium">
+                New Journal Entry
+              </h2>
               <Button
                 variant="outline"
                 onClick={() => setShowCalendar((prev) => !prev)}
@@ -228,11 +257,20 @@ export function JournalPage() {
                 <Button
                   variant="outline"
                   size="sm"
+                  onClick={handleButtonClick}
+                  disabled={loading}
                   className="border-purple-300 text-purple-700 hover:bg-purple-100"
                 >
                   <Sparkles className="h-4 w-4 mr-1" />
-                  upload media
+                  {loading ? "Uploading..." : "Upload Media"}
                 </Button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  hidden
+                  onChange={handleFileChange}
+                />
               </div>
             </div>
 
@@ -347,7 +385,7 @@ export function JournalPage() {
           </div>
         </Card>
       </div>
-    </div>
+    </section>
   );
 }
 

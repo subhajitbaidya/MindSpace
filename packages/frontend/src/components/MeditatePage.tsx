@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { VideoCard } from "./widgets/VideoCard";
 import { PageHeader } from "./widgets/PageHeader";
-import Searchbar from "./widgets/Searchbar";
+// import Searchbar from "./widgets/Searchbar";
 
 export interface MeditationVideo {
   id: string;
@@ -129,13 +129,13 @@ export default function MeditatePage() {
   });
 
   return (
-    <div className="min-h-screen">
-      <PageHeader
-        text="Mindfullness"
-        description="Meditate daily from our curated collections, track your progress"
-      />
+    <div className="min-h-screen pb-10 bg-linear-to-b from-gray-50 to-white dark:from-zinc-900 dark:to-black">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <Searchbar />
+        <PageHeader
+          text="Mindfullness"
+          description="Meditate daily from our curated collections, track your progress"
+        />
+        {/* <Searchbar /> */}
         {/* Search Bar */}
         {/* <div className="mb-6 relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 size-5" />
@@ -169,7 +169,7 @@ export default function MeditatePage() {
 
         {/* Video Grid */}
         {filteredVideos.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-12">
             {filteredVideos.map((video) => (
               <VideoCard key={video.id} video={video} />
             ))}

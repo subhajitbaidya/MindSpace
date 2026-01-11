@@ -35,5 +35,27 @@ export class JournalController {
             });
         }
     };
+    getJournals = async (req, res) => {
+        try {
+            const token = req.cookies?.access_token;
+            if (!token) {
+                return res.status(401).json({ message: "Missing token" });
+            }
+            // Verify JWT
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const userId = decoded.sub;
+            if (!userId) {
+                return res.status(401).json({ message: "Invalid token payload" });
+            }
+            const journals = await Journal.find({ createdBy: userId })
+                .sort({ date: -1 })
+                .limit(3)
+                .lean();
+            res.status(200).json({ success: true, data: journals });
+        }
+        catch (error) {
+            res.status(400).json({ success: false, message: error.message });
+        }
+    };
 }
 //# sourceMappingURL=journal.controller.js.map

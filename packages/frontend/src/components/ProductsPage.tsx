@@ -1,18 +1,19 @@
 import { useState } from "react";
-import { Search, Star, ShoppingCart, Heart } from "lucide-react";
+// import { Star, ShoppingCart, Heart } from "lucide-react";
 import { Button } from "./ui/button";
-import { Card } from "./ui/card";
-import { Input } from "./ui/input";
+// import { Card } from "./ui/card";
+// import { Input } from "./ui/input";
 import { GET_BOOKS } from "@/gql/gql.client";
 import { useQuery } from "@apollo/client/react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "./ui/select";
 import { PageHeader } from "./widgets/PageHeader";
+import ProductCard from "./widgets/ProductCard";
 
 interface Book {
   id: number;
@@ -76,16 +77,15 @@ function ProductsPage() {
   };
 
   return (
-    <div className="min-h-screen">
-      <PageHeader
-        text="Our Collections"
-        description="Professionally curated books to support your mental health journey"
-      />
-
+    <div className="min-h-screen pb-10 bg-linear-to-b from-gray-50 to-white dark:from-zinc-900 dark:to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <PageHeader
+          text="Our Collections"
+          description="Professionally curated books to support your mental health journey"
+        />
         {/* Search + Sort */}
         <div className="mb-8 space-y-4">
-          <div className="flex flex-col md:flex-row gap-4">
+          {/* <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <Input
@@ -108,10 +108,10 @@ function ProductsPage() {
                 <SelectItem value="price-high">Price: High to Low</SelectItem>
               </SelectContent>
             </Select>
-          </div>
+          </div> */}
 
           {/* Categories */}
-          <div className="flex flex-wrap gap-2">
+          {/* <div className="flex flex-wrap gap-2">
             {categories?.map((category) => (
               <button
                 key={category}
@@ -125,74 +125,81 @@ function ProductsPage() {
                 {category}
               </button>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* Count */}
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <p className="text-gray-600">
             Showing {sortedBooks.length}{" "}
             {sortedBooks.length === 1 ? "book" : "books"}
           </p>
-        </div>
+        </div> */}
 
         {/* Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {sortedBooks.map((book) => (
-            <Card
+            // <Card
+            //   key={book.id}
+            //   className="group overflow-hidden border-purple-100 hover:shadow-xl transition-all"
+            // >
+            //   <div className="relative">
+            //     <div className="aspect-4/4 bg-linear-to-br from-purple-100 to-teal-100 overflow-hidden">
+            //       <img
+            //         src={book.image}
+            //         alt={book.title}
+            //         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            //       />
+            //     </div>
+
+            //     <button
+            //       onClick={() => toggleFavorite(book.id)}
+            //       className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-lg hover:scale-110 transition-transform"
+            //     >
+            //       <Heart
+            //         className={`h-5 w-5 ${
+            //           favorites.includes(book.id)
+            //             ? "fill-red-500 text-red-500"
+            //             : "text-gray-400"
+            //         }`}
+            //       />
+            //     </button>
+            //   </div>
+
+            //   <div className="p-4 space-y-3">
+            //     <h3 className="text-gray-900 line-clamp-2">{book.title}</h3>
+            //     <p className="text-sm text-gray-600">{book.author}</p>
+
+            //     <p className="text-sm text-gray-600 line-clamp-2">
+            //       {book.description}
+            //     </p>
+
+            //     <div className="flex items-center gap-2">
+            //       <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+            //       <span className="text-sm">{book.rating}</span>
+            //       <span className="text-sm text-gray-500">
+            //         ({book.reviews})
+            //       </span>
+            //     </div>
+
+            //     <div className="flex items-center justify-between pt-2">
+            //       <span className="text-2xl text-purple-700">
+            //         Rs {book.price}
+            //       </span>
+            //       <Button className="bg-purple-600 hover:bg-purple-700 rounded-lg">
+            //         <ShoppingCart className="h-4 w-4 mr-2" />
+            //         Add
+            //       </Button>
+            //     </div>
+            //   </div>
+            // </Card>
+            <ProductCard
+              image={book.image}
+              category={book.category}
+              price={book.price}
+              title={book.title}
               key={book.id}
-              className="group overflow-hidden border-purple-100 hover:shadow-xl transition-all"
-            >
-              <div className="relative">
-                <div className="aspect-4/4 bg-linear-to-br from-purple-100 to-teal-100 overflow-hidden">
-                  <img
-                    src={book.image}
-                    alt={book.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                <button
-                  onClick={() => toggleFavorite(book.id)}
-                  className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-lg hover:scale-110 transition-transform"
-                >
-                  <Heart
-                    className={`h-5 w-5 ${
-                      favorites.includes(book.id)
-                        ? "fill-red-500 text-red-500"
-                        : "text-gray-400"
-                    }`}
-                  />
-                </button>
-              </div>
-
-              <div className="p-4 space-y-3">
-                <h3 className="text-gray-900 line-clamp-2">{book.title}</h3>
-                <p className="text-sm text-gray-600">{book.author}</p>
-
-                <p className="text-sm text-gray-600 line-clamp-2">
-                  {book.description}
-                </p>
-
-                <div className="flex items-center gap-2">
-                  <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  <span className="text-sm">{book.rating}</span>
-                  <span className="text-sm text-gray-500">
-                    ({book.reviews})
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between pt-2">
-                  <span className="text-2xl text-purple-700">
-                    Rs {book.price}
-                  </span>
-                  <Button className="bg-purple-600 hover:bg-purple-700 rounded-lg">
-                    <ShoppingCart className="h-4 w-4 mr-2" />
-                    Add
-                  </Button>
-                </div>
-              </div>
-            </Card>
+            />
           ))}
         </div>
 
