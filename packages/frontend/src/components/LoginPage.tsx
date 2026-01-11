@@ -18,9 +18,10 @@ export default function LoginPage() {
   const handleSignup = async () => {
     const response = await fetch("/api/v0/auth/signup", {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        fname: username,
+        username: username,
         email: email,
         password: password,
       }),
@@ -39,6 +40,7 @@ export default function LoginPage() {
   const handleLogin = async () => {
     const response = await fetch("/api/v0/auth/login", {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: email, password: password }),
     });

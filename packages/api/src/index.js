@@ -7,6 +7,8 @@ dotenv.config();
 
 const PORT = process.env.PORT || 8080;
 
+// TODO: modify cluster code to be more efficient
+
 if (cluster.isPrimary) {
   const numCPUs = os.cpus().length;
   console.log(`Master ${process.pid} running with ${numCPUs} workers`);

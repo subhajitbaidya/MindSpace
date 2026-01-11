@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
 export declare class JournalController {
-    savepost: (req: Request, res: Response) => Promise<void>;
+    savejournal: (req: Request, res: Response) => Promise<Response<any, Record<string, any>> | undefined>;
 }
 //# sourceMappingURL=journal.controller.d.ts.map

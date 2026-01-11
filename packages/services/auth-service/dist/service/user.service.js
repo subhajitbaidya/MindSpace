@@ -10,7 +10,7 @@ export class UserService {
     async registerUser(data) {
         const existingUser = await this.userRepo.getUserByEmail(data.email);
         if (existingUser) {
-            throw new Error("User already exists");
+            throw new Error("User already exists, please login");
         }
         const hashedPassword = await bcrypt.hash(data.password, 10);
         const publicID = ulid();
@@ -20,7 +20,11 @@ export class UserService {
             publicID: publicID,
         };
         await this.userRepo.createUser(userToSave);
-        return encryptUsers(userToSave.publicID);
+        console.log(userToSave);
+        return encryptUsers({
+            sub: publicID,
+            name: data.username,
+        });
     }
     async loginUser(data) {
         if (!data || !data.password) {
@@ -37,7 +41,10 @@ export class UserService {
         if (!isPasswordValid) {
             throw new Error("Invalid email or password");
         }
-        return encryptUsers(user);
+        return encryptUsers({
+            sub: user.publicid,
+            name: user.username, // must exist in DB
+        });
     }
 }
 //# sourceMappingURL=user.service.js.map

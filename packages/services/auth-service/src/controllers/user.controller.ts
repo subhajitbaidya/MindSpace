@@ -18,10 +18,17 @@ export class UserController {
     try {
       const user = req.body;
       const token = await this.userService.loginUser(user);
+
+      res.cookie("access_token", token, {
+        httpOnly: true, // JS cannot access
+        secure: true, // HTTPS only
+        sameSite: "strict", // CSRF protection
+        maxAge: 15 * 60 * 1000, // 15 minutes
+      });
+
       res.status(200).json({
         success: true,
         message: "Login successful",
-        token: token,
       });
     } catch (err: any) {
       res.status(401).json({

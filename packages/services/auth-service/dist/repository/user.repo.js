@@ -2,10 +2,10 @@ import client from "../db/pg.connect.js";
 import { QueryBuilder } from "../db/base.builder.js";
 export class UserModel {
     async createUser(data) {
-        const { publicID, fname, email, password } = data;
+        const { publicID, username, email, password } = data;
         const qb = new QueryBuilder().insert("users", {
             publicID,
-            fname,
+            username,
             email,
             password,
         });
@@ -15,7 +15,7 @@ export class UserModel {
     }
     async getUserByEmail(email) {
         const qb = new QueryBuilder()
-            .select(["password"], "users")
+            .select(["password", "publicid", "username"], "users")
             .where("email", email);
         const query = qb.build();
         const result = await client.query(query);

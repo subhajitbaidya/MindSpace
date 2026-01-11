@@ -1,1 +1,1 @@
-{"version":3,"file":"userjournal.controller.d.ts","sourceRoot":"","sources":["../../src/controllers/userjournal.controller.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAC;AAGjD,qBAAa,iBAAiB;IAC5B,WAAW,GAAU,KAAK,OAAO,EAAE,KAAK,QAAQ,mBAW9C;CACH"}
+{"version":3,"file":"userjournal.controller.d.ts","sourceRoot":"","sources":["../../src/controllers/userjournal.controller.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAC;AAGjD,qBAAa,iBAAiB;IAC5B,WAAW,GAAU,KAAK,OAAO,EAAE,KAAK,QAAQ,mBAyB9C;CACH"}
