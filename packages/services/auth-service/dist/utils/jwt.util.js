@@ -6,6 +6,6 @@ export const encryptUsers = (payload) => {
     const options = {
         expiresIn: "15m",
     };
-    return jwt.sign({ sub: payload }, secret, options);
+    return jwt.sign(payload, secret, options);
 };
 //# sourceMappingURL=jwt.util.js.map

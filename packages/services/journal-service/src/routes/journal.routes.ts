@@ -1,4 +1,4 @@
-import { JournalController } from "../controllers/userjournal.controller.js";
+import { JournalController } from "../controllers/journal.controller.js";
 import express from "express";
 
 const router = express.Router();

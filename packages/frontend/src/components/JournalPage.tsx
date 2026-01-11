@@ -19,67 +19,73 @@ import { Checkbox } from "./ui/checkbox";
 type Mood = "great" | "okay" | "struggling";
 
 interface JournalEntry {
-  id: number;
-  date: string;
+  _id: string;
+  date: Date;
   mood: Mood;
+  title: string;
   content: string;
-  prompt: string;
   consent: boolean;
 }
+
+type JournalPayload = {
+  date: Date;
+  mood: Mood;
+  title: string;
+  content: string;
+  consent: boolean;
+};
 
 export function JournalPage() {
   const [entries, setEntries] = useState<JournalEntry[]>([]);
   const [currentEntry, setCurrentEntry] = useState("");
   const [currentMood, setCurrentMood] = useState<Mood>("okay");
-  const [currentPrompt, setCurrentPrompt] = useState("");
+  const [currentTitle, setCurrentTitle] = useState("");
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [selectConsent, setSelectedConsent] = useState(false);
-  const [saved, isSaved] = useState(false);
+  const [saved, setSaved] = useState(false);
+
+  const resetForm = () => {
+    setCurrentEntry("");
+    setCurrentMood("okay");
+    setCurrentTitle("");
+    setSelectedConsent(false);
+    setSaved(false);
+  };
 
   const saveEntry = async () => {
     if (!currentEntry.trim()) return;
 
-    const newEntry: JournalEntry = {
-      id: Date.now(),
-      date: selectedDate.toISOString().split("T")[0],
+    const payload: JournalPayload = {
+      date: selectedDate,
       mood: currentMood,
+      title: currentTitle,
       content: currentEntry,
-      prompt: currentPrompt,
       consent: selectConsent,
     };
 
     try {
       const response = await fetch("/api/v0/journal/savepost", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newEntry),
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to save entry");
-      }
+      if (!response.ok) throw new Error("Failed to save entry");
 
       const data = await response.json();
+      console.log(data);
 
-      setEntries([data.data, ...entries]);
-      setCurrentEntry("");
-      setCurrentMood("okay");
-      isSaved(true);
+      setEntries((prev) => [data.data, ...prev]);
+      resetForm();
     } catch (error) {
       console.error(error);
     }
-
-    setEntries([newEntry, ...entries]);
-    setCurrentEntry("");
-    setCurrentMood("okay");
-    isSaved(true);
   };
 
-  const deleteEntry = (id: number) => {
-    setEntries(entries.filter((entry) => entry.id !== id));
+  const deleteEntry = (id: string) => {
+    setEntries((prev) => prev.filter((entry) => entry._id !== id));
   };
 
   const getMoodIcon = (mood: Mood) => {
@@ -116,8 +122,8 @@ export function JournalPage() {
         {/* New Entry Card */}
         <Card className="p-8 mb-12 border-purple-200 shadow-lg">
           <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl text-gray-900">New Entry</h2>
+            <div className="relative flex items-center justify-between">
+              <h2 className="text-2xl text-gray-900 font-medium">New Entry</h2>
               <Button
                 variant="outline"
                 onClick={() => setShowCalendar((prev) => !prev)}
@@ -216,7 +222,7 @@ export function JournalPage() {
                   <input
                     className="border-none outline-none focus:outline-none focus:ring-0"
                     placeholder="Enter journal title"
-                    onChange={(e) => setCurrentPrompt(e.target.value)}
+                    onChange={(e) => setCurrentTitle(e.target.value)}
                   />
                 </div>
                 <Button
@@ -246,7 +252,10 @@ export function JournalPage() {
               <div className="flex items-center gap-2">
                 <Checkbox
                   className="border-black"
-                  onCheckedChange={() => setSelectedConsent(true)}
+                  checked={selectConsent}
+                  onCheckedChange={(checked) =>
+                    setSelectedConsent(Boolean(checked))
+                  }
                   disabled={saved}
                 />
                 <p className="text-sm">share with community</p>
@@ -277,7 +286,7 @@ export function JournalPage() {
             <div className="space-y-6">
               {entries.map((entry) => (
                 <Card
-                  key={entry.id}
+                  key={entry._id}
                   className="p-6 border-purple-100 hover:shadow-lg transition-shadow"
                 >
                   <div className="flex items-start justify-between mb-4">
@@ -299,12 +308,12 @@ export function JournalPage() {
                           })}
                         </p>
                         <p className="text-sm text-purple-600 italic">
-                          "{entry.prompt}"
+                          "{entry.title}"
                         </p>
                       </div>
                     </div>
                     <Button
-                      onClick={() => deleteEntry(entry.id)}
+                      onClick={() => deleteEntry(entry._id)}
                       variant="ghost"
                       size="sm"
                       className="text-red-600 hover:text-red-700 hover:bg-red-50"

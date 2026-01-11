@@ -1,2 +1,1 @@
-DELETE from users
-where id = 49;
+DELETE from users;

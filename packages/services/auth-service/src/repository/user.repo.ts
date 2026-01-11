@@ -5,17 +5,15 @@ import { QueryBuilder } from "../db/base.builder.js";
 export class UserModel implements User {
   async createUser(data: {
     publicID: string;
-    fname: string;
-    mname: string;
-    lname: string;
+    username: string;
     email: string;
     contact_no: string;
     password: string;
   }): Promise<any> {
-    const { publicID, fname, email, password } = data;
+    const { publicID, username, email, password } = data;
     const qb = new QueryBuilder().insert("users", {
       publicID,
-      fname,
+      username,
       email,
       password,
     });
@@ -27,7 +25,7 @@ export class UserModel implements User {
   }
   async getUserByEmail(email: string): Promise<any | null> {
     const qb = new QueryBuilder()
-      .select(["password"], "users")
+      .select(["password", "publicid", "username"], "users")
       .where("email", email);
 
     const query = qb.build();
