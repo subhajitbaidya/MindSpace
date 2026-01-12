@@ -17,7 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div
       data-cmp="ProductCard"
-      className="group bg-card rounded-2xl shadow-custom overflow-hidden hover:-translate-y-1 transition-all duration-300"
+      className="group bg-card rounded-2xl shadow-card overflow-hidden hover:-translate-y-1 transition-all duration-300"
     >
       <div className="relative aspect-square overflow-hidden bg-gray-100">
         <img

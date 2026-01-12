@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { VideoCard } from "./widgets/VideoCard";
-import { PageHeader } from "./widgets/PageHeader";
+import { VideoCard } from "../components/Props/VideoCard";
+import { PageHeader } from "../components/Props/Search";
 // import Searchbar from "./widgets/Searchbar";
 
 export interface MeditationVideo {

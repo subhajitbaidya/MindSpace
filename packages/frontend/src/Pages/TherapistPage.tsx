@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ChatMessages } from "./widgets/ChatMessages";
-import { ChatHeader } from "./widgets/ChatHeader";
-import { AIInput } from "./ui/ai-input";
+import { ChatMessages } from "../components/Props/ChatMessages";
+import { ChatHeader } from "../components/Props/ChatHeader";
+import { AIInput } from "../components/ui/ai-input";
 import { useEffect, useRef } from "react";
 
 export interface Message {

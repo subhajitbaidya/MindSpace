@@ -14,8 +14,11 @@ const Header = () => {
   return (
     <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <NavLink to="/home" className="flex items-center gap-2 no-underline">
+        <div className="flex justify-between items-center">
+          <NavLink
+            to="/home"
+            className="flex items-center gap-2 no-underline pt-10 pb-6"
+          >
             <LibraryBig className="h-8 w-8 text-black-600" />
             <span className="text-2xl text-black-900 font-semibold">
               MindSpace
@@ -64,7 +67,6 @@ const Header = () => {
             </NavLink>
 
             <Button
-              // onClick={toggleSidebar}
               variant="ghost"
               className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary"
             >

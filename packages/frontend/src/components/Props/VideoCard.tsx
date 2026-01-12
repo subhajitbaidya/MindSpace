@@ -1,7 +1,7 @@
 import { Play, Clock, User } from "lucide-react";
 import { Card } from "../ui/card";
 import { Badge } from "../ui/badge";
-import { type MeditationVideo } from "../MeditatePage";
+import { type MeditationVideo } from "../../Pages/MeditatePage";
 
 interface VideoCardProps {
   video: MeditationVideo;

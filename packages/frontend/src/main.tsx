@@ -9,14 +9,15 @@ import {
 } from "react-router";
 import { ApolloProvider } from "@apollo/client/react";
 import { client } from "./gql/gql.client";
-import LoginPage from "./components/LoginPage";
-import LandingPage from "./components/LandingPage";
-import ProductsPage from "./components/ProductsPage";
-import Layout from "./components/Layout";
-import TherapistPage from "./components/TherapistPage";
-import CommunityPage from "./components/CommunityPage";
-import JournalPage from "./components/JournalPage";
-import MeditatePage from "./components/MeditatePage";
+import LoginPage from "./Pages/LoginPage";
+import LandingPage from "./Pages/LandingPage";
+import ProductsPage from "./Pages/ProductsPage";
+import Layout from "./components/Layout/Layout";
+import TherapistPage from "./Pages/TherapistPage";
+import CommunityPage from "./Pages/CommunityPage";
+import JournalPage from "./Pages/JournalPage";
+import MeditatePage from "./Pages/MeditatePage";
+import UserJournals from "./Pages/UserJournals";
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -29,6 +30,7 @@ const routes = createBrowserRouter(
         <Route path="community" element={<CommunityPage />} />
         <Route path="meditate" element={<MeditatePage />} />
         <Route path="therapistagent" element={<TherapistPage />} />
+        <Route path="userjournals" element={<UserJournals />} />
       </Route>
     </>
   )

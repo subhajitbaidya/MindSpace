@@ -1,5 +1,5 @@
-import { Button } from "./ui/button";
-import { PageHeader } from "./widgets/PageHeader";
+import { Button } from "../components/ui/button";
+import { PageHeader } from "../components/Props/Search";
 
 export default function CommunityPage() {
   const features = [

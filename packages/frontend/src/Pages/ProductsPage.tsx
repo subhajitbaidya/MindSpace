@@ -1,6 +1,6 @@
 import { useState } from "react";
 // import { Star, ShoppingCart, Heart } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "../components/ui/button";
 // import { Card } from "./ui/card";
 // import { Input } from "./ui/input";
 import { GET_BOOKS } from "@/gql/gql.client";
@@ -12,8 +12,8 @@ import { useQuery } from "@apollo/client/react";
 //   SelectTrigger,
 //   SelectValue,
 // } from "./ui/select";
-import { PageHeader } from "./widgets/PageHeader";
-import ProductCard from "./widgets/ProductCard";
+import { PageHeader } from "../components/Props/Search";
+import ProductCard from "../components/Props/ProductCard";
 
 interface Book {
   id: number;

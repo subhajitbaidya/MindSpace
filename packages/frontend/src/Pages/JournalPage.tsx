@@ -9,11 +9,12 @@ import {
   PlusCircle,
   Sparkles,
 } from "lucide-react";
-import { Button } from "./ui/button";
-import { Card } from "./ui/card";
-import { Textarea } from "./ui/textarea";
-import CalendarWidget from "./widgets/CalenderWidget";
-import { Checkbox } from "./ui/checkbox";
+import { Button } from "../components/ui/button";
+import { Card } from "../components/ui/card";
+import { Textarea } from "../components/ui/textarea";
+import CalendarWidget from "../components/Props/CalenderWidget";
+import { Checkbox } from "../components/ui/checkbox";
+import { useNavigate } from "react-router";
 
 type Mood = "great" | "okay" | "struggling";
 
@@ -45,6 +46,7 @@ export function JournalPage() {
   const [saved, setSaved] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const resetForm = () => {
     setCurrentEntry("");
@@ -362,6 +364,12 @@ export function JournalPage() {
                   <p className="text-gray-700 leading-relaxed">
                     {entry.content}
                   </p>
+                  <Button
+                    variant="outline"
+                    onClick={() => navigate("/home/userjournals")}
+                  >
+                    see more
+                  </Button>
                 </Card>
               ))}
             </div>

@@ -6,10 +6,10 @@ import {
   Star,
   Quote,
 } from "lucide-react";
-import { Button } from "./ui/button";
-import { Card } from "./ui/card";
+import { Button } from "../components/ui/button";
+import { Card } from "../components/ui/card";
 import { Hero } from "@/components/ui/animated-hero";
-import { Carousel } from "./ui/carousel";
+import { Carousel } from "../components/ui/carousel";
 import { GET_FEATURED } from "@/gql/gql.client";
 import { useQuery } from "@apollo/client/react";
 
@@ -78,7 +78,7 @@ const LandingPage = () => {
   );
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-linear-to-b from-gray-50 to-white dark:from-zinc-900 dark:to-black">
       {/* Hero Section */}
       <Hero />
 
@@ -134,7 +134,7 @@ const LandingPage = () => {
             {uniqueBooks?.map((book, index) => (
               <Carousel
                 key={index}
-                className="group relative overflow-hidden rounded-2xl h-64 bg-linear-to-br from-purple-100 to-teal-100 hover:shadow-xl transition-all"
+                className="group relative overflow-hidden rounded-2xl h-64 bg-gray-200 hover:shadow-xl transition-all"
               >
                 <div className="absolute inset-0 bg-white/30"></div>
                 <div className="absolute flex items-center flex-col bottom-6 left-6 right-6">

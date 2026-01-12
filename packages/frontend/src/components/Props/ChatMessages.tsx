@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { ScrollArea } from "../ui/scroll-area";
 import { Avatar } from "../ui/avatar";
-import type { Message } from "../TherapistPage";
+import type { Message } from "../../Pages/TherapistPage";
 import { Bot } from "lucide-react";
 
 interface ChatMessagesProps {
