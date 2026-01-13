@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { ChatMessages } from "../components/Props/ChatMessages";
-import { ChatHeader } from "../components/Props/ChatHeader";
 import { AIInput } from "../components/ui/ai-input";
 import { useEffect, useRef } from "react";
+import { BotIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { MoreVertical } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export interface Message {
   id: string;
@@ -33,16 +36,36 @@ export default function TherapistPage() {
     };
 
     newSocket.onmessage = (event) => {
-      setIsTyping(false);
       const parsed = JSON.parse(event.data);
-      const messageText = parsed.output;
-      const agentResponse: Message = {
-        id: Date.now().toString(),
-        text: messageText,
-        sender: "agent",
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, agentResponse]);
+
+      if (parsed.type === "token") {
+        setMessages((prev) => {
+          const last = prev[prev.length - 1];
+
+          // append token to last agent message
+          if (last?.sender === "agent") {
+            return [
+              ...prev.slice(0, -1),
+              { ...last, text: last.text + parsed.content },
+            ];
+          }
+
+          // create new agent message
+          return [
+            ...prev,
+            {
+              id: Date.now().toString(),
+              text: parsed.content,
+              sender: "agent",
+              timestamp: new Date(),
+            },
+          ];
+        });
+      }
+
+      if (parsed.type === "end") {
+        setIsTyping(false);
+      }
     };
 
     newSocket.onerror = (err) => {
@@ -84,7 +107,25 @@ export default function TherapistPage() {
     <div className="flex max-w-full rounded-lg shadow-lg h-[700px] flex-col overflow-hidden max-h-screen bg-gray-50 p-4">
       <div ref={messagesEndRef} className="grow overflow-y-auto px-4">
         <div className="flex-none sticky top-0 bg-gray-50 z-10">
-          <ChatHeader />
+          <div className="flex items-center justify-between p-4 border-b bg-white">
+            <div className="flex items-center gap-3">
+              <BotIcon />
+              <div>
+                <h2 className="font-semibold">Therapist AI</h2>
+                <div className="flex items-center gap-2">
+                  <Badge
+                    variant="secondary"
+                    className="bg-white-100 text-green-700"
+                  >
+                    Free tier
+                  </Badge>
+                </div>
+              </div>
+            </div>
+            <Button variant="ghost" size="icon">
+              <MoreVertical className="w-5 h-5" />
+            </Button>
+          </div>
         </div>
 
         <ChatMessages messages={messages} isTyping={isTyping} />

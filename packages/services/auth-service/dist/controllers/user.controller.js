@@ -22,7 +22,7 @@ export class UserController {
                 httpOnly: true, // JS cannot access
                 secure: true, // HTTPS only
                 sameSite: "strict", // CSRF protection
-                maxAge: 15 * 60 * 1000, // 15 minutes
+                maxAge: 24 * 60 * 60 * 1000,
             });
             res.status(200).json({
                 success: true,
