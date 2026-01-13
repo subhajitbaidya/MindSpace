@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Calendar,
   Save,
@@ -56,6 +56,23 @@ export function JournalPage() {
     setSaved(false);
   };
 
+  const getentries = async () => {
+    const response = await fetch("/api/v0/journal/getpost", {
+      method: "GET",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) throw new Error("Failed to save entry");
+
+    const data = await response.json();
+    setEntries(data.data);
+  };
+
+  useEffect(() => {
+    getentries();
+  }, [entries]);
+
   const saveEntry = async () => {
     if (!currentEntry.trim()) return;
 
@@ -80,15 +97,23 @@ export function JournalPage() {
       const data = await response.json();
       console.log(data);
 
-      setEntries((prev) => [data.data, ...prev]);
       resetForm();
     } catch (error) {
       console.error(error);
     }
   };
 
-  const deleteEntry = (id: string) => {
-    setEntries((prev) => prev.filter((entry) => entry._id !== id));
+  const deleteEntry = async (id: string) => {
+    try {
+      const res = await fetch(`/api/v0/journal/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      if (!res.ok) throw new Error("Failed to delete entry");
+      setEntries((prev) => prev.filter((entry) => entry._id !== id));
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const getMoodIcon = (mood: Mood) => {
@@ -251,6 +276,7 @@ export function JournalPage() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <input
+                    value={currentTitle}
                     className="border-none outline-none focus:outline-none focus:ring-0"
                     placeholder="Enter journal title"
                     onChange={(e) => setCurrentTitle(e.target.value)}

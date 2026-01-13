@@ -35,7 +35,7 @@ export class JournalController {
             });
         }
     };
-    getJournals = async (req, res) => {
+    getLastJournal = async (req, res) => {
         try {
             const token = req.cookies?.access_token;
             if (!token) {

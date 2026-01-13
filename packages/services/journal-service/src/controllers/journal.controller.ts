@@ -53,7 +53,7 @@ export class JournalController {
     }
   };
 
-  getJournals = async (req: Request, res: Response) => {
+  getLastJournal = async (req: Request, res: Response) => {
     try {
       const token = req.cookies?.access_token;
 
